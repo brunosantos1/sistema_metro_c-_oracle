@@ -1,0 +1,106 @@
+﻿@model PM.Web.ViewModel.PesquisarTrensViewModel
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Material Rodante - Pesquisar Trens</h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    <label for="selectLinha">Linha:</label>
+                    @Html.DropDownListFor(model => model.linha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbFiltroTrem'); fnCarregaCombo(this, 'patio', 'getpatiolinha?ID=' );" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Local">
+                    <label for="selectLocal">Local:</label>
+                    @Html.DropDownListFor(model => model.patio, (IEnumerable<SelectListItem>)Model.SelecionarPatioLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbFiltroTrem');" })
+                </div>
+                <div class="form-group col-md-5 col-lg-4 col-xl-2" id="fg_Status">
+                    <label for="selectStatus">Status:</label>
+                    @Html.DropDownListFor(model => model.status, (IEnumerable<SelectListItem>)Model.SelecionarStatus, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbFiltroTrem');" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" onclick="fnCarregaDataTable('tbFiltroTrem', 'linha', 'patio', 'status', 'status');">Filtrar</button>&nbsp;
+                <button type="button" class="btn btn-primary">Limpar filtro</button>&nbsp;
+                <button type="button" class="btn btn-primary">Exportar</button>
+            </div>
+        </div>
+    </div>
+</form>
+        <hr />
+        <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2" style="background-color: #98FB98; margin: 0px; padding: 0px;">
+                    <div style="background-color: #000; color: #fff; font-size: large; padding: 5px 10px;">Liberado</div>
+                    <hr />
+                    <center>
+                        <span class="" style="font-size:x-large">@string.Format("{0:000000}", @Model.trens_liberados)</span>
+                    </center>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-xl-3 col-lg-3 col-md-2" style="background-color: #FFA500; margin: 0px; padding: 0px;">
+                    <div style="background-color: #000; color: #fff; font-size: large; padding: 5px 10px;">Liberado Pendência/Falha</div>
+                    <hr />
+                    <center>
+                        <span class="" style="font-size: x-large">@string.Format("{0:000000}", @Model.trens_falha)</span>
+                    </center>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-xl-2 col-lg-2 col-md-2" style="background-color: #FF6347; margin: 0px; padding: 0px;">
+                    <div style="background-color: #000; color: #fff; font-size: large; padding: 5px 10px;">Entregue para Manobra</div>
+                    <hr />
+                    <center>
+                        <span class="" style="font-size: x-large">@string.Format("{0:000000}", @Model.trens_entregue)</span>
+                    </center>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-xl-2 col-lg-2 col-md-2" style="background-color: #BA55D3; margin: 0px; padding: 0px;">
+                    <div style="background-color: #000; color: #fff; font-size: large; padding: 5px 10px;">Processo de Manobra</div>
+                    <hr />
+                    <center>
+                        <span class="" style="font-size: x-large">@string.Format("{0:000000}", @Model.trens_manobra)</span>
+                    </center>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-xl-2 col-lg-2 col-md-2" style="background-color: #D2691E; margin: 0px; padding: 0px;">
+                    <div style="background-color: #000; color: #fff; font-size: large; padding: 5px 10px;">Total de Trens</div>
+                    <hr />
+                    <center>
+                        <span class="" style="font-size: x-large">@string.Format("{0:000000}", @Model.trens_total)</span>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class=" shadow-lg p-3 col-md-12 bg-white rounded" @*style="min-height: 500px;"*@>
+            <div class="table-responsive">
+                <table id="tbFiltroTrem" class="nowrap table table-bordered dataTable">
+                    <thead class="btn-primary">
+                        <tr>
+                            <td>Trem</td>
+                            <td>Status</td>
+                            <td>Linha Operacao</td>
+                            <td>Zona</td>
+                            <td>Linha</td>
+                            <td>KM</td>
+                            <td>Ação</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        @section scripts {
+            @Scripts.Render("~/Scripts/MaterialRodante/pesquisarTrens.js")
+            @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+        }

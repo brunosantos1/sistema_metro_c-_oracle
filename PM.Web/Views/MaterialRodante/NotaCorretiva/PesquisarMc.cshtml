@@ -1,0 +1,167 @@
+﻿@model PM.Web.ViewModel.MaterialRodante.PesquisarNotaMCViewModel
+
+<div id="modalNotificadores_container"></div>
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_cancel_nota" />
+                <input type="hidden" id="cdsap_cancel_nota" />
+                <p>Informe o motivo do cancelamento</p>
+                <textarea id="motivoCancelamento" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Material Rodante - Pesquisar Nota Corretiva (MC)</h5>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+
+
+                <div class="form-group col-md-3 col-lg-2 col-xl-1">
+                    @Html.LabelFor(model => model.id_frota_fk)
+                    @Html.DropDownListFor(model => model.id_frota_fk, Model.FrotaList, new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1">
+                    @Html.LabelFor(model => model.id_trem_fk)
+
+                    @Html.DropDownListFor(model => model.id_trem_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1">
+                    @Html.LabelFor(model => model.id_carro_fk)
+
+                    @Html.DropDownListFor(model => model.id_carro_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1">
+                    @Html.LabelFor(model => model.id_sistema_fk)
+
+                    @Html.DropDownListFor(model => model.id_sistema_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4">
+                    @Html.LabelFor(model => model.id_sintoma_fk)
+                    @Html.DropDownListFor(model => model.id_sintoma_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    @Html.LabelFor(model => model.cd_sap)
+                    @Html.EditorFor(model => model.cd_sap, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+
+
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    @Html.LabelFor(model => model.dt_inicial)
+                    @Html.EditorFor(model => model.dt_inicial, new { htmlAttributes = new { @class = "form-control FormatDateDe" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    @Html.LabelFor(model => model.dt_final)
+                    @Html.EditorFor(model => model.dt_final, new { htmlAttributes = new { @class = "form-control FormatDateAte" } })
+
+                </div>
+
+
+                <div class="form-group col-md-3 col-lg-2 col-xl-1">
+                    @Html.LabelFor(model => model.id_prioridade_fk)
+                    @Html.DropDownListFor(model => model.id_prioridade_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+
+                <!--
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    @Html.LabelFor(model => model.rg_notificador)
+                    @Html.EditorFor(model => model.rg_notificador, new { htmlAttributes = new { @class = "form-control",disabled="disabled" } })
+                </div>-->
+
+
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    @Html.LabelFor(model => model.nm_notificador)
+                    <div class="input-group mb">
+                        @Html.EditorFor(model => model.nm_notificador, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_notificador_fk)
+                        <div class="input-group-append">
+                            <button id="btnNotificador" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-5 col-lg-4 col-xl-2">
+                    @Html.LabelFor(model => model.id_status_usuario)
+                    @Html.DropDownListFor(model => model.id_status_usuario, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md text-right">
+            <button type="button" class="btn btn-primary" id="btn_filtrar">Filtrar</button>
+            <button type="button" class="btn btn-primary" id="btn_limpar_filtro">Limpar filtro</button>
+            <button type="button" class="btn btn-primary">Exportar</button>
+        </div>
+    </div>
+</form>
+<br>
+<div>
+    <table class="nowrap table table-bordered table-hover dataTable" id="tblPesquisaNotas">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nota</th>
+                <th scope="col">Tp</th>
+                <th scope="col">Local Instalação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Sintoma</th>
+                <th scope="col">Prior</th>
+                <th scope="col">Data</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Notificador</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br />
+</div>
+
+
+
+
+@section scripts {
+
+
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/selecionarEmpregado.js")
+    @Scripts.Render("~/Scripts/MaterialRodante/pesquisarMC.js")
+
+
+
+}

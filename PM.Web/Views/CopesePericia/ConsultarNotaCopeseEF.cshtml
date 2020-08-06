@@ -1,0 +1,130 @@
+﻿@model PM.Web.ViewModel.Copese.NotaCopeseEFMRViewModel
+
+<h2>Detalhes COPESE - Equipamento Fixo</h2>
+<form>
+    <div class="row">
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="returnNotaCopese">Nota COPESE:</label>
+                @Html.EditorFor(model => model.cd_nota_sap, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="returnNotaReferen">Nota de Referência:</label>
+                @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDtNotaCopese">Data da Nota COPESE:</label>
+                @Html.EditorFor(model => model.dt_hora_nota, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDtNotaReferen">Data da Nota de Referência:</label>
+                @Html.EditorFor(model => model.dt_hora_nota_Ref, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-2">
+            <div class="form-group">
+                <label for="returnStatusCopese">Status COPESE:</label>
+                @Html.EditorFor(model => model.nm_st_copese, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnLinha">Linha:</label>
+                @Html.EditorFor(model => model.nm_linha, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnZona">Zona:</label>
+                @Html.EditorFor(model => model.nm_zona, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnSistema">Sistema:</label>
+                @Html.EditorFor(model => model.nm_sistema, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnComplemento">Complemento:</label>
+                @Html.EditorFor(model => model.nm_complemento, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnDescrLocalInst">Descrição do Local de Instalação:</label>
+                @Html.EditorFor(model => model.ds_local_inst_Ref, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnSintoma">Sintoma:</label>
+                @Html.EditorFor(model => model.nm_sintoma, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-6">
+            <div class="form-group">
+                <label for="txtObs">Observação:</label>
+                @Html.EditorFor(model => model.ds_observacao, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @rows = "4" } })
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnPlantoAcion">Plantonista Acionado:</label>
+                @Html.EditorFor(model => model.plantonista_acionado, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnCimAcion">CIM Acionado:</label>
+                @Html.EditorFor(model => model.cim_acionado, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnPlnRepresAcion1">Plano Representativo Acionado:</label>
+                @Html.EditorFor(model => model.pl_represent_acionado1, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnPlnRepresAcion2">Plano Representativo Acionado:</label>
+                @Html.EditorFor(model => model.pl_represent_acionado2, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnPlnRepresAcion3">Plano Representativo Acionado:</label>
+                @Html.EditorFor(model => model.pl_represent_acionado3, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="returnPlnRepresAcion4">Plano Representativo Acionado:</label>
+                @Html.EditorFor(model => model.pl_represent_acionado4, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <a href="/CopesePericia/PesquisarNotaCopeseEF" data-id="1" class="voltar btn btn-primary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/consultarNotaCopeseEF.js")
+}

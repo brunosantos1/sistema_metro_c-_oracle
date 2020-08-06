@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PM.LogAndAlert.Models.SistemaPerfil>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row top_tiles">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>@ViewBag.Title<small>Configuração</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p>
+                            orem ipsum dolor sit amet, consectetur adipiscing elit. In ac suscipit metus. Vivamus pretium sollicitudin neque eu accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat, nisl non accumsan convallis, quam lacus blandit lacus, eu finibus urna risus vitae ipsum. In mollis est sit amet mauris tincidunt, vel auctor mauris pellentesque. Nullam efficitur nulla tellus, sit amet ornare magna fermentum vel. Pellentesque rhoncus odio eu augue tristique lobortis. Praesent nec egestas tellus. Maecenas hendrerit rutrum bibendum. Nam tincidunt felis eu eros molestie, eu finibus justo vehicula.
+                        </p>
+                        
+                        <div class="row">
+                            <!--Botoes - Inicio-->
+                            <div class="col-sm-12">
+                                <div class="text-right">
+                                    @Html.ActionLink("Novo Registro", "Perfil", null, new { @class = "btn btn-primary btn-sm" })
+                                </div>
+                            </div>
+                            <!--Botoes - Final-->
+
+                            <!--Formulario - Inicio-->
+
+                            <table id="Tabela1" class="table table-striped table-bordered dt-responsive nowrap datatable-responsive" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-6 col-sm-9 col-xs-6 text-capitalize text-center">@Html.DisplayNameFor(model => model.ds_descricao)</th>
+                                        <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">@Html.DisplayNameFor(model => model.num_Usuarios)</th>
+                                        <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">@Html.DisplayNameFor(model => model.num_Usuarios_logados)</th>
+                                        <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="text-capitalize text-justify nowrap">@Html.DisplayFor(modelItem => item.ds_descricao)</td>
+                                            <td class="text-capitalize text-center nowrap">@Html.DisplayFor(modelItem => item.num_Usuarios)</td>
+                                            <td class="text-capitalize text-center nowrap">@Html.DisplayFor(modelItem => item.num_Usuarios_logados)</td>
+                                            <td class="text-capitalize text-center nowrap">
+                                                @Html.ActionLink("Editar", "Perfil", new { id = item.id_perfil }, new { @class = "btn btn-primary btn-sm" })
+
+                                                <a href="#" data-toggle="modal" data-target="#modalpopup" class="btn btn-info btn-sm popup_perfilusuario" data-id="109">Usuário</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <!--Formulario - Final-->
+                        </div>
+                    </div>
+                    <!--Final-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

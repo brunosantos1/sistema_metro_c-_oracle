@@ -1,0 +1,224 @@
+﻿@model PM.Web.ViewModel.MaterialRodante.NotaMsViewModel
+@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<div id="modalSolicitante_container"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_cancel_nota" />
+                <p>Informe o motivo do cancelamento</p>
+                <textarea id="motivoCancelamento" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", id = "target1" }))
+{
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                @if (ViewBag.Action == "Criar")
+                {
+                    <h5>Material Rodante - Criar Nota de Serviços (MS)</h5>
+                }
+                else if (ViewBag.Action == "Editar")
+                {
+                    <h5>Material Rodante - Editar Nota de Serviços (MS)</h5>
+                }
+                else if (ViewBag.Action == "Consultar")
+                {
+                    <h5>Material Rodante - Consultar Detalhes da Nota Serviços (MS)</h5>
+                }
+                else
+                {
+                    <h5>Material Rodante - Criar Nota de Serviços (MS)</h5>
+                }
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            @Html.ValidationSummary(false)
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                    @Html.HiddenFor(model => model.id_nota)
+                    @Html.LabelFor(model => model.id_frota_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_frota_fk" id="hidden_id_frota_fk" />
+                    @Html.DropDownListFor(model => model.id_frota_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    @Html.LabelFor(model => model.id_trem_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_trem_fk" id="hidden_id_trem_fk" />
+                    @Html.DropDownListFor(model => model.id_trem_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                    @Html.LabelFor(model => model.id_carro_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_carro_fk" id="hidden_id_carro_fk" />
+                    @Html.DropDownListFor(model => model.id_carro_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                    <input type="hidden" id="local_ftc" />
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Sistema">
+                    @Html.LabelFor(model => model.id_sistema_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_sistema_fk" id="hidden_id_sistema_fk" />
+                    @Html.DropDownListFor(model => model.id_sistema_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Complemento">
+                    @Html.LabelFor(model => model.id_complemento_fk)
+                    <input type="hidden" value="@Model.id_complemento_fk" id="hidden_id_complemento_fk" />
+                    @Html.DropDownListFor(model => model.id_complemento_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-2" id="fg_Posicao">
+                    @Html.LabelFor(model => model.id_posicao_fk)
+                    <input type="hidden" value="@Model.id_posicao_fk" id="hidden_id_posicao_fk" />
+                    @Html.DropDownListFor(model => model.id_posicao_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_DescrLocInst">
+                    @Html.HiddenFor(model => model.id_local_instalacao_fk)
+                    @Html.LabelFor(model => model.ds_local_instalacao)
+                    @Html.EditorFor(model => model.ds_local_instalacao, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_TpServico">
+                    @Html.LabelFor(model => model.id_code_tp_servico_fk)
+                    <input type="hidden" value="@Model.id_code_tp_servico_fk" id="hidden_id_code_tp_servico_fk" />
+                    @Html.DropDownListFor(model => model.id_code_tp_servico_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_Descr">
+                    @Html.LabelFor(model => model.ds_descricao, new { @class = "input-required" })
+                    @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-2 col-xl-2" id="fg_Solicitante">
+                    <!--<input type="text" class="form-control" id="txtSolicitante">-->
+                    @Html.LabelFor(model => model.nm_solicitante, new { @class = "input-required" })
+                    <div class="input-group mb">
+                        @Html.EditorFor(model => model.nm_solicitante, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_solicitante_fk)
+                        <div class="input-group-append">
+                            <button id="btnSolicitante" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    @Html.LabelFor(model => model.id_linha_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_linha_fk" id="hidden_id_linha_fk" />
+                    @Html.DropDownListFor(model => model.id_linha_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                    @Html.LabelFor(model => model.id_centro_trabalho_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_centro_trabalho_fk" id="hidden_id_centro_trabalho_fk" />
+                    @Html.DropDownListFor(model => model.id_centro_trabalho_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataProgramada">
+                    <!--<input class="form-control" id="DataProgramada">-->
+                    @Html.LabelFor(model => model.dt_programada, new { @class = "input-required" })
+                    @Html.EditorFor(model => model.dt_programada, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_HrEntrega">
+                    <!--<input class="form-control" id="timepicker">-->
+                    @Html.LabelFor(model => model.hr_programada, new { @class = "input-required" })
+                    @Html.EditorFor(model => model.hr_programada, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                    @Html.HiddenFor(model => model.dt_hora_programada)
+                </div>
+                <div class="form-group col-md-12 col-lg-8 col-xl-7" id="fg_Obs">
+                    <!--<textarea class="form-control" id="txtObs" rows="4"></textarea>-->
+                    @Html.LabelFor(model => model.ds_observacao)
+                    @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", rows = "4" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md text-right">
+            @if (ViewBag.Action == "Criar" || ViewBag.Action == "Editar")
+            {
+                <button type="button" class="btn btn-primary" id="bt_cancelar_operacao">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="btn_salvar_ms">Salvar</button>
+                <button type="button" class="btn btn-primary" id="btn_carregar_ultima">Carregar última</button>
+            }
+            else if (ViewBag.Action == "Consultar")
+            {
+                <button type="button" class="btn btn-primary">Voltar</button>
+            }
+            else
+            {
+
+            }
+        </div>
+    </div>
+}
+
+
+
+
+<br>
+@if (ViewBag.Action != "Consultar")
+{
+    <div>
+        <h5 class="TituloGrid">Abertas/Pendentes:</h5>
+        <br />
+        <table class="nowrap table table-bordered dataTable" id="tblNotasAbertasPendentes">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Tp</th>
+                    <th scope="col">Local Instalação</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Tipo de Serviço</th>
+                    <th scope="col">Data Abertura</th>
+                    <th scope="col">Data Programada</th>
+                    <th scope="col">Solicitante</th>
+                    <th scope="col">Centro Trabalho</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br />
+    </div>
+}
+@section scripts {
+
+
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+    @Scripts.Render("~/Scripts/MaterialRodante/notaMs.js")
+    @Scripts.Render("~/Scripts/selecionarEmpregado.js")
+
+
+    @if (ViewBag.ExibirMensagem == "sim")
+    {
+        <script>
+            setTimeout(function () { alert("@Html.Raw(@ViewBag.MensagemResultado)"); }, 1000);
+        </script>
+    }
+    else if (ViewBag.Resultado == "falha")
+    {
+        <script>
+            setTimeout(function () { alert("Erro ao adicionar nota"); }, 1000);
+        </script>
+    }
+}
+<script>
+var vwAction = "@Html.Raw(@ViewBag.Action)";
+</script>

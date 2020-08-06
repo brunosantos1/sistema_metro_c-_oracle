@@ -1,0 +1,218 @@
+﻿@model PM.Web.ViewModel.MaterialRodante.NotaMRCorretivaViewModel
+
+<div id="modalNotificadores_container"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_cancel_nota" />
+                <p>Informe o motivo do cancelamento</p>
+                <textarea id="motivoCancelamento" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", id = "target1" }))
+{
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                @if (ViewBag.Action == "Criar")
+                {
+                    <h5>Material Rodante - Criar Nota Corretiva (MC)</h5>
+                }
+                else if (ViewBag.Action == "Editar")
+                {
+                    <h5>Material Rodante - Editar Nota Corretiva (MC)</h5>
+                }
+                else if (ViewBag.Action == "Consultar")
+                {
+                    <h5>Material Rodante - Consultar Detalhes da Nota Corretiva (MC)</h5>
+                }
+                else
+                {
+                    <h5>Material Rodante - Criar Nota Corretiva (MC)</h5>
+                }
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            @Html.ValidationSummary(false)
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                    @Html.HiddenFor(model => model.id_nota)
+                    @Html.LabelFor(model => model.id_frota_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_frota_fk" id="hidden_id_frota_fk" />
+                    @Html.DropDownListFor(model => model.id_frota_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    @Html.LabelFor(model => model.id_trem_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_trem_fk" id="hidden_id_trem_fk" />
+                    @Html.DropDownListFor(model => model.id_trem_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                    @Html.LabelFor(model => model.id_carro_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_carro_fk" id="hidden_id_carro_fk" />
+                    @Html.DropDownListFor(model => model.id_carro_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-1' id="fg_Sistema">
+                    @Html.LabelFor(model => model.id_sistema_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_sistema_fk" id="hidden_id_sistema_fk" />
+                    @Html.DropDownListFor(model => model.id_sistema_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_DescrLocInst">
+                    @Html.HiddenFor(model => model.id_local_instalacao_fk)
+                    @Html.LabelFor(model => model.ds_local_instalacao)
+                    @Html.EditorFor(model => model.ds_local_instalacao, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Sintoma">
+                    @Html.LabelFor(model => model.id_sintoma_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_sintoma_fk" id="hidden_id_sintoma_fk" />
+                    @Html.DropDownListFor(model => model.id_sintoma_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-5 col-lg-4 col-xl-2" id="fg_Descr">
+                    @Html.LabelFor(model => model.ds_descricao, new { @class = "input-required" })
+                    @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Prioridade">
+                    @Html.LabelFor(model => model.id_prioridade_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_prioridade_fk" id="hidden_id_prioridade_fk" />
+                    @Html.DropDownListFor(model => model.id_prioridade_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Notificador">
+                    @Html.LabelFor(model => model.nm_notificador, new { @class = "input-required" })
+                    <div class="input-group mb">
+                        @Html.EditorFor(model => model.nm_notificador, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_notificador_fk)
+                        <div class="input-group-append">
+                            <button id="btnNotificador" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Local">
+                    @Html.LabelFor(model => model.sg_local, new { @class = "input-required" })
+                    @Html.DropDownListFor(model => model.sg_local, Model.LocalList, new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    @Html.LabelFor(model => model.id_linha_fk, new { @class = "input-required" })
+                    <input type="hidden" value="@Model.id_linha_fk" id="hidden_id_linha_fk" />
+                    @Html.DropDownListFor(model => model.id_linha_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                    @Html.HiddenFor(model => model.id_centro_trabalho_fk)
+                    @Html.LabelFor(model => model.ds_centro_trabalho)
+                    @Html.EditorFor(model => model.ds_centro_trabalho, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                </div>
+                <div class="form-group col-md-12 col-lg-8 col-xl-7" id="fg_Obs">
+                    @Html.LabelFor(model => model.ds_observacao)
+                    @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", rows = "4" })
+                </div>
+            </div>
+            <div class="row">
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_InterfOperacional">
+                    @Html.CheckBoxFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-input" })
+                    @Html.LabelFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-label" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_IncidenteNotavel">
+                    @Html.CheckBoxFor(model => model.st_in_notavel, new { @class = "custom-control-input" })
+                    @Html.LabelFor(model => model.st_in_notavel, new { @class = "custom-control-label" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_Fumaca">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.st_fumaca, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_fumaca, new { @class = "custom-control-label" })
+                    </div>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1 custom-control custom-checkbox" id="fg_Reboque">
+                    @Html.CheckBoxFor(model => model.st_reboque, new { @class = "custom-control-input" })
+                    @Html.LabelFor(model => model.st_reboque, new { @class = "custom-control-label" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md text-right">
+            @if (ViewBag.Action == "Criar" || ViewBag.Action == "Editar")
+            {
+                <button type="button" class="btn btn-primary" id="bt_cancel_operacao">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="btn_salvar_mc">Salvar</button>
+                <button type="button" class="btn btn-primary" id="btn_carregar_ultima">Carregar última</button>
+            }
+            else if (ViewBag.Action == "Consultar")
+            {
+                <button type="button" class="btn btn-primary">Voltar</button>
+            }
+            else
+            {
+
+            }
+        </div>
+    </div>
+}
+
+<br>
+
+@if (ViewBag.Action != "Consultar")
+{
+<div>
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h5 class="TituloGrid">Abertas/Pendentes:</h5>
+        <br />
+        <table class="nowrap table table-bordered dataTable" id="tblNotasAbertasPendentes">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Tp</th>
+                    <th scope="col">Local Instalação</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Sintoma</th>
+                    <th scope="col">Prior</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Notificador</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br />
+    </div>
+</div>
+    }
+
+    @section scripts {
+        @Scripts.Render("~/Scripts/MaterialRodante/notaMc.js")
+        @Scripts.Render("~/Scripts/selecionarEmpregado.js")
+
+        @if (ViewBag.ExibirMensagem == "sim")
+        {
+            <script>
+            setTimeout(function () { alert("@Html.Raw(@ViewBag.MensagemResultado)"); }, 1000);
+            </script>
+        }
+        else if (ViewBag.Resultado == "falha")
+        {
+            <script>
+                setTimeout(function () { alert("Erro ao adicionar nota"); }, 1000);
+            </script>
+        }
+    }
+    <script>
+var vwAction = "@Html.Raw(@ViewBag.Action)";
+    </script>

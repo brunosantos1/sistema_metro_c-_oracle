@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PM.WebServices.Models.SistemaTipoLog>
+@{
+    ViewBag.Title = "Aplicação/Tipo Log";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Empresa</label>
+                        @Html.DropDownList("ddlIdEmpresa", (IEnumerable<SelectListItem>)ViewBag.Empresa, null, new { @class = "form-control", @onchange = "fnCarregaAplicacao(this, 'ddlIdAplicacao');" })
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Aplicacao</label>
+                        @Html.DropDownList("ddlIdAplicacao", (IEnumerable<SelectListItem>)ViewBag.Aplicacao, "*** SELECIONE UMA EMPRESA ***", new { @class = "form-control", @onchange = "fnCarregaDataTable_TipoLog(this, 'tbTipoLog');" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="text-right">
+                            @Html.ActionLink("Novo Registro", "Add", new { controller = "AplicacaoTipoLog", id = 0 }, new { @class = "btn btn-primary btn-xs" })
+                        </div>
+                    </div>
+                    
+                    <table id="tbTipoLog" class="table table-striped table-bordered dt-responsive nowrap datatable-responsive" cellspacing="0" style="width: 100%">
+                        <thead>
+                            <tr nowrap>
+                                <th nowrap class="col-md-10">Descricao</th>
+                                <th nowrap class="col-md-1">Ativo</th>
+                                <th nowrap class="col-md-1">Ação</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Material Rodante - @(ViewBag.Action == "new" ? "Criar" : "Editar") Nota de Serviços (MS)</h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                    <label for="selectFrota">Frota: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectFrota">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    <label for="selectTrem">Trem: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectTrem">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                    <label for="selectCarro">Carro: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectCarro">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Sistema">
+                    <label for="selectSistema">Sistema: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectSistema">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Complemento">
+                    <label for="selectComplemento">Complemento:</label>
+                    <select class="form-control" id="selectComplemento">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-2" id="fg_Posicao">
+                    <label for="selectPosicao">Posição:</label>
+                    <select class="form-control" id="selectPosicao">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_DescrLocInst">
+                    <label for="txtDescrLocInst">Descrição do Local de Instalação:</label>
+                    <input type="text" class="form-control disabled" id="txtDescrLocInst" readonly>
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_TpServico">
+                    <label for="selectTpServico">Tipo de Serviço:</label>
+                    <select class="form-control" id="selectTpServico">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_Descr">
+                    <label for="txtDescr">Descrição: <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" id="txtDescr">
+                </div>
+                <div class="form-group col-md-4 col-lg-2 col-xl-2" id="fg_Solicitante">
+                    <label for="txtSolicitante">Solicitante: <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" id="txtSolicitante">
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    <label for="selectLinha">Linha: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectLinha">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                    <label for="selectCentroTrab">Centro de Trabalho:</label>
+                    <select class="form-control" id="selectCentroTrab">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataProgramada">
+                    <label for="DataProgramada">Data Programada:</label>
+                    <input class="form-control" id="DataProgramada">
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_HrEntrega">
+                    <label for="timepicker">Hora Entrega:</label>
+                    <input class="form-control" id="timepicker">
+                </div>
+                <div class="form-group col-md-12 col-lg-8 col-xl-7" id="fg_Obs">
+                    <label for="txtObs">Observação:</label>
+                    <textarea class="form-control" id="txtObs" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md text-right">
+            <button type="button" class="btn btn-primary">Cancelar</button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-primary">Carregar última</button>
+        </div>
+    </div>
+</form>
+<br>
+<div>
+    <h5 class="TituloGrid">Abertas/Pendentes:</h5>
+    <br />
+    <table class="nowrap table table-bordered dataTable">
+        <thead>
+            <tr>
+                <th scope="col">Nota</th>
+                <th scope="col">Tp</th>
+                <th scope="col">Local Instalação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tipo de Manutenção</th>
+                <th scope="col">Data Abertura</th>
+                <th scope="col">Data Programada</th>
+                <th scope="col">Solicitante</th>
+                <th scope="col">Centro Trabalho</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <i class="material-icons btn_details" data-id="1" title="Consultar Detalhes">search</i>
+                    <i class="material-icons btn_edit" data-id="1" title="Editar Nota">edit</i>
+                    <i class="material-icons btn_cancel" data-id="1" title="Cancelar Nota">close</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+    @Scripts.Render("~/Scripts/MaterialRodante/criarMs.js")
+}

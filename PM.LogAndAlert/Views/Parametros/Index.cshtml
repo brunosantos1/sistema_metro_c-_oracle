@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Parametrização";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <!--|Envio de Email|-->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Envio de Email<small>@ViewBag.Title</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <!--Formulario - Inicio-->
+                            <div class="row">
+                                <!-- bar charts group -->
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="SMTPHost">SMTP Host</label>
+                                                <input type="text" class="form-control" id="txtSMTPHost">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="NomeDeUsuario">Nome de Usuário</label>
+                                                <input type="text" class="form-control" id="txtNomeDeUsuario">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group">
+                                                <label for="SMTPPorta">SMTP Porta</label>
+                                                <input type="text" class="form-control" id="txtSMTPPorta">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Criptografia</label>
+                                                <select class="form-control" id="ddlCriptografia">
+                                                    <option value="1">Não: Não usar encriptação</option>
+                                                    <option value="2">Sim: Usar SSL encriptação</option>
+                                                    <option value="3">Sim: Usar TSL encriptação.</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="form-group">
+                                                <label for="Autenticacao">Autenticação</label>
+                                                <select class="form-control" id="ddlAutenticacao">
+                                                    <option value="1">Não: Não use a autenticação SMTP.</option>
+                                                    <option value="2">Sim: Usar autenticação SMTP</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="Senha">Senha</label>
+                                                <input type="password" class="form-control" id="txtSenha" maxlength="10">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="ConfirmarSenha">Confirmar Senha</label>
+                                                <input type="password" class="form-control" id="txtConfirmarSenha" maxlength="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /bar charts group -->
+                            </div>
+                            <!--Formulario - Final-->
+                            <!--Botoes - Inicio-->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-warning">Testar Envio Email</button>
+                                        <button type="button" class="btn btn-success">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Botoes - Final-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--|Envio de Email|-->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Envio de Email<small>@ViewBag.Title</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <!--Formulario - Inicio-->
+                            <!--Formulario - Final-->
+                            <!--Botoes - Inicio-->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-right">
+                                        <button type="button" class="btn">Opcao 1</button>
+                                        <button type="button" class="btn">Opcao 2</button>
+                                        <button type="button" class="btn btn-success">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Botoes - Final-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

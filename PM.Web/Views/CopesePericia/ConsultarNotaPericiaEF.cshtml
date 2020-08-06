@@ -1,0 +1,116 @@
+﻿<h2>Detalhes Perícia - Equipamento Fixo</h2>
+<form>
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="returnNotaCopese">Nota Perícia:</label>
+                <input type="text" class="form-control" id="returnNotaCopese" value="Teste 123 12" disabled>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="returnNotaReferen">Nota de Referência:</label>
+                <input type="text" class="form-control" id="returnNotaReferen" value="Teste 123 12" disabled>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDtNotaPericia">Data da Nota Perícia:</label>
+                <input type="text" class="form-control" id="returnDtNotaPericia" value="02/03/2012 | 23h10" disabled>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDtNotaReferen">Data da Nota de Referência:</label>
+                <input type="text" class="form-control" id="returnDtNotaReferen" value="02/03/2012 | 23h10" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6 col-xl-2">
+            <div class="form-group">
+                <label for="returnStatusCopese">Status Perícia:</label>
+                <input type="text" class="form-control" id="returnStatusCopese" value="Teste 123 12 Test 20" disabled>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnLinha">Linha:</label>
+                <input type="text" class="form-control" id="returnLinha" value="F01" disabled>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnZona">Zona:</label>
+                <input type="text" class="form-control" id="returnZona" value="T01" disabled>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="returnSistema">Sistema:</label>
+                <input type="text" class="form-control" id="returnSistema" value="C01" disabled>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-5 col-xl-3">
+            <div class="form-group">
+                <label for="returnComplemento">Complemento:</label>
+                <input type="text" class="form-control" id="returnComplemento" value="Teste 123 12 Test 20Teste 123 12 Test 40" disabled>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-5 col-xl-4">
+            <div class="form-group">
+                <label for="returnDescr">Descrição:</label>
+                <input type="text" class="form-control" id="returnDescr" value="Teste 123 12 Test 20Teste 123 12 Test 40" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-2 col-xl-2">
+            <div class="form-group">
+                <label for="returnEventoGerador">Evento Gerador:</label>
+                <input type="text" class="form-control" id="returnEventoGerador" value="Teste 123 12" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group">
+                <label for="txtObs">Observação:</label>
+                <textarea class="form-control" id="txtObs" rows="6" disabled></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returNumBoMetro">Número BO Metrô:</label>
+                <input type="text" class="form-control" id="returNumBoMetro" value="Teste 123 12" disabled>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDescrBoMetro">Descrição do BO do Metrô:</label>
+                <input type="text" class="form-control" id="returnDescrBoMetro" value="Teste 123 12 Test 20" disabled>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returNumBoSSP">Número BO SSP:</label>
+                <input type="text" class="form-control" id="returNumBoSSP" value="Teste 123 12" disabled>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <label for="returnDescrBoSSP">Descrição do BO SSP:</label>
+                <input type="text" class="form-control" id="returnDescrBoSSP" value="Teste 123 12 Test 20" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <a href="#" data-id="1" class="voltar btn btn-primary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/consultarNotaPericiaEF.js")
+}

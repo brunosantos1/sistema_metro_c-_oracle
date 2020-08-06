@@ -1,0 +1,100 @@
+﻿@model PM.WebServices.Models.SistemaLogOperacoes
+@{ Layout = null;}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-blue-sky">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">@ViewBag.Title</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group col-md-6">
+                <p>Empresa : @ViewBag.Empresa</p>
+            </div>
+            <div class="form-group col-md-6">
+                <p>Aplicação : @ViewBag.Aplicacao</p>
+            </div>
+            <p>
+                <div class="form-group col-md-12">
+                    <table class="table table-striped table-bordered dt-responsive nowrap " cellspacing="0" style="width: 100%">
+                        <tr>    <td colspan="3" class="btn-primary text-center text-capitalize">@string.Format("ID Ocorrência [ {0:00000} ]", Model.IdLogOperacoes)</td>  </tr>
+                        <tr>
+                            <td><strong>Data Ocorrência : </strong>@Model.DtOcorrencia  </td>
+                            <td><strong>IP Address      : </strong>@Model.DsIpaddress   </td>
+                            <td><strong>Equipamento     : </strong>@Model.NmMachine     </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Usuário         : </strong>@Model.NmLogonUserIdentityName   </td>
+                            <td><strong>Controler       : </strong>@Model.NmController              </td>
+                            <td><strong>Action          : </strong>@Model.NmAction                  </td>
+                        </tr>
+                        <tr>    <td colspan="3"><strong>URL do Erro : </strong>@Model.DsUrlFull</td>  </tr>
+                        <tr>    <td colspan="3" class="btn-primary text-center text-capitalize"><strong>Detalhe da Ocorrência</strong></td>  </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="col-md-12 overflow-auto">
+                                    <table class="table table-striped table-bordered dt-responsive nowrap " cellspacing="0" style="width: 100%">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nome amigavel       </th>
+                                                <th>Nome da Propriedade </th>
+                                                <th>Valor Original      </th>
+                                                <th>Valor Alterado      </th>
+                                            </tr>
+                                        </tbody>
+                                        @foreach (var item in Model.Item.OrderBy(c => c.NuOrdem).ToList())
+                                        {
+                                            <tr @string.Format("{0}", (item.DsValorOrigem == @item.DsValorPara) ? "": (string.IsNullOrEmpty(item.DsValorPara)) ? "" :  "style=color:red;")>
+                                                <td>@item.NmAmigavel        </td>
+                                                <td>@item.DsPropriedade     </td>
+                                                <td>@item.DsValorOrigem     </td>
+                                                <td>@item.DsValorPara       </td>
+                                            </tr>
+                                        }
+
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        @*<tr>
+                                <td><strong>Error ID        : </strong>@Model.DsErrorId     </td>
+                                <td><strong>Type Error      : </strong>@Model.DsTypeError   </td>
+                                <td><strong>Error Source    : </strong>@Model.DsErrorSource </td>
+                            </tr>
+                            <tr>    <td colspan="3"><strong>Error Link      : </strong>@Model.DsErrorLink       </td>  </tr>
+                            <tr>    <td colspan="3"><strong>Error Message   : </strong>@Model.DsErrorMessage    </td>  </tr>
+                            <tr>    <td colspan="3"><strong>Path File       : </strong>@Model.DsPathFile        </td> </tr>
+                            <tr>    <td colspan="3"><strong>Stack Trace     : </strong>@Model.DsStackTrace      </td>  </tr>
+                            <tr>    <td colspan="3"><strong>Target Site     : </strong>@Model.DsTargetSite      </td>  </tr>
+                            <tr>    <td colspan="3"><strong>Inner Exception : </strong>@Model.DsInnerException  </td>  </tr>
+                            <tr>    <td colspan="3" class="btn-primary text-center text-capitalize"><strong>Atendimento Equipe Técnica</strong></td>  </tr>
+                            <tr>
+                                <td><strong>Data Ocorrência : </strong>@Model.DtOcorrencia  </td>
+                                <td><strong>Técnico : </strong>Aqui vai o nome de quem atendeu este chamado </td>
+                                <td><strong>SLA: </strong>03h </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3"
+                                    <strong>Descrição       : </strong>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut fermentum velit, vitae cursus tellus. Fusce ultricies augue eu lacus accumsan tincidunt eget et risus. Donec interdum mi non pellentesque ullamcorper. Donec auctor, leo nec facilisis dictum, lectus arcu fermentum nisi, non efficitur elit orci quis turpis. Etiam ac dui velit. Mauris vitae quam dignissim, iaculis ex et, bibendum nisl. Vivamus egestas, dui sed sagittis fringilla, tellus dui ultrices dolor, nec gravida diam lorem nec elit. In ac feugiat ipsum. Maecenas commodo quam magna, eu venenatis neque facilisis quis. Vestibulum elementum risus quis nulla imperdiet, sed ultricies odio mattis. Curabitur semper consectetur tortor, ac iaculis magna ornare quis. Morbi imperdiet ipsum non convallis sagittis.<br />
+
+                                    Maecenas ut mi eu justo tempor lacinia. Phasellus fringilla, nunc quis eleifend mattis, arcu diam tempus metus, a efficitur diam dui vehicula velit. Proin placerat ipsum porta nunc condimentum, vel varius sapien blandit. Etiam eu volutpat ligula. Nulla eleifend purus mi, ac fermentum metus cursus nec. Sed rutrum, nibh sit amet suscipit consectetur, elit lacus tempus neque, sit amet tristique lectus risus eu tortor. Vivamus mi nisl, pharetra non maximus at, euismod eu sapien. Donec semper consectetur porta. Phasellus volutpat ligula quis mattis elementum. Morbi metus tellus, placerat id auctor id, imperdiet in mi. Nulla facilisi.<br />
+
+                                    Vestibulum tempor velit facilisis enim ullamcorper, eu sodales metus gravida. Fusce viverra pellentesque sollicitudin. Duis finibus metus purus, eget efficitur urna auctor sit amet. Praesent eu nisl a leo accumsan sodales sed ut risus. Quisque neque orci, imperdiet in lacus at, tempor venenatis sem. Sed a consectetur eros, eget laoreet dui. Fusce nibh ante, vehicula quis mollis eget, porttitor vel ipsum. Sed eu efficitur nisl.<br />
+                                </td>
+                            </tr>*@
+                    </table>
+                </div>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+    </div>
+</div>
+

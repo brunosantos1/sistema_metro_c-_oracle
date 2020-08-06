@@ -1,0 +1,316 @@
+﻿@model PM.Web.ViewModel.MaterialRodante.NotaMdViewModel
+
+<div id="modalNotificadores_container"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_cancel_nota" />
+                <p>Informe o motivo do cancelamento</p>
+                <textarea id="motivoCancelamento" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", id = "target1" }))
+{
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                @if (ViewBag.Action == "Criar")
+                {
+                    <h5>Material Rodante - Criar Nota de Defeito Detectado pela Manutenção (MD)</h5>
+                }
+                else if (ViewBag.Action == "Editar")
+                {
+                    <h5>Material Rodante - Editar Nota de Defeito Detectado pela Manutenção (MD)</h5>
+                }
+                else if (ViewBag.Action == "Consultar")
+                {
+                    <h5>Material Rodante - Consultar Detalhes da Nota de Defeito Detectado pela Manutenção (MD)</h5>
+                }
+                else
+                {
+                    <h5>Material Rodante - Criar Nota de Defeito Detectado pela Manutenção (MD)</h5>
+                }
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            @Html.ValidationSummary(false)
+
+            @if (ViewBag.Action == "Consultar")
+            {
+                <div class="row">
+                    <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Descr">
+                        @Html.LabelFor(model => model.cd_nota_sap)
+                        @Html.EditorFor(model => model.cd_nota_sap, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                    <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Descr">
+                        @Html.LabelFor(model => model.dt_nota)
+                        @Html.EditorFor(model => model.dt_nota, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                    <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Descr">
+                        @Html.LabelFor(model => model.st_usuario)
+                        @Html.EditorFor(model => model.st_usuario, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                    @Html.HiddenFor(model => model.id_nota)
+                    @Html.LabelFor(model => model.id_frota_fk)
+                    <input type="hidden" value="@Model.id_frota_fk" id="hidden_id_frota_fk" />
+                    @Html.DropDownListFor(model => model.id_frota_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    @Html.LabelFor(model => model.id_trem_fk)
+                    <input type="hidden" value="@Model.id_trem_fk" id="hidden_id_trem_fk" />
+                    @Html.DropDownListFor(model => model.id_trem_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                    @Html.LabelFor(model => model.id_carro_fk)
+                    <input type="hidden" value="@Model.id_carro_fk" id="hidden_id_carro_fk" />
+                    @Html.DropDownListFor(model => model.id_carro_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-1' id="fg_Sistema">
+                    @Html.LabelFor(model => model.id_sistema_fk)
+                    <input type="hidden" value="@Model.id_sistema_fk" id="hidden_id_sistema_fk" />
+                    @Html.DropDownListFor(model => model.id_sistema_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Complemento">
+                    @Html.LabelFor(model => model.id_complemento_fk)
+                    <input type="hidden" value="@Model.id_complemento_fk" id="hidden_id_complemento_fk" />
+                    @Html.DropDownListFor(model => model.id_complemento_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Posicao">
+                    @Html.LabelFor(model => model.id_posicao_fk)
+                    <input type="hidden" value="@Model.id_posicao_fk" id="hidden_id_posicao_fk" />
+                    @Html.DropDownListFor(model => model.id_posicao_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-10 col-lg-8 col-xl-6" id="fg_DescrLocInst">
+                    @Html.HiddenFor(model => model.id_local_instalacao_fk)
+                    @Html.LabelFor(model => model.ds_local_instalacao)
+                    @Html.EditorFor(model => model.ds_local_instalacao, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                </div>
+
+                @*<div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Sintoma">
+                        @Html.LabelFor(model => model.id_sintoma_fk)
+                        <input type="hidden" value="@Model.id_sintoma_fk" id="hidden_id_sintoma_fk" />
+                        @Html.DropDownListFor(model => model.id_sintoma_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                    </div>*@
+
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Descr">
+                    @Html.LabelFor(model => model.ds_descricao)
+                    @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                @*<div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Prioridade">
+                        @Html.LabelFor(model => model.id_prioridade_fk)
+
+                        <input type="hidden" value="@Model.id_prioridade_fk" id="hidden_id_prioridade_fk" />
+                        @Html.DropDownListFor(model => model.id_prioridade_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                    </div>*@
+
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Notificador">
+                    @Html.LabelFor(model => model.nm_notificador)
+                    <div class="input-group mb">
+                        @Html.EditorFor(model => model.nm_notificador, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_notificador_fk)
+                        <div class="input-group-append">
+                            <button id="btnNotificador" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Local">
+                        @Html.LabelFor(model => model.sg_local)
+                        @Html.DropDownListFor(model => model.sg_local, Model.LocalList, new { @class = "form-control" })
+                    </div>*@
+
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    @Html.LabelFor(model => model.id_linha_fk)
+                    <input type="hidden" value="@Model.id_linha_fk" id="hidden_id_linha_fk" />
+                    @Html.DropDownListFor(model => model.id_linha_fk, new SelectList(new string[] { }), new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-3 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                    @Html.HiddenFor(model => model.id_centro_trabalho_fk)
+                    @Html.LabelFor(model => model.ds_centro_trabalho)
+                    @Html.EditorFor(model => model.ds_centro_trabalho, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                </div>
+                <div class="form-group col-md-12 col-lg-8 col-xl-7" id="fg_Obs">
+                    @Html.LabelFor(model => model.ds_observacao)
+                    @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", rows = "4" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_InterfOperacional">
+                    @Html.CheckBoxFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-input" })
+                    @Html.LabelFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-label" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_IncidenteNotavel">
+                    @Html.CheckBoxFor(model => model.st_in_notavel, new { @class = "custom-control-input" })
+                    @Html.LabelFor(model => model.st_in_notavel, new { @class = "custom-control-label" })
+                </div>
+                <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_Fumaca">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.st_fumaca, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_fumaca, new { @class = "custom-control-label" })
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-3 col-lg-2 col-xl-1 custom-control custom-checkbox" id="fg_Reboque">
+                        @Html.CheckBoxFor(model => model.st_reboque, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_reboque, new { @class = "custom-control-label" })
+                    </div>*@
+            </div>
+
+            @*<div class="row">
+                    <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_InterfOperacional">
+                        @Html.CheckBoxFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_if_oper_maior_cinco_min, new { @class = "custom-control-label" })
+                    </div>
+                    <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_IncidenteNotavel">
+                        @Html.CheckBoxFor(model => model.st_in_notavel, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_in_notavel, new { @class = "custom-control-label" })
+                    </div>
+                    <div class='form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox' id="fg_Fumaca">
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.st_fumaca, new { @class = "custom-control-input" })
+                            @Html.LabelFor(model => model.st_fumaca, new { @class = "custom-control-label" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-2 col-xl-1 custom-control custom-checkbox" id="fg_Reboque">
+                        @Html.CheckBoxFor(model => model.st_reboque, new { @class = "custom-control-input" })
+                        @Html.LabelFor(model => model.st_reboque, new { @class = "custom-control-label" })
+                    </div>
+                </div>*@
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md text-right">
+            @if (ViewBag.Action == "Criar")
+            {
+                @*<button type="button" class="btn btn-primary" id="btn_cancel">Cancelar</button>*@
+                <button type="submit" class="btn btn-primary" id="btn_salvar_md">Salvar</button>
+                <button type="button" class="btn btn-primary" id="btn_carregar_ultima">Carregar última</button>
+            }
+            else if (ViewBag.Action == "Editar")
+            {
+                <a href="#" onclick="window.close();" data-id="1" class="voltar btn btn-primary">Fechar</a>
+                <button type="submit" class="btn btn-primary" id="btn_salvar_md">Salvar</button>
+                <button type="button" class="btn btn-primary" id="btn_carregar_ultima">Carregar última</button>
+            }
+            else if (ViewBag.Action == "Consultar")
+            {
+                <a href="#" onclick="window.close();" data-id="1" class="voltar btn btn-primary">Fechar</a>
+            }
+            else
+            {
+
+            }
+        </div>
+    </div>
+}
+
+<br>
+
+@if (ViewBag.Action != "Consultar")
+{
+    <div>
+        <h5 class="TituloGrid">Abertas/Pendentes:</h5>
+        <br />
+
+        <table class="nowrap table table-bordered dataTable" id="tblNotasAbertasPendentes">
+            <thead>
+                <tr>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Tp</th>
+                    <th scope="col">Local Instalação</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Sintoma</th>
+                    @*<th scope="col">Prior</th>*@
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Notificador</th>
+                    <th scope="col">Centro Trabalho</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br />
+    </div>
+}
+else
+{
+    @*<br>
+    <h4>Cancelamento da Nota</h4>
+    <div class="table-responsive">
+        <table class="nowrap table table-bordered dataTable" id="tblNotasCanceladas">
+            <thead>
+                <tr>
+                    <th scope="col">Data do Cancelamento</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Motivo do Cancelamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GridListaStatusUsuario)
+                {
+                    <tr class="gradeX">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dt_cancelamento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nm_usuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ds_motivo)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/notaMd.js")
+    @Scripts.Render("~/Scripts/selecionarEmpregado.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+
+    @if (ViewBag.Resultado == "sucesso")
+    {
+        <script>
+            setTimeout(function () { alert("Nota cadastrada com sucesso"); }, 1000);
+        </script>
+    }
+    @if (ViewBag.Resultado == "falha")
+    {
+        <script>
+            setTimeout(function () { alert("Erro ao adicionar nota"); }, 1000);
+        </script>
+    }
+}
+<script>
+var vwAction = "@Html.Raw(@ViewBag.Action)";
+</script>

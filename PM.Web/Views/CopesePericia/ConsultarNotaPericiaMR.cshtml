@@ -1,0 +1,124 @@
+﻿@model PM.Web.ViewModel.NotaPericiaMRViewModel
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>
+                    Material Rodante -
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Consultar)
+                    {
+                        <label class="label-titulo">Consultar </label>
+                    }
+
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Liberar)
+                    {
+                        <label class="label-titulo">Liberar </label>
+                    }
+
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar)
+                    {
+                        <label class="label-titulo">Encerrar </label>
+                    }
+                    Detalhes Perícia
+                </h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumNotaPericia">
+                    <label for="txtNumNotaPericia">Nota Perícia:</label>
+                    @Html.EditorFor(model => model.cd_nota_sap, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                    @Html.HiddenFor(model => model.id_nota)
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumNotaRef">
+                    <label for="txtNumNotaRef" class="label-tamanho-125">Nota de Referência:</label>
+                    @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DtNotaPericia">
+                    <label for="txtDtNotaPericia">Data da Nota Perícia:</label>
+                    @Html.EditorFor(model => model.dt_hora_nota, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_DtNotaRef">
+                    <label for="txtDtNotaRef">Data da Nota de Referência:</label>
+                    @Html.EditorFor(model => model.dt_hora_nota, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_StatusPericia">
+                    <label for="txtStatusCopese">Status Perícia:</label>
+                    @Html.EditorFor(model => model.ds_st_pericia, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Frota">
+                    <label for="txtFrota">Frota:</label>
+                    @Html.EditorFor(model => model.nm_frota, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Trem">
+                    <label for="txtTrem">Trem:</label>
+                    @Html.EditorFor(model => model.nm_trem, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Carro">
+                    <label for="txtCarro">Carro:</label>
+                    @Html.EditorFor(model => model.nm_carro, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Descr">
+                    <label for="txtDescr">Descrição:</label>
+                    @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-8 col-xl-5" id="fg_Obs">
+                    <label for="txtObs">Observação:</label>
+                    @Html.TextAreaFor(model => model.ds_descricao, new  { @class = "form-control disabled", disabled = "disabled", @rows = "4" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_EventoGerador">
+                    <label for="txtEventoGerador">Evento Gerador:</label>
+                    @Html.EditorFor(model => model.ds_evento_gerador, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoMetro">
+                    <label for="txtNumBoMetro">Número BO Metrô:</label>
+                    @Html.EditorFor(model => model.cd_bo_metro, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-3 col-xl-3" id="fg_DescrBoMetro">
+                    <label for="txtDescrBoMetro">Descrição BO Metrô:</label>
+                    @Html.EditorFor(model => model.ds_bo_metro, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoSSP">
+                    <label for="txtNumSSP">Número BO SSP:</label>
+                    @Html.EditorFor(model => model.cd_bo_ssp, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-3 col-xl-3" id="fg_DescrBoSSP">
+                    <label for="DescrBoSSP">Descrição BO SSP:</label>
+                    @Html.EditorFor(model => model.ds_bo_ssp, new { htmlAttributes = new { @class = "form-control disabled", disabled = "disabled" } })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Liberar)
+                {
+                    <a href="/CopesePericia/LiberarPericiaMR?id=@Model.id_nota" data-id="1" class="voltar btn btn-primary">Liberar PERÍCIA</a>
+                }
+
+                @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar)
+                {
+                    <a href="/CopesePericia/EncerrarPericiaMR?id=@Model.id_nota" data-id="1" class="voltar btn btn-primary">Encerrar PERÍCIA</a>
+                }
+                <a href="#" onclick="window.close();" data-id="1" class="voltar btn btn-primary">Fechar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/consultarNotaPericiaMR.js")
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        alert('@ViewBag.Message');
+    </script>
+}

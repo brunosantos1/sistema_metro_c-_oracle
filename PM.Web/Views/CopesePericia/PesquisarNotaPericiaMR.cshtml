@@ -1,0 +1,145 @@
+﻿@model PM.Web.ViewModel.Pericia.PesquisaNotaPericiaMRViewModel
+
+@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <form>
+            <br />
+            <ul class="nav">
+                <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Pesquisar Perícia - Material Rodante</h5></a></li>
+            </ul>
+            <div class="tab-content jumbotron">
+                <div class="tab-pane active in" id="first-tab">
+                    <div class="row">
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                            <label for="selectFrota">Frota:</label>
+                            @if (Model != null && Model.SelecionarFrota != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_frota_fk, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarFrota, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarTrens(); CarregarSistema();" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                            <label for="selectTrem">Trem:</label>
+                            @if (Model != null && Model.SelecionarTrem != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_trem_fk, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarTrem, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarCarros();" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                            <label for="selectCarro">Carro:</label>
+                            @if (Model != null && Model.SelecionarCarro != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_carro, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarCarro, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Sistema">
+                            <label for="selectSistema">Sistema:</label>
+                            @if (Model != null && Model.SelecionarSistema != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_sistema, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarSistema, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_EventoGerador">
+                            <label for="selectEventoGerador">Evento Gerador:</label>
+                            @if (Model != null && Model.SelecionarEventoGerador != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_ev_gerador_fk, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarEventoGerador, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoMetro">
+                            <label for="txtNumBoMetro">Núm. BO Metrô:</label>
+                            @Html.EditorFor(model => model.cd_bo_metro, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoSSP">
+                            <label for="txtNumBoSSP">Núm. BO SSP:</label>
+                            @Html.EditorFor(model => model.cd_bo_ssp, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumPericia">
+                            <label for="txtNumPericia">Número Perícia:</label>
+                            @Html.EditorFor(model => model.cd_nota_sap, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataInicio">
+                            <label for="dateDe">De:</label>
+                            @Html.EditorFor(model => model.dt_inicio, new { htmlAttributes = new { @class = "form-control FormatDateDe" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataFinal">
+                            <label for="dateAte">Até:</label>
+                            @Html.EditorFor(model => model.dt_fim, new { htmlAttributes = new { @class = "form-control FormatDateAte" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                            <label for="txtNotaRef">Nota de Referência:</label>
+                            @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @*<div class="form-group" id="cd_nota_sap_Ref_pesquisar">
+                                <label></label>
+                                <a class="material-icons" href="#" onclick="BuscarNotaRef();" id="btnPesquisar" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
+                                    search
+                                </a>
+                            </div>*@
+                        <div class="form-group col-md-5 col-lg-4 col-xl-2" id="fg_StatusPericia">
+                            <label for="selectStatusPericia">Status da Perícia:</label>
+                            @if (Model != null && Model.SelecionarStatusPericia != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_st_pericia_fk, (IEnumerable<SelectListItem>
+                                    )Model.SelecionarStatusPericia, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary " id="btnExportar" onclick="loadFiltros()">Filtrar</button>
+                        <button type="reset" class="btn btn-primary" id="btnLimpar" onclick="location.href='@Url.Action("LimparNotaPericiaMR", "CopesePericia" )'">Limpar Filtro</button>
+                        <button type="submit" class="btn btn-primary" name="FiltrarNotaPericiaMR" formaction="ExportNotaPericiaToExcelMR" id="btnFiltrar">Exportar</button>
+                    </div>
+                </div>
+            </div>
+            @if (ViewBag.NaoEncontrado == null)
+            {
+                <div class="row">
+                    <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                        <span class="text-danger">@ViewBag.NaoEncontrado</span>
+                    </div>
+                </div>
+            }
+            <div>
+                <br />
+                <table id="tblPericiaMR" class="nowrap table table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nota de Referência</th>
+                            <th>Nota Perícia</th>
+                            <th>Local de Instalação</th>
+                            <th>Descrição do Local de Instalação</th>
+                            <th>Descrição da Nota</th>
+                            <th>Evento Gerador</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Status da Perícia</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                </table>
+                <br />
+            </div>
+        </form>
+    }
+</section>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/pesquisarNotaPericiaMR.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+}

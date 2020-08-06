@@ -1,0 +1,38 @@
+﻿namespace PM.Domain.Entities.Enum
+{
+    public enum ServicoType
+    {
+        Carro,
+        CentroTrabalho,
+        CimAcionado,
+        Code,
+        Complemento,
+        ElementoPEP,
+        Equipamento,
+        EventoGerador,
+        Frota,
+        GrupoTrabalho,
+        Linha,
+        LocalInstalacao,
+        Patio,
+        PatioLinha,
+        Material,
+        Prioridade,
+        Sintoma,
+        Sistema,
+        Status,
+        StatusCopese,
+        StatusPericia,
+        StatusUsuario,
+        StatusProgramacaoTrem,
+        StatusTrem,
+        StatusLiberacaoTrem,
+        Trem,
+        TipoNota,
+        Zona,
+        MotivoEntrega,
+        TipoManutencao,
+        TipoProgramacao,
+        Posicao
+    }
+}

@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Material Rodante";
+}
+
+<div class="row top_tiles">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>@ViewBag.Title<small>Novo Registro</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!--Formulario - Inicio-->
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                            <label for="selectFrota">Perfil</label>
+                                            <input type="text" id="txtPerfil" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--Formulario - Final-->
+                        <!--Botoes - Inicio-->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-info">Cancelar</button>
+                                    
+
+                                    <a href="#" data-toggle="modal" data-target="#modalpopup" class="btn btn-info popup_perfilcopiar" data-id="109">Copiar Perfil</a>
+
+
+
+                                    <button type="button" class="btn btn-primary">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Botoes - Final-->
+                        <!--Grid - Inicio-->
+                        <div class="x_title">
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <!--Inicio-->
+                        <table id="Tabela1" class="table table-striped table-bordered dt-responsive nowrap datatable-responsive" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-6 col-sm-6 col-xs-6 text-capitalize text-center">Módulo</th>
+                                    <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">Acesso</th>
+                                    <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">Inclusão</th>
+                                    <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">Exclusão Lógica</th>
+                                    <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">Exportar Dados</th>
+                                    <th class="col-md-1 col-sm-1 col-xs-1 text-capitalize text-center">Impressão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-capitalize text-justify nowrap">material Rodante</td>
+                                    <td><input id="chk_000" type="checkbox" class="hc1" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Ativo" data-off="<i class='fa fa-thumbs-down'></i> Inativo" data-onstyle="warning" data-offstyle="info" onchange="Processa(this);"></td>
+                                    <td><input id="chk_000_1" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_000_2" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_000_3" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_000_4" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize text-justify nowrap">Equipamento Fixo</td>
+                                    <td><input id="chk_001" type="checkbox" class="hc1" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Ativo" data-off="<i class='fa fa-thumbs-down'></i> Inativo" data-onstyle="warning" data-offstyle="info" onchange="Processa(this);"></td>
+                                    <td><input id="chk_001_1" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_001_2" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_001_3" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input id="chk_001_4" type="checkbox" class="hcs" checked data-toggle="toggle" data-on="<i class='fa fa-thumbs-up'></i> Sim" data-off="<i class='fa fa-thumbs-down'></i> Não" data-onstyle="success" data-offstyle="danger"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--Final-->
+                        <!--Grid - Final-->
+                    </div>
+                    <!--Final-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+<script>
+    function toggleOn() { $('#chk_000').bootstrapToggle('on'); }
+    function toggleOff() { $('#chk_000').bootstrapToggle('off') }
+    function toggleOnByInput() {
+        $('.hcs').prop('checked', true).change();
+    }
+    function toggleOffByInput() {
+        $('.hcs').prop('checked', false).change();
+    }
+    function toggleRead() { alert('teste ' + window.document.getElementById('chk_001').checked); }
+    function Processa(obj) {
+        if (window.document.getElementById(obj.id).checked == false) {
+            $('#' + obj.id + '_1').prop('checked', false).change();
+            $('#' + obj.id + '_2').prop('checked', false).change();
+            $('#' + obj.id + '_3').prop('checked', false).change();
+            $('#' + obj.id + '_4').prop('checked', false).change();
+        }
+    }
+</script>
+}

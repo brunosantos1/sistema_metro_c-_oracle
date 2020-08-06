@@ -1,0 +1,59 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<h2>Equipamento Fixo - Centro de Trabalho (Incluir Empregado)</h2>
+<form>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtCentroTrab">Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtCentroTrab">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtDescrCentroTrab">Descrição Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtDescrCentroTrab">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtCentroTrabSuper">Centro de Trabalho Superior:</label>
+                <input type="text" class="form-control" id="txtCentroTrabSuper">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtRgEmpregado">RG Empregado:</label>
+                <input type="text" class="form-control" id="txtRgEmpregado">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtNomeEmpregado">Nome do Empregado:</label>
+                <input type="text" class="form-control" id="txtNomeEmpregado">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtCentroCusto">Centro de Custo:</label>
+                <input type="text" class="form-control" id="txtCentroCusto">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="text-left">
+                <button type="button" class="btn btn-primary cancelarEmpregado">Cancelar</button>
+                <button type="button" class="btn btn-primary incluirEmpregado">Incluir</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/EquipamentoFixo/centroTrabalho.js")
+}

@@ -1,0 +1,65 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
+using System.Threading;
+
+namespace PM.Domain.Entities
+{
+    [Table("OO0009.OOMedidaNota")]
+    public class MedidaNota : EntityTypeConfiguration<MedidaNota>
+    {
+        public MedidaNota() { BaseModel = new BaseModel(); }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int id_medida_nota { get; set; }
+
+        [ForeignKey("Nota")]
+        [Index("ix_seq_medida_nota", 1, IsUnique = true)]
+        public int? id_nota_fk { get; set; }
+
+        [Index("ix_seq_medida_nota", 2, IsUnique = true)]
+        public int sq_medida_nota { get; set; }
+
+        public DateTime dt_hora_medida_nota { get; set; }
+
+        [ForeignKey("StatusMedida")]
+        public int? id_st_medida_fk { get; set; }
+
+        [ForeignKey("Empregado")]
+        public int? id_empregado_fk { get; set; }
+
+        [ForeignKey("CodeTx")]
+        public int? id_code_tx_fk { get; set; }
+        
+        [ForeignKey("StatusUsuario")]
+        public int? id_st_usuario_fk { get; set; }
+
+        [ForeignKey("EmpregadoResponsavel")]
+        public int? id_empregado_responsavel_fk { get; set; }
+
+        [ForeignKey("CentroTrabalho")]
+        public int? id_cent_trab_responsavel_fk { get; set; }
+
+        [StringLength(2)]
+        public string fn_responsavel { get; set; }
+
+        public DateTime? dt_programada { get; set; }
+
+        [StringLength(100)]
+        public string ds_motivo { get; set; }
+
+        [NotMapped]
+        public BaseModel BaseModel { get; set; }
+
+        //Propriedade de navegação
+        public CentroTrabalho CentroTrabalho { get; set; }
+        public Code CodeTx { get; set; }
+        public Empregado Empregado { get; set; }
+        public Empregado EmpregadoResponsavel { get; set; }
+        public Nota Nota { get; set; }
+        public StatusMedida StatusMedida { get; set; }
+        public StatusUsuario StatusUsuario { get; set; }
+    }
+}

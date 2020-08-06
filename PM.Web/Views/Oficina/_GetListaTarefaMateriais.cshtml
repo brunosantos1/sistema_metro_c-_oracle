@@ -1,0 +1,50 @@
+﻿@model PM.Web.ViewModel.NotaOCOPOLViewModel
+
+<div class="row">
+    <div class="col-md">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table custom">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].cd_sap)</th>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].cd_operacao)</th>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].cd_material_antigo)</th>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].ds_material)</th>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].nr_quantidade)</th>
+                        <th>@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].ds_unidade_medida)</th>
+                        <th style="width: 10%;" class="center2">@Html.DisplayNameFor(model => model.GridListaTarefaMateriais[0].Selecionar)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int ii = 0; ii < Model.GridListaTarefaMateriais.Count; ii++)
+                    {
+                        <tr class="gradeX">
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].cd_sap)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].cd_operacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].cd_material_antigo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].ds_material)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].nr_quantidade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.GridListaTarefaMateriais[ii].ds_unidade_medida)
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(model => Model.GridListaTarefaMateriais[ii].Selecionar, new { id = "chkSelecionar_" + ii, value = Model.GridListaTarefaMateriais[ii].id_lt_tar_op_comp, onchange = "lista_tarefa_material_change(this)" })
+                                @Html.HiddenFor(modelItem => Model.GridListaTarefaMateriais[ii].id_lt_tar_op_comp)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

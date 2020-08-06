@@ -1,0 +1,149 @@
+﻿<h2>Nota de Prestação de Serviço (@(ViewBag.Action == "new" ? "Criar" : "Editar"))</h2>
+<form>
+    <!-- Modal -->
+    <div class="modal fade" id="modal_center" tabindex="-1" role="dialog" aria-labelledby="CancelarNota" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Informe o motivo do cancelamento</p>
+                    <textarea id="motivoCancelamento" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Modal-->
+
+    <h5>Nota de Referência:</h5>
+    <div class="row">
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="txtNotaReferen">Nota de Referência:</label>
+                <input type="text" class="form-control" id="txtNotaReferen" value="Teste 123 12">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtTpNota">Tipo de Nota:</label>
+                <input type="text" class="form-control" id="txtTpNota" value="12" disabled>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="txtDescrNota">Descrição da Nota:</label>
+                <input type="text" class="form-control" id="txtDescrNota" value="Teste 123 12" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="form-group">
+                <label for="txtDescrEquipamento">Descrição do Equipamento:</label>
+                <input type="text" class="form-control" id="txtDescrEquipamento" value="Teste 123 12 Teste20" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="form-group">
+                <label for="txtDescrMaterial">Descrição do Material:</label>
+                <input type="text" class="form-control" id="txtDescrMaterial" value="Teste 123 12 Teste20" disabled>
+            </div>
+        </div>
+    </div>
+    <h5>Nota de Oficina:</h5>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="selectTpNota">Tipo de Nota:</label>
+                <select class="form-control" id="selectTpNota">
+                    <option selected>12</option>
+                    <option>18</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="form-group">
+                <label for="txtDescrNota">Descrição da Nota:</label>
+                <input type="text" class="form-control" id="txtDescrNota" value="Teste 123 12 Teste20Teste 123 12 Teste40">
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="selectPrioridade">Prioridade:</label>
+                <select class="form-control" id="selectPrioridade">
+                    <option selected>Teste 123456</option>
+                    <option></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="txtEtiqueta">Etiqueta:</label>
+                <input type="text" class="form-control" id="txtEtiqueta" value="Teste 123 12">
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="txtTempoPrevisto">Tempo Previsto:</label>
+                <input type="text" class="form-control" id="txtTempoPrevisto" value="1234">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtUn">Unidade:</label>
+                <input type="text" class="form-control" id="txtUn" value="min">
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="selectCentroTrab">Centro de Trabalho:</label>
+                <select class="form-control" id="selectCentroTrab">
+                    <option selected>Teste 12</option>
+                    <option></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="form-group">
+                <label for="txtDescrCentroTrab">Descrição do Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtDescrCentroTrab" value="Teste teste teste teste teste 1234567890" disabled>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="txtDadosAdicionais">Dados Adicionais:</label>
+                <textarea class="form-control" id="txtDadosAdicionais" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="form-group">
+                <label for="txtNomeCliente">Nome do Cliente:</label>
+                <input type="text" class="form-control" id="txtNomeCliente" value="Teste teste teste teste teste 1234567890">
+            </div>
+        </div>
+        <div class="col-md-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtNumContrato">N° do Contrato</label>
+                <input type="text" class="form-control" id="txtNumContrato" value="Teste teste tes18">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary salvarNota" id="btnSalvar">Salvar</button>
+                <button type="button" class="btn btn-primary cancelarNota" id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/Oficina/notaPS.js")
+}

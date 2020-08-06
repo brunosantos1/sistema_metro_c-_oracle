@@ -1,0 +1,72 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<h2>Ordem - Serviços Gerais (Criar)</h2>
+<form>
+    <div class="row">
+        <div class="col-md-6 col-xl-2">
+            <div class="form-group">
+                <label for="selecTpServ">Tipo de Serviço:</label>
+                <select class="form-control" id="selecTpServ">
+                    <option selected>Treinamento 12345678</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-2">
+            <div class="form-group">
+                <label for="txtDescr">Descrição:</label>
+                <input type="text" class="form-control" id="txtDescr" value="Treinamento 12345678">
+            </div>
+        </div>
+        <div class="col-md-12 col-xl-8">
+            <div class="form-group">
+                <label for="txtObs">Observação:</label>
+                <textarea class="form-control" id="txtObs" rows="6"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="selecCentroTrab">Centro de Trabalho:</label>
+                <select class="form-control" id="selecCentroTrab">
+                    <option selected>Teste 08</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <label>Data:</label>
+            <input id="inputData"/>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <label for="inputHora">Hora</label>
+            <input id="inputHora" type="time" />
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="selecTarifa">Chave de Controle:</label>
+                <select class="form-control" id="selecTarifa">
+                    <option selected>QUA8</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group text-right">
+                <a href="ApontarOrdemServicosGerais" class="btn btn-primary" id="btnCriar">Criar Ordem</a>
+                <button type="button" class="btn btn-primary cancelar" id="btnCancelar">Cancelar</button>
+</div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/CopesePericia/ordemServicosGerais.js")
+}

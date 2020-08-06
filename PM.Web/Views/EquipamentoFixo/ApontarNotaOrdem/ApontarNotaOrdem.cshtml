@@ -1,0 +1,407 @@
+﻿@model PM.Web.ViewModel.ApontarNotaOrdemViewModel
+
+@section styles {
+    @Styles.Render("~/Content/css/datatables.min.css")
+}
+
+<h2>Equipamento Fixo - Apontamento</h2>
+<form>
+    <input id="hdIdNota" type="hidden" value="@Model.Nota.id_nota">
+    <input id="hdIdOrdem" type="hidden" value="@Model.Ordem.id_ordem">
+
+    <div class="jumbotron">
+        <h1 class="display-5">Nota</h1>
+        <h2></h2>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="text-right">
+                    <!--<button type="button" class="btn btn-primary">Abrir ordem</button>-->
+                    <button type="button" class="btn btn-primary" disabled>Imprimir</button>
+                    <button type="button" id="btn_paralisar_nota" class="btn btn-primary">Paralisar</button>
+                    <button type="button" id="btn_finalizar_nota" class="btn btn-primary">Finalizar</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputNota" class="font-weight-bold">Nota</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputNota" value="@Model.Nota.id_nota">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputOrdem" class="font-weight-bold">Ordem</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputOrdem" value="@Model.Ordem.id_ordem">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputData" class="font-weight-bold">Data</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputData" value="@Model.Nota.dt_nota">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputHora" class="font-weight-bold">Hora</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputHora" value="@Model.Nota.hr_nota">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputContrato" class="font-weight-bold">Centro de Trabalho</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputContrato" value="@(Model.Nota != null ? Model.Nota.ds_centro_trabalho : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputStatus" class="font-weight-bold">Status</label>
+                    @*<input type="text" readonly class="form-control-plaintext" id="inputStatus" value="@(Model.Nota != null ? Model.Nota.st_usuario_nota : String.Empty)">*@
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputLocalnstalacao" class="font-weight-bold">Local instalação</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputLocalnstalacao" value="@(Model.Nota != null ? Model.Nota.ds_local_inst : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputSintoma" class="font-weight-bold">Sintoma</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputSintoma" value="@(Model.Nota != null ? Model.Nota.ds_sintoma : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputDescricao" class="font-weight-bold">Descrição</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputNotificador" value="@(Model.Nota != null ? Model.Nota.nt_descricao : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputNotificador" class="font-weight-bold">Notificador</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputNotificador" value="@(Model.Nota != null ? Model.Nota.rg_notificador : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputDiagnostico" class="font-weight-bold">Diagnóstico</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputDiagnostico" value="@(Model.Nota != null ? Model.Nota.ds_diagnostico : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputLocalInstalacaoPrincipal" class="font-weight-bold">Local instação principal</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputLocalInstalacaoPrincipal" value="@(Model.Nota != null ? Model.Nota.ds_local_inst_princip : String.Empty)">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="inputCausaRaiz" class="font-weight-bold">Causa raíz</label>
+                    <input type="text" readonly class="form-control-plaintext" id="inputCausaRaiz" value="">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label for="inputObservacao" class="font-weight-bold">Observação</label>
+                    <textarea readonly class="form-control-plaintext" rows="3" id="inputObservacao">@(Model.Nota != null ? Model.Nota.nt_observacao : String.Empty)</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <caption>Histórico</caption>
+                        <thead>
+                            <tr>
+                                <th>Histórico</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Criada por</th>
+                                <th>Resp</th>
+                                <th>Texto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PM.Web.ViewModel.ApontarNotaOrdemViewModel.MedidaNotaViewModel medidaNota in Model.Nota.MedidasNota)
+                            {
+                                <tr>
+                                    <td>@medidaNota.ds_st_medida</td>
+                                    <td>@medidaNota.dt_medida_nota</td>
+                                    <td>@medidaNota.hr_medida_nota</td>
+                                    <td>@medidaNota.ds_empregado</td>
+                                    <td>@medidaNota.ds_empregado_responsavel</td>
+                                    <td>@medidaNota.tx_medida_nota</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <caption>Notas vinculadas</caption>
+                        <thead>
+                            <tr>
+                                <th>Nota</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PM.Web.ViewModel.ApontarNotaOrdemViewModel.NotaViewModel notaVinculada in Model.Nota.NotasVinculadas)
+                            {
+                                <tr>
+                                    <td>@notaVinculada.id_nota</td>
+                                    <td>@notaVinculada.ds_tp_nota</td>
+                                    <td>@notaVinculada.nt_descricao</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table id="tblDocumentosVinculados" class="table table-bordered">
+                        <caption>Documentos vinculados</caption>
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Seleciona/Cria Ordem/Operação</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table id="tblOperacoesOrdem" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Ordem</th>
+                                <th>Operação</th>
+                                <th>Texto breve operação</th>
+                                <th>Número de pessoas</th>
+                                <th>Duração</th>
+                                <th>Nota EA</th>
+                                <th>Centro de trabalho</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Status</th>
+                                <th class="acao">Ação</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Mão de obra</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Operação</th>
+                                <th>Ordem</th>
+                                <th>Texto breve operação</th>
+                                <th>Tarifa</th>
+                                <th>Chave de controle</th>
+                                <th>Data</th>
+                                <th>RG</th>
+                                <th>Preparo</th>
+                                <th>Deslocamento</th>
+                                <th>Acesso</th>
+                                <th>Execução</th>
+                                <th>Unidade</th>
+                                <th>Status</th>
+                                <th class="acao">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0010</td>
+                                <td>40033486</td>
+                                <td></td>
+                                <td>VPN14</td>
+                                <td>TARIFA2</td>
+                                <td>PM01</td>
+                                <td>12/07/2018</td>
+                                <td>19032</td>
+                                <td>10</td>
+                                <td>20</td>
+                                <td>10</td>
+                                <td>140</td>
+                                <td>min</td>
+                                <td>
+                                    <a href="#" data-id="16" class="btn_cancel"><i class="material-icons" style="color:#FF0000">close</i></a>
+                                    <a href="#" data-id="16" class="btn_add"><i class="material-icons">add</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Material</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Denominação</th>
+                                <th>Quantidade</th>
+                                <th>Unidade</th>
+                                <th>TI</th>
+                                <th>Depósito</th>
+                                <th>Centro</th>
+                                <th>Reserva/requisição</th>
+                                <th>Local de entrega</th>
+                                <th>Recebedor</th>
+                                <th class="acao">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100007008</td>
+                                <td>PÓ DE SOLDA CADWELD</td>
+                                <td>5</td>
+                                <td>PEÇ</td>
+                                <td>L - item estocado</td>
+                                <td>JREC</td>
+                                <td>PPAT</td>
+                                <td>imediatamente</td>
+                                <td>EPB - VPL</td>
+                                <td>19069</td>
+                                <td>
+                                    <a href="#" data-id="17" class="btn_cancel"><i class="material-icons" style="color:#FF0000">close</i></a>
+                                    <a href="#" data-id="17" class="btn_add"><i class="material-icons">add</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Meio auxiliar de produção</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>MAP</th>
+                                <th>Denominação</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20000110</td>
+                                <td>TORQUIMENTO</td>
+                                <td>
+                                    <a href="#" data-id="18" class="btn_cancel"><i class="material-icons" style="color:#FF0000">close</i></a>
+                                    <a href="#" data-id="18" class="btn_add"><i class="material-icons">add</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Intervenção</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Nota EA</th>
+                                <th>Local instação</th>
+                                <th>Parte do objeto</th>
+                                <th>Descrição parte do objeto</th>
+                                <th>Defeito</th>
+                                <th>Descrição defeito</th>
+                                <th>Reparo/Não reparo</th>
+                                <th>Descrição reparo/não reparo</th>
+                                <th>Quantidade</th>
+                                <th>Marco</th>
+                                <th>Distância (m)</th>
+                                <th>Comprimento (m)</th>
+                                <th>Equipamento desinstalado</th>
+                                <th>Equipamento instalado</th>
+                                <th class="acao">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0010</td>
+                                <td>1002796</td>
+                                <td>M-L03-PEN-3\</td>
+                                <td>3VA300</td>
+                                <td>Solda alumínio térmica</td>
+                                <td>260</td>
+                                <td>Com rebarba</td>
+                                <td>REPARO 52E</td>
+                                <td>SMERILHADO</td>
+                                <td>2</td>
+                                <td>MT3522</td>
+                                <td>2,3</td>
+                                <td>0</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="#" data-id="20" class="btn_cancel"><i class="material-icons" style="color:#FF0000">close</i></a>
+                                    <a href="#" data-id="20" class="btn_add"><i class="material-icons">add</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/EquipamentoFixo/apontarNotaOrdem.js")
+}

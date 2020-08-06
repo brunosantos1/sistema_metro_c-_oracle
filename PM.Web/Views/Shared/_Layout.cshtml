@@ -1,0 +1,340 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>OO0009 - Portal PM @ViewBag.Title</title>
+    @Styles.Render("~/Content/css/site.css")
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/material-icons.css")
+    @Styles.Render("~/Content/css/font-awesome.min.css")
+    @Styles.Render("~/Content/css/side-menu.css")
+    @Styles.Render("~/Content/css/datatables.min.css")
+    @Styles.Render("~/Content/css/dataTables.bootstrap4.min.css")
+    @Styles.Render("~/Content/css/gijgo.min.css")
+    @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- Header-->
+        <div id="header">
+            <div id="appName">
+                <span>OO0009 - Portal PM</span>
+            </div>
+            <div id="userInfo">
+                <span>cod usuario - Nome do usuário</span>
+                <a href="#"><img alt="logout" id="btnLogout" src="~/Content/images/logout.png" /></a>
+            </div>
+        </div>
+        <!-- /Header-->
+        <!-- Main Content-->
+        <div class="container-fluid">
+            <div class="row main-row">
+
+                <!-- Sidebar -->
+                <div id="side-menu" class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                    <div id="menu_button" class="side-menu-button"><i class="fa fa-bars"></i></div>
+                    @Html.Partial("AdminMenu")
+                </div>
+                <!-- End Sidebar -->
+                <!-- Sidebar Menu -->
+                @*<div id="side-menu" class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                    <div id="menu_button" class="side-menu-button"><i class="fa fa-bars"></i></div>
+                    <div class="menu_section">
+                    <!--<h3>Geral</h3>-->
+                    <ul class="nav menu-section-body">
+                    <!--Menu Equipamento Fixo-->
+                    <li>
+                    <a><i class="fa fa-cogs"></i>Equipamento Fixo<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li>
+                    <a>Criar Nota<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="sub_menu @(ViewContext.RouteData.Values["Action"].ToString() == "NotaED" ? "active" : String.Empty)">
+                    @Html.ActionLink("Defeito Detectado pela Manutenção", "NotaED", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "NotaEI" ? "active" : String.Empty)">
+                    @Html.ActionLink("Serviço Interno", "NotaEI", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "NotaEC" ? "active" : String.Empty)">
+                    @Html.ActionLink("Corretiva", "NotaEC", "EquipamentoFixo")
+                    </li>
+                    </ul>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNota" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Nota", "PesquisarNota", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarOrdem" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Ordem", "PesquisarOrdem", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarOperacao" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Operação", "PesquisarOperacao", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarConfirmacao" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Confirmação", "PesquisarConfirmacao", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarMedidas" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Medidas", "PesquisarMedidas", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Programacao" ? "active" : String.Empty)">
+                    @Html.ActionLink("Programação", "Programacao", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ConsultarMicroprogramacao" ? "active" : String.Empty)">
+                    @Html.ActionLink("Microprogramação", "ConsultarMicroprogramacao", "EquipamentoFixo")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ApontarOrdem" ? "active" : String.Empty)">
+                    @Html.ActionLink("Apontar Nota/Ordem", "ApontarOrdem/1", "EquipamentoFixo2")
+                    </li>
+                    </ul>
+                    </li>
+                    <!--/Menu Equipamento Fixo-->
+
+                    <!--Menu Material Rodante-->
+                    <li>
+                    <a><i class="fa fa-subway"></i> Material Rodante <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+
+                    <li>
+                    <a>Criar Nota<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="">@Html.ActionLink("Nota Defeito Detectado pela Manutenção", "NotaMd", "MaterialRodante")</li>
+                    <li class="">@Html.ActionLink("Nota de Serviço", "NotaMs", "MaterialRodante")</li>
+                    <li class="">@Html.ActionLink("Nota Corretiva", "NotaMc", "MaterialRodante")</li>
+                    <li class="">@Html.ActionLink("Nota de Inspeção", "NotaMi", "MaterialRodante")</li>
+                    </ul>
+                    </li>
+                    <li class="">
+                    @Html.ActionLink("Pesquisar Nota", "PesquisarNotas", "MaterialRodante")
+                    </li>
+                    <li class="">
+                    <a>Trem<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" style="display: none;">
+                    <li class="sub_menu">
+                    @Html.ActionLink("Pesquisar Trem", "PesquisarTrens", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Entrega de Trem", "SolicitarEntregaTrem", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Pesquisar Programação de Trem", "PesquisarProgramacaoTrens", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Pesquisar Entrega de Trem", "PesquisarEntregaTrem", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Programar Trem", "ProgramarMP", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Pesquisar Manobra", "PesquisarManobra", "MaterialRodante")
+                    </li>
+                    <li>
+                    @Html.ActionLink("Manobra de Trem", "SolicitarManobra", "MaterialRodante")
+                    </li>
+                    </ul>
+                    </li>
+                    <li class="">
+                    @Html.ActionLink("Pesquisar Ordem", "PesquisarOrdens", "MaterialRodante")
+                    </li>
+                    </ul>
+                    </li>
+                    <!--/Menu Material Rodante-->
+
+                    <!--Menu COPESE/Perícia-->
+                    <li>
+                    <a><i class="fa fa-clipboard"></i>COPESE e Perícia<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li>
+                    <a>COPESE<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNotaCopeseEF" ? "active" : String.Empty)">@Html.ActionLink("Pesquisar Nota - Equipamento Fixo", "PesquisarNotaCopeseEF", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNotaCopeseMR" ? "active" : String.Empty)">@Html.ActionLink("Pesquisar Nota - Material Rodante", "PesquisarNotaCopeseMR", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "CriarNotaCopeseEFMR" ? "active" : String.Empty)">@Html.ActionLink("Criar Nota", "CriarNotaCopeseEFMR", "CopesePericia")</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <li>
+                    <a>Perícia<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNotaPericiaEF" ? "active" : String.Empty)">@Html.ActionLink("Pesquisar Nota – Equipamento Fixo", "PesquisarNotaPericiaEF", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNotaPericiaMR" ? "active" : String.Empty)">@Html.ActionLink("Pesquisar Nota – Material Rodante", "PesquisarNotaPericiaMR", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "CriarNotaPericiaEF" ? "active" : String.Empty)">@Html.ActionLink("Criar Nota – Equipamento Fixo", "CriarNotaPericiaEF", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "CriarNotaPericiaMR" ? "active" : String.Empty)">@Html.ActionLink("Criar Nota – Material Rodante", "CriarNotaPericiaMR", "CopesePericia")</li>
+                    </ul>
+                    </li>
+                    <li>
+                    <a>Ordem de Serviços Gerais<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "OrdemServicosGerais" ? "active" : String.Empty)">@Html.ActionLink("Criar", "OrdemServicosGerais", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ApontarOrdemServicosGerais" ? "active" : String.Empty)">@Html.ActionLink("Apontar", "ApontarOrdemServicosGerais", "CopesePericia")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "EncerrarOrdemServicosGerais" ? "active" : String.Empty)">@Html.ActionLink("Encerrar", "EncerrarOrdemServicosGerais", "CopesePericia")</li>
+                    </ul>
+                    </li>
+                    </ul>
+                    </li>
+                    <!--/Menu COPESE/Perícia-->
+
+                    <!--Menu Oficina-->
+                    <li>
+                    <a><i class="fa fa-cogs"></i>Oficina<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li>
+                    <a>Criar Nota<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="sub_menu @(ViewContext.RouteData.Values["Action"].ToString() == "NotaOCOPOL" ? "active" : String.Empty)">
+                    @Html.ActionLink("Nota OC/OP/OL", "NotaOCOPOL", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "NotaOI" ? "active" : String.Empty)">
+                    @Html.ActionLink("Serviço Interno", "NotaOI", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "NotaPS" ? "active" : String.Empty)">
+                    @Html.ActionLink("Prestação de Serviço", "NotaPS", "Oficina")
+                    </li>
+                    </ul>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarNota" ? "active" : String.Empty)">
+                    @Html.ActionLink("Pesquisar Nota", "PesquisarNota", "Oficina2")
+
+                    </li>
+                    <li>
+                    <a>Liberar Equip/Material<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="sub_menu @(ViewContext.RouteData.Values["Action"].ToString() == "LiberarEquipamentoMaterialIndividualmente" ? "active" : String.Empty)">
+                    @Html.ActionLink("Individualmente", "LiberarEquipamentoMaterialIndividualmente", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "LiberarMaterialEmLote" ? "active" : String.Empty)">
+                    @Html.ActionLink("Em Lote", "LiberarMaterialEmLote", "Oficina")
+                    </li>
+                    </ul>
+                    </li>
+                    <li>
+                    <a>Apontamento<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li class="sub_menu @(ViewContext.RouteData.Values["Action"].ToString() == "ApontarNotaOrdemIndividualmente" ? "active" : String.Empty)">
+                    @Html.ActionLink("Individual", "ApontarNotaOrdemIndividualmente", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ApontarNotaOrdemLote" ? "active" : String.Empty)">
+                    @Html.ActionLink("Em Lote", "ApontarNotaOrdemLote", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ApontarNotaOrdemServicoInterno" ? "active" : String.Empty)">
+                    @Html.ActionLink("Nota de Serviço Interno", "ApontarNotaOrdemServicoInterno", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ApontarNotaOrdemPrestacaoServico" ? "active" : String.Empty)">
+                    @Html.ActionLink("Nota de Prestação de Serviço", "ApontarNotaOrdemPrestacaoServico", "Oficina")
+                    </li>
+                    </ul>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarGiro" ? "active" : String.Empty)">
+                    @Html.ActionLink("Consutar Giro", "PesquisarGiro", "Oficina")
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PesquisarPrioritario" ? "active" : String.Empty)">
+                    @Html.ActionLink("Consutar Prioritário", "PesquisarPrioritario", "Oficina")
+                    </li>
+                    </ul>
+                    </li>
+                    <!--/Menu Oficina-->
+                    </ul>
+                    </div>
+                    </div>*@
+                <!-- /Sidebar Menu -->
+
+                <div id="main_container" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="row footer-row">
+                <div class="col">
+                    <!-- Footer-->
+                    <footer class="footer">
+                        <div class="container">
+                            <p>
+                                &copy; 2019 - Companhia do Metropolitano de São Paulo - Metrô - Todos os direitos reservados.
+                                <br />Sede: R. Augusta, 1626 - CEP 01304-902 - Fax (11) 3283-5228 - Fone (11) 3371-7411 - São Paulo - Brasil
+                            </p>
+                        </div>
+                    </footer>
+                    <!-- /Footer-->
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content-->
+    </div>
+    <!--|Definição dos PopUps|-->
+    <div id="alerta-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="position: fixed; top: 50% !important; left: 50%; transform: translate(-50%, -50%);"> </div>
+
+
+    @Scripts.Render("~/Scripts/jquery-3.3.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/side-menu.js")
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        var ua = window.navigator.userAgent;
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.FormatDateDe').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: 'dd/mm/yyyy',
+                locale: 'pt-br',
+                uiLibrary: 'bootstrap4',
+                maxDate: function () {
+                    return $('.FormatDateAte').val();
+                }
+            });
+            $('.FormatDateAte').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: 'dd/mm/yyyy',
+                locale: 'pt-br',
+                uiLibrary: 'bootstrap4',
+                minDate: function () {
+                    return $('.FormatDateDe').val();
+                }
+            });
+            $('.FormatTime').timepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: 'HH:MM:ss',
+                locale: 'pt-br',
+                uiLibrary: 'bootstrap4',
+            });
+            $.extend(true, $.fn.dataTable.defaults, {
+                "order": [],
+                "lengthChange": true,
+                "bFilter": true,
+                "info": true,
+                "scrollX": true,
+                "language": {
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima",
+                        "first": "Primeira",
+                        "last": "Última"
+                    },
+                    "info": "Mostrando _START_ até _END_ de _TOTAL_ registro(s) ",
+                    "infoEmpty": "Mostrando 0 até 0 de 0 registro(s)",
+                    "search": "Filtrar",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "emptyTable": "",
+                    "zeroRecords": "Nenhum registro encontrado"
+                }
+            });
+            $.extend($.fn.dataTableExt.oStdClasses, {
+                "sFilterInput": "form-control",
+                "sLengthSelect": "form-control"
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

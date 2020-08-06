@@ -1,0 +1,410 @@
+﻿@model PM.Web.ViewModel.PesquisarEntregaTrensViewModel
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Material Rodante - Pesquisar Entrega de Trem</h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    <label for="selectLinha">Linha:</label>
+                    @Html.DropDownListFor(model => model.linha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbFiltroEntrega'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao');fnLimparDataTable('tbGravar_Programacao'); fnLimparCombo('patio'); fnLimparCombo('trens'); fnCarregaCombo(this, 'patio', 'GetPatioLinha?ID=' );" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Patio">
+                    <label for="selectLocal">Pátio:</label>
+                    @Html.DropDownListFor(model => model.patio, (IEnumerable<SelectListItem>)Model.SelecionarPatioLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbFiltroEntrega'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao');fnLimparDataTable('tbGravar_Programacao'); fnLimparCombo('trens'); fnCarregaCombo(this, 'trens', 'GetLinhaPatioTrem?idStatusTrem=3&ID=' );" })
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    <label for="selectLocal">Trem:</label>
+                    @Html.DropDownListFor(model => model.trens, (IEnumerable<SelectListItem>)Model.SelecionarTrens, new { @class = "form-control selectpicker pickerWorkflow" })
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputDataInicial">De: <span class="asterisco">*</span></label>
+                    @Html.EditorFor(model => model.data_entrega_inicial, new { htmlAttributes = new { @class = "form-control FormatDateDe" } })
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputDataFinal">Até: <span class="asterisco">*</span></label>
+                    @Html.EditorFor(model => model.data_entrega_final, new { htmlAttributes = new { @class = "form-control FormatDateAte" } })
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectMotivo">Motivo:</label>
+                    @Html.DropDownListFor(model => model.motivo, (IEnumerable<SelectListItem>)Model.SelecionarMotivo, new { @class = "form-control selectpicker pickerWorkflow" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" onclick="fnFiltrar();">Filtrar</button>&nbsp;
+                <button type="button" class="btn btn-primary" onclick="fnCancelar();">Limpar filtro</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class=" shadow-lg p-3 col-md-12 bg-white rounded" @*style="min-height: 300px;"*@>
+    <table id="tbFiltroEntrega" class="nowrap table table-bordered dataTable">
+        <thead>
+            <tr>
+                <th>Ver</th>
+                <th>Trem</th>
+                <th>Resp Entr</th>
+                <th>Local Entrega</th>
+                <th>Local Atual</th>
+                <th>Data/Hora Entrega</th>
+                <th>Data/Hora Liberação</th>
+                <th>Data/Hora Cancel</th>
+                <th>Status</th>
+                <th>Resp Lib</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<hr />
+<div class=" shadow-lg p-3 col-md-12 bg-white rounded" style="min-height: 280px;">
+    <div class="row">
+        <div class="form-group col-md-3"> <strong><label>Entrega :</label>&nbsp;</strong> <span id="spNotas_Entrega"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Linha :</label>&nbsp;</strong> <span id="spNotas_Linha"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Patio :</label>&nbsp;</strong> <span id="spNotas_Patio"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Trem  :</label>&nbsp;</strong> <span id="spNotas_Trem"></span></div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3"> <strong><label>Data Entrega :</label>&nbsp;</strong> <span id="spNotas_DtEntrega"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Data Liberação :</label>&nbsp;</strong> <span id="spNotas_DtLiberacao"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Data Cancelamento :</label>&nbsp;</strong> <span id="spNotas_DtCancelamento"></span></div>
+        <div class="form-group col-md-3"> <strong><label>Status :</label>&nbsp;</strong> <span id="spNotas_Status"></span></div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"> <a href="#tabGravar-ocorrencia" data-toggle="tab" class="a-custom">Ocorrência</a>   </li>
+        <li>                <a href="#tabGravar-inspecao" data-toggle="tab" class="a-custom">Inspeção</a>     </li>
+        <li>                <a href="#tabGravar-programacao" data-toggle="tab" class="a-custom">Programação</a>  </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active in " id="tabGravar-ocorrencia">
+            <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                <table id="tbGravar_Ocorrencia" class="nowrap table table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nota</th>
+                            <th>Local Instalação</th>
+                            <th>Descrição da Nota</th>
+                            <th>Sintoma</th>
+                            <th>Prior</th>
+                            <th>Data</th>
+                            <th>Notificador</th>
+                            <th>Equipe</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane " id="tabGravar-inspecao">
+            <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                <table id="tbGravar_Inspecao" class="nowrap table table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nota</th>
+                            <th>Local Instalação</th>
+                            <th>Descrição da Nota</th>
+                            <th>Sintoma</th>
+                            <th>Prior</th>
+                            <th>Data</th>
+                            <th>Notificador</th>
+                            <th>Equipe</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane " id="tabGravar-programacao">
+            <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                <table id="tbGravar_Programacao" class="nowrap table table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>Trem</th>
+                            <th>Hr Solicitada</th>
+                            <th>Local Solicitado</th>
+                            <th>Motivo</th>
+                            <th>Equipe</th>
+                            <th>Solicitante</th>
+                            <th>Dt Prev Lib</th>
+                            <th>Hr Prev Lib</th>
+                            <th>Status</th>
+                            <th>Observação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup-liberar-entrega-trem" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="width: 100% !important; position: fixed; top: 50% !important; left: 50%; transform: translate(-50%, -50%); ">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title" id="myModalLabel">Liberar de Entrega de Trem [ <strong><span id="spLiberar_Entrega">0000000000</span></strong> ]</h4>
+            </div>
+            <div class="modal-body">
+                <div class=" shadow-lg p-3 bg-white rounded">
+                    <div class="row">
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Linha :</label></strong>
+                            <span class="form-control " id="spLiberar_Linha">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Patio :</label></strong>
+                            <span class="form-control " id="spLiberar_Patio">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Trem :</label></strong>
+                            <span class="form-control " id="spLiberar_Trem">0000000000</span>
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Entrega :</label></strong>
+                            <span class="form-control " id="spLiberar_DtEntrega">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Liberação :</label></strong>
+                            <span class="form-control " id="spLiberar_DtLiberacao">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Cancelamento :</label></strong>
+                            <span class="form-control " id="spLiberar_DtCancelamento">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <strong><label>Status :</label></strong>
+                            <span class="form-control " id="spLiberar_Status">0000000000</span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Informe Status de Entrega do Trem :</label>
+                        @Html.DropDownListFor(model => model.trem_status_liberacao, (IEnumerable<SelectListItem>)Model.SelecionarStatusLiberacaoTrens, new { @class = "form-control selectpicker pickerWorkflow" })
+                    </div>
+                </div>
+                @*<div>
+                        <div class=" shadow-lg p-3 col-md-12 bg-white rounded" style="min-height: 280px; text-align:center;">
+                            <ul class="nav nav-tabs">
+                                <li class="active"> <a href="#tabLiberar-ocorrencia" data-toggle="tab" class="a-custom">Ocorrência</a>   </li>
+                                <li>                <a href="#tabLiberar-inspecao" data-toggle="tab" class="a-custom">Inspeção</a>     </li>
+                                <li>                <a href="#tabLiberar-programacao" data-toggle="tab" class="a-custom">Programação</a>  </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active in " id="tabLiberar-ocorrencia">
+                                    <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                                        <table id="tbLiberar_Ocorrencia" class="table table-striped table-bordered table-responsive dt-responsive nowrap datatable-responsive" cellspacing="0" style="width: 100%">
+                                            <thead>
+                                                <tr nowrap>
+                                                    <th nowrap>Nota</th>
+                                                    <th nowrap>Local Instalação</th>
+                                                    <th nowrap>Descrição da Nota</th>
+                                                    <th nowrap>Sintoma</th>
+                                                    <th nowrap>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane " id="tabLiberar-inspecao">
+                                    <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                                        <table id="tbLiberar_Inspecao" class="table table-striped table-bordered table-responsive dt-responsive nowrap datatable-responsive" cellspacing="0" style="width: 100%">
+                                            <thead>
+                                                <tr nowrap>
+                                                    <th nowrap>Nota</th>
+                                                    <th nowrap>Local Instalação</th>
+                                                    <th nowrap>Descrição da Nota</th>
+                                                    <th nowrap>Sintoma</th>
+                                                    <th nowrap>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane " id="tabLiberar-programacao">
+                                    <div class="shadow-lg p-3 col-md-12 bg-white rounded">
+                                        <table id="tbLiberar_Programacao" class="table table-striped table-bordered table-responsive dt-responsive nowrap datatable-responsive" cellspacing="0" style="width: 100%">
+                                            <thead>
+                                                <tr nowrap>
+                                                    <th nowrap>Hr Solicitada</th>
+                                                    <th nowrap>Local Solicitado</th>
+                                                    <th nowrap>Motivo</th>
+                                                    <th nowrap>Equipe</th>
+                                                    <th nowrap>Status</th>
+                                                    <th nowrap>Observação</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="fnLiberarEntregaTrem('spLiberar_Entrega','trem_status_liberacao');">Gravar & Fechar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="popup-cancelamento-entrega-trem" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="width: 100% !important; position: fixed; top: 50% !important; left: 50%; transform: translate(-50%, -50%); ">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title" id="myModalLabel">Cancelamento de Entrega de Trem [ <strong><span id="spCancelamento_Entrega">0000000000</span></strong> ]</h4>
+            </div>
+            <div class="modal-body">
+                <div class=" shadow-lg p-3 bg-white rounded">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <strong><label>Linha :</label></strong>
+                            <span class="form-control " id="spCancelamento_Linha">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Patio :</label></strong>
+                            <span class="form-control " id="spCancelamento_Patio">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Trem :</label></strong>
+                            <span class="form-control " id="spCancelamento_Trem">0000000000</span>
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Entrega :</label></strong>
+                            <span class="form-control " id="spCancelamento_DtEntrega">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Liberação :</label></strong>
+                            <span class="form-control " id="spCancelamento_DtLiberacao">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Cancelamento :</label></strong>
+                            <span class="form-control " id="spCancelamento_DtCancelamento">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <strong><label>Status :</label></strong>
+                            <span class="form-control " id="spCancelamento_Status">0000000000</span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Motivo Cancelamento :</label>
+                        @Html.TextAreaFor(model => model.motivo_cancelamento, new { @class = "form-control", rows = 10 })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="fnCancelaEntregaTrem('spCancelamento_Entrega','motivo_cancelamento');">Gravar & Fechar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="popup-local-entrega-entrega-trem" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="width: 100% !important; position: fixed; top: 50% !important; left: 50%; transform: translate(-50%, -50%); ">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title" id="myModalLabel">Modificar Local de Entrega de Trem [ <strong><span id="spMudarLocal_Entrega">0000000000</span></strong> ]</h4>
+            </div>
+            <div class="modal-body">
+                <div class=" shadow-lg p-3 bg-white rounded">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <strong><label>Linha :</label></strong>
+                            <span class="form-control " id="spMudarLocal_Linha">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Patio :</label></strong>
+                            <span class="form-control " id="spMudarLocal_Patio">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Trem :</label></strong>
+                            <span class="form-control " id="spMudarLocal_Trem">0000000000</span>
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Entrega :</label></strong>
+                            <span class="form-control " id="spMudarLocal_DtEntrega">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Liberação :</label></strong>
+                            <span class="form-control " id="spMudarLocal_DtLiberacao">0000000000</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <strong><label>Data Cancelamento :</label></strong>
+                            <span class="form-control " id="spMudarLocal_DtCancelamento">0000000000</span>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <strong><label>Status :</label></strong>
+                            <span class="form-control " id="spMudarLocal_Status">0000000000</span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="selectLinha">Linha</label>
+                        @Html.DropDownListFor(model => model.linha_novo, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparCombo('patio_novo'); fnCarregaCombo(this, 'patio_novo', 'GetPatioLinha?ID=' );" })
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="selectPatio">Patio</label>
+                        @Html.DropDownListFor(model => model.patio_novo, (IEnumerable<SelectListItem>)Model.SelecionarPatioLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnCarregaCombo(this, 'trens', 'GetLinhaPatioTrem?ID=' );" })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="fnMudarLocalEntregaTrem('spMudarLocal_Entrega','linha_novo', 'patio_novo');">Gravar & Fechar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/PesquisarEntregaTrem.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+}

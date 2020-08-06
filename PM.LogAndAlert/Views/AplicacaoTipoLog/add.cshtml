@@ -1,0 +1,73 @@
+﻿@model PM.WebServices.Models.SistemaTipoLog
+
+@{
+    ViewBag.Title = "Aplicações :: Tipo Log";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @using (Html.BeginForm("add", "AplicacaoTipoLog", new { id = ((Model == null) ? 0 : Model.IdTipoLog),   }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" for="IdEmpresa">IdEmpresa</label>
+                    @Html.DropDownList("ddlIdEmpresa", (IEnumerable<SelectListItem>)ViewBag.Empresa, "*** SELECIONE ***", new { @class = "form-control", @onchange = "fnCarregaAplicacao(this, 'IdAplicacao');" })
+                    <div class="col-md-10">
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.IdAplicacao, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.DropDownListFor(model => model.IdAplicacao, (IEnumerable<SelectListItem>)ViewBag.Aplicacao, new { @class = "form-control" })
+                    <div class="col-md-10">
+                        @Html.ValidationMessageFor(model => model.IdAplicacao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-10 col-sm-10">
+                    @Html.LabelFor(model => model.DsDescricao, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.DsDescricao, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.ValidationMessageFor(model => model.DsDescricao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-2 col-sm-2">
+                    @Html.LabelFor(model => model.IsAtivo, htmlAttributes: new { @class = "control-label " })
+                    @Html.DropDownListFor(model => model.IsAtivo, new SelectList(PM.LogAndAlert.Library.Helper.IsAtivo(), "Key", "Value"), "** SELECIONE **", new { @class = "form-control" })
+                    <div class="col-md-10">
+                        @Html.ValidationMessageFor(model => model.IsAtivo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="text-right">
+                            @Html.ActionLink("Cancelar", "index", new { controller = "AplicacaoTipoLog" }, new { @class = "btn btn-default btn-xs" })
+
+                            <input type="submit" value="Salvar" class="btn btn-success btn-xs" id="btnSalvar" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" value="0" id="hddIdAplicacao" />
+            }
+        </div>
+    </div>
+</div>
+<script language="javascript">
+    
+</script>

@@ -1,0 +1,95 @@
+﻿<h2>Pesquisar Prioritário</h2>
+<form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="txtDescrCentroTrab">Priorização:</label>
+                <input type="radio" class="radio-custom" name="radioPriorizacao" value="nivelAlerta" /> Nível de Alerta
+                <input type="radio" class="radio-custom" name="radioPriorizacao" value="nivelCritico" /> Nível Crítico
+                <input type="radio" class="radio-custom" name="radioPriorizacao" value="normal" /> Normal
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-lg-2">
+            <div class="form-group">
+                <label for="selectCentroTrab">Centro de Trabalho:</label>
+                <select class="form-control" id="selectCentroTrab">
+                    <option selected>Campo 20 TesteTesteT</option>
+                    <option>18</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-4">
+            <div class="form-group">
+                <label for="txtDescrCentroTrab">Descrição do Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtDescrCentroTrab" value="Campo 40 TesteTesteTCampo 20 TesteTesteT" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" id="btn_filtrar" disabled>Filtrar</button>
+                <button type="reset" class="btn btn-primary" id="btn_limpar" disabled>Limpar</button>
+                <button type="reset" data-id="1" class="btn btn-primary" id="btn_imprimir">Imprimir</button>
+                <button type="reset" class="btn btn-primary" id="btn_exportar" disabled>Exportar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table custom">
+                    <thead>
+                        <tr>
+                            <th>Código do Material</th>
+                            <th>Descrição do Equipamento/Material</th>
+                            <th>Centro de Trabalho</th>
+                            <th>Nível de Alerta</th>
+                            <th>Nível Crítico</th>
+                            <th>Giro</th>
+                            <th>Quantidade em Oficina</th>
+                            <th>Quantidade Paralisada</th>
+                            <th>Quantidade em Terceiros</th>
+                            <th>Quantidade Indisponível</th>
+                            <th>Quantidade Disponível na Logística</th>
+                            <th>Quantidade Usuário / Transporte</th>
+                            <th>Quantidade a Programar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 20 TesteTestet</td>
+                            <td>Campo 20 TesteTestet</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                            <td>Campo 18 TesteTest</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" id="btnLiberar" disabled>Liberar</button>
+                <button type="button" class="btn btn-primary" id="btnCancelar" disabled>Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/Oficina/pesquisarPrioritario.js")
+}

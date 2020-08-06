@@ -1,0 +1,168 @@
+﻿@model PM.Web.ViewModel.Copese.PesquisaNotaCopeseEFMRViewModel
+
+<section id="loginForm">
+    @using (Html.BeginForm("FiltrarNotaCopeseEF", "CopesePericia", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        <form>
+            <br />
+            <ul class="nav">
+                <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Pesquisar COPESE - Equipamento Fixo</h5></a></li>
+            </ul>
+            <div class="tab-content jumbotron">
+                <div class="tab-pane active in" id="first-tab">
+                    <div class="row">
+                        <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                            <span class="text-danger">@ViewBag.ErrorMessage</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                            <span class="text-success">@ViewBag.SuccessMessage</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                            <label for="selectLinha">Linha:</label>
+                            @if (Model != null && Model.SelecionarLinha != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_linha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Zona">
+                            <label for="selectZona">Zona:</label>
+                            @if (Model != null && Model.SelecionarZona != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_zona, (IEnumerable<SelectListItem>)Model.SelecionarZona, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Sistema">
+                            <label for="selectSistema">Sistema:</label>
+                            @if (Model != null && Model.SelecionarSistema != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_sistema, (IEnumerable<SelectListItem>)Model.SelecionarSistema, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Complemento">
+                            <label for="selectComplemento">Complemento:</label>
+                            @if (Model != null && Model.SelecionarComplemento != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_complemento, (IEnumerable<SelectListItem>)Model.SelecionarComplemento, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Sintoma">
+                            <label for="selectSintoma">Sintoma:</label>
+                            @if (Model != null && Model.SelecionarSintoma != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_sintoma, (IEnumerable<SelectListItem>)Model.SelecionarSintoma, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12">
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumCopese">
+                            <label for="txtNumCopese">Número COPESE:</label>
+                            @Html.EditorFor(model => model.nr_copese, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                            <label for="txtNotaRef">Nota de Referência:</label>
+                            @Html.EditorFor(model => model.nr_nota_ref, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataInicio">
+                            <label for="dateDe">De:</label>
+                            @Html.EditorFor(model => model.dt_inicio, new { htmlAttributes = new { @class = "form-control", @id = "dateDe" } })
+                            @*                            <input class="form-control" id="dateDe" readonly="readonly" />*@
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataFinal">
+                            <label for="dateAte">Até:</label>
+                            @*<input class="form-control" id="dateAte" readonly="readonly">*@
+                            @Html.EditorFor(model => model.dt_fim, new { htmlAttributes = new { @class = "form-control", @id = "dateAte" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Status">
+                            <label for="selectStatus">Status:</label>
+                            @if (Model != null && Model.SelecionarStatusCopese != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_st_copese_fk, (IEnumerable<SelectListItem>)Model.SelecionarStatusCopese, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="form-group">
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" id="btnFiltrar">Filtrar</button>
+                            <button type="reset" class="btn btn-primary" id="btnLimpar" onclick="location.href='@Url.Action("LimparNotaCopeseEF", "CopesePericia")'">Limpar Filtro</button>
+                            @*<button type="button" class="btn btn-primary" id="btnExportar">Exportar</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (!String.IsNullOrEmpty(ViewBag.NaoEncontrado))
+            {
+                <div class="row">
+                    <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                        <span class="text-danger">@ViewBag.NaoEncontrado</span>
+                    </div>
+                </div>
+            }
+            @if (Model != null && Model.gridNotaCopese != null && Model.gridNotaCopese.Count > 0)
+            {
+                <div>
+                    <table class="table table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+                                <th>Nº COPESE</th>
+                                <th>Nota de Referência</th>
+                                <th>Local de Instalação da Referência</th>
+                                <th>Descrição de Referência</th>
+                                <th>Data/Hora de Abertura da Nota de Referência</th>
+                                <th>Data/Hora de Abertura da COPESE</th>
+                                <th>Status (Sistema) da COPESE</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.gridNotaCopese.Count; i++)
+                            {
+                                <tr>
+                                    <td>@Model.gridNotaCopese[i].nr_copese</td>
+                                    <td>@Model.gridNotaCopese[i].nr_nota_ref</td>
+                                    <td>@Model.gridNotaCopese[i].ds_lc_inst</td>
+                                    <td>@Model.gridNotaCopese[i].ds_nota</td>
+                                    @if (Model.gridNotaCopese[i].nr_nota_ref != null)
+                                    {
+                                        <td>@Model.gridNotaCopese[i].dt_abertura_nota_ref</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    <td>@Model.gridNotaCopese[i].dt_abertura_nota_copese</td>
+                                    <td>@Model.gridNotaCopese[i].ds_st_copese</td>
+                                    <td>
+                                        <a href="#" data-id="@Model.gridNotaCopese[i].id_copese" class="consultarDetalhes" title="Consultar Detalhes"><i class="material-icons">search</i></a>
+                                        <a href="/CopesePericia/editarNotaCopeseEFMR?id=@Model.gridNotaCopese[i].id_copese" title="Consultar Detalhes"><i class="material-icons">edit</i></a>
+                                        @*<i class="material-icons estornarNota" title="Estornar a Nota">reply</i>*@
+                                        <i class="material-icons encerrarNota" title="Encerrar a Nota">done</i>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                </div>
+            }
+        </form>
+    }
+</section>
+@section scripts {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/CopesePericia/pesquisarNotaCopeseEF.js")
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+}

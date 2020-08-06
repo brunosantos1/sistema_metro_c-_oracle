@@ -1,0 +1,543 @@
+﻿@model PM.Web.ViewModel.NotaOCOPOLViewModel
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @ViewBag.Message
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<h2>Nota de Manutenção Corretiva/Preventiva de Equipamento/Material @ViewBag.Action</h2>
+
+<section id="loginForm">
+    @using (Html.BeginForm("SalvarNotaOCOPOL", "Oficina2", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <form id="MyForm">
+            <!-- Modal -->
+            <div class="modal fade" id="modal_center" tabindex="-1" role="dialog" aria-labelledby="CancelarNota" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Informe o motivo do cancelamento</p>
+                            <textarea id="motivoCancelamento" class="form-control"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Modal-->
+
+            <h5>Nota de Referência:</h5>
+            <div class="row">
+                <div class="col-md-3 col-xl-2">
+                    <div class="form-group">
+                        <label for="txtNotaReferen">Nota de Referência:</label>
+                        <div style="display:block;">
+                            <div style="float:left;">
+                                @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.HiddenFor(model => model.id_nota_Ref)
+                                @Html.HiddenFor(model => model.id_nota)
+                            </div>
+                            <div id="cd_nota_sap_Ref_pesquisar" style="float:left;">
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="BuscarNotaRef();" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="txtTpNota">Tipo de Nota:</label>
+                        @Html.EditorFor(model => model.cd_tp_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-4">
+                    <div class="form-group">
+                        <label for="txtDescrNota">Descrição da Nota:</label>
+                        @Html.EditorFor(model => model.ds_descricao_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-10 col-xl-8">
+                    <div class="form-group">
+                        <label for="txtLocalInstEquipMaterial">Local de Instalação/Equipamento/Material:</label>
+                        @Html.EditorFor(model => model.cd_local_inst_sap_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        @*@Html.HiddenFor(model => model.id_local_inst_Ref)*@
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-10 col-xl-7">
+                    <div class="form-group">
+                        <label for="txtDescrLocalInstEquipMaterial">Descrição do Local de Instalação/Equipamento/Material:</label>
+                        @Html.EditorFor(model => model.ds_local_inst_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-xl-2">
+                    <div class="form-group">
+                        <label for="txtSintoma">Sintoma:</label>
+                        @Html.EditorFor(model => model.ds_breve_code_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-2">
+                    <div class="form-group">
+                        <label for="txtDataAbertura">Data de Abertura:</label>
+                        @Html.EditorFor(model => model.dt_hora_nota_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-2">
+                    <div class="form-group">
+                        <label for="txtDataEncerramento">Data de Encerramento:</label>
+                        @Html.EditorFor(model => model.dt_hora_nota_encerramento_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-5 col-xl-6">
+                    <div class="form-group">
+                        <label for="txtCentroTrab">Centro de Trabalho:</label>
+                        @Html.EditorFor(model => model.ds_breve_CentroTrabalho_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-11">
+                    <div class="form-group">
+                        <label for="txtObs">Observação:</label>
+                        @Html.EditorFor(model => model.ds_observacao_Ref, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", rows = "8" } })
+                    </div>
+                </div>
+            </div>
+            <h5>Nota de Oficina:</h5>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="selectTpNota">Tipo de Nota:</label>
+                        @if (Model != null && Model.SelecionarTipoNota != null)
+                        {
+                            @Html.DropDownListFor(model => model.id_tp_nota, (IEnumerable<SelectListItem>)Model.SelecionarTipoNota, new { @class = "form-control selectpicker pickerWorkflow" })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="form-group">
+                        <label for="txtDescrNota">Descrição da Nota:</label>
+                        @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-11">
+                    <div class="form-group">
+                        <label for="txtObs">Obervação:</label>
+                        @Html.EditorFor(model => model.ds_observacao, new { htmlAttributes = new { @class = "form-control", rows = "8" } })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xl-2">
+                    <div class="form-group">
+                        <label for="selectPrioridade">Prioridade:</label>
+                        @if (Model != null && Model.SelecionarPrioridade != null)
+                        {
+                            @Html.DropDownListFor(model => model.id_prioridade, (IEnumerable<SelectListItem>)Model.SelecionarPrioridade, new { @class = "form-control selectpicker pickerWorkflow" })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtEtiqueta">Etiqueta:</label>
+                        @Html.EditorFor(model => model.eq_etiqueta, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtElementoPEP">Elemento PEP:</label>
+
+                        <div style="display:block;">
+                            <div style="float:left;">
+                                @Html.EditorFor(model => model.id_elemento_pep, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div id="id_elemento_pep_pesquisar" style="float:left;">
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="BuscarElementoPEP();" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 col-lg-4">
+                    <div class="form-group">
+                        <label for="txtDescrElementoPEP">Descrição do Elemento PEP:</label>
+                        @Html.EditorFor(model => model.ds_elemento_pep, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xl-3">
+                    <div class="form-group">
+                        <label for="txtEquipamento">Equipamento:</label>
+                        <div style="display:block;">
+                            <div style="float:left;">
+                                @Html.EditorFor(model => model.id_equipamento, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div id="id_equipamento_pesquisar" style="float:left;">
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="DadosEquipamento();" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xl-4">
+                    <div class="form-group">
+                        <label for="txtDescrEquipamento">Descrição do Equipamento:</label>
+                        @Html.EditorFor(model => model.ds_objeto_tecnico, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="txtNumSerie">Núm. Série:</label>
+                        @Html.EditorFor(model => model.nr_serie_fabricante, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <div class="form-group">
+                        <label for="txtNumIdTecnica">Núm. Id. Técnica:</label>
+                        @Html.EditorFor(model => model.nr_identificacao_tecnica, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <div class="form-group">
+                        <label for="txtNumInventario">Núm. Inventário:</label>
+                        @Html.EditorFor(model => model.nr_inventario, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtCodMaterial">Cód. Material:</label>
+                        <div style="display:block;">
+                            <div style="float:left;">
+                                @Html.EditorFor(model => model.id_material, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div id="id_material_pesquisar" style="float:left;">
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="BuscarMaterial();" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtDescrMaterial">Descrição do Material:</label>
+                        @Html.EditorFor(model => model.ds_material, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtQtdeLote">Quantidade (Lote):</label>
+                        @Html.EditorFor(model => model.Qt_Lote, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtGiro">Giro:</label>
+                        @Html.EditorFor(model => model.Qt_Giro, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtQtdeIndispon">Qtde. Indisponível:</label>
+                        @Html.EditorFor(model => model.Qt_Indisponivel, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="txtCodMaterial">Centro de Trabalho:</label>
+                        <div style="display:block;">
+                            <div style="float:left;">
+                                @Html.EditorFor(model => model.ct_trabalho, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.HiddenFor(model => model.id_ct_trabalho)
+                            </div>
+                            <div id="id_material_pesquisar" style="float:left;">
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="BuscarCentroTrabalho();" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="txtDescrCentroTrab">Descrição do Centro de Trabalho:</label>
+                        @Html.EditorFor(model => model.ds_ct_trabalho, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <h5>Lista de Tarefas:</h5>
+            <div id="divListaTarefa"></div>
+            @Html.HiddenFor(model => model.string_lista_tarefa)
+
+            <script type="text/javascript">
+            function BuscarListaTarefas() {
+                var url = "/oficina2/GetListaTarefas/";
+                $.post(url, { id_equipamento: $("#id_equipamento").val() })
+                    .done(function (response) {
+                        $("#divListaTarefa").html(response);
+                    });
+            }
+            </script>
+
+            <br />
+
+            <h5>Lista de Materiais:</h5>
+            <div id="divListaTarefaMaterial"></div>
+            @Html.HiddenFor(model => model.string_lista_tarefa_material)
+
+            <script type="text/javascript">
+            function BuscarListaTarefaMaterial() {
+                var url = "/oficina2/GetListaTarefaMaterial/";
+
+                $.post(url, { listaTarefaSelecionar: $("#string_lista_tarefa").val(), listaTarefaMaterialSelecionar: $("#string_lista_tarefa_material").val() })
+                    .done(function (response) {
+                        $("#divListaTarefaMaterial").html(response);
+                    });
+            }
+            </script>
+
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+                        @if (@ViewBag.Action != "Consultar")
+                        {
+                            <button type="submit" class="btn btn-primary salvarNota" id="btnSalvar">Salvar</button>
+                        }
+                        <button type="button" class="btn btn-primary cancelarNota" id="btnCancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    }
+</section>
+
+@section scripts
+    {
+    @*@Scripts.Render("~/Scripts/Oficina/notaOCOPOL.js")*@
+
+    @if (@ViewBag.Action == "Consultar")
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("disabled", true);
+            $('#id_tp_nota').attr("disabled", true);
+            $('#ds_descricao').attr("disabled", true);
+            $('#ds_observacao').attr("disabled", true);
+            $('#id_prioridade').attr("disabled", true);
+            $('#eq_etiqueta').attr("disabled", true);
+            $('#id_elemento_pep').attr("disabled", true);
+            $('#id_equipamento').attr("disabled", true);
+            $('#id_material').attr("disabled", true);
+            $('#Qt_Lote').attr("disabled", true);
+            $('#id_centro_trabalho').attr("disabled", true);
+
+            document.getElementById("cd_nota_sap_Ref_pesquisar").style.display = "none";
+            document.getElementById("id_elemento_pep_pesquisar").style.display = "none";
+            document.getElementById("id_equipamento_pesquisar").style.display = "none";
+            document.getElementById("id_material_pesquisar").style.display = "none";
+        </script>
+    }
+}
+
+
+<script type="text/javascript">
+    function BuscarNotaRef() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarNotaRef",
+                data: { 'nr_nota_sap': $("#cd_nota_sap_Ref").val() },
+                success: function (dados) {
+                    $("#id_nota_Ref").val(dados.IdNota);
+                    $("#cd_tp_nota_sap_Ref").val(dados.TipoNota.DsTpNota);
+                    $("#ds_descricao_Ref").val(dados.DsDescricao);
+                    $("#ds_observacao_Ref").val(dados.DsObservacao);
+                    $("#ds_breve_CentroTrabalho_Ref").val(dados.CentroTrabalho.DsCtTrabalho);
+
+                    var fieldLocalEquipMater = "";
+                    if (dados.LocalInstalacao != null)
+                        fieldLocalEquipMater += dados.LocalInstalacao.IdLcInstalacao;
+                    if (dados.Equipamento != null) {
+                        if (fieldLocalEquipMater == "")
+                            fieldLocalEquipMater += dados.Equipamento.IdEquipamento;
+                        else
+                            fieldLocalEquipMater += "/" + dados.Equipamento.IdEquipamento;
+                    }
+                    if (dados.Material != null) {
+                        if (fieldLocalEquipMater == "")
+                            fieldLocalEquipMater += dados.Material.IdMaterial;
+                        else
+                            fieldLocalEquipMater += "/" + dados.Material.IdMaterial;
+                    }
+
+                    var fieldLocalEquipMaterDS = "";
+                    if (dados.LocalInstalacao != null)
+                        fieldLocalEquipMaterDS += dados.LocalInstalacao.DsLcInstalacao;
+                    if (dados.Equipamento != null) {
+                        if (fieldLocalEquipMaterDS == "")
+                            fieldLocalEquipMaterDS += dados.Equipamento.DsEquipamento;
+                        else
+                            fieldLocalEquipMaterDS += "/" + dados.Equipamento.DsEquipamento;
+                    }
+                    if (dados.Material != null) {
+                        if (fieldLocalEquipMaterDS == "")
+                            fieldLocalEquipMaterDS += dados.Material.DsMaterial;
+                        else
+                            fieldLocalEquipMaterDS += "/" + dados.Material.DsMaterial;
+                    }
+
+                    $("#cd_local_inst_sap_Ref").val(fieldLocalEquipMater);
+                    $("#ds_local_inst_Ref").val(fieldLocalEquipMaterDS);
+
+                    if (dados.CodeSintoma != null)
+                        $("#ds_breve_code_Ref").val(dados.CodeSintoma.DsBreveCode);
+
+                    if (dados.DtHoraNota != null)
+                        $("#NotaRef_dt_hora_nota").val(JSON.stringify(dados.DtHoraNota));
+                }
+            });
+        });
+    }
+
+    function BuscarElementoPEP() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarElementoPEP",
+                data: { 'id_elemento_pep': $("#id_elemento_pep").val() },
+                success: function (dados) {
+                    $("#ds_elemento_pep").val(dados.DsElementoPep);
+                }
+            });
+        });
+    }
+
+    function BuscarEquipamento() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarEquipamento",
+                data: { 'id_equipamento': $("#id_equipamento").val() },
+                success: function (dados) {
+                    $("#ds_objeto_tecnico").val(dados.DsEquipamento);
+                    $("#nr_serie_fabricante").val(dados.NrSerieFabricante);
+                    $("#nr_identificacao_tecnica").val(dados.NrIdentifTecnica);
+                    $("#nr_inventario").val(dados.NrInventario);
+                }
+            });
+        });
+    }
+
+    function BuscarMaterial() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarMaterial",
+                data: { 'id_material': $("#id_material").val() },
+                success: function (dados) {
+                    $("#ds_material").val(dados.DsMaterial);
+                }
+            });
+        });
+    }
+
+    function BuscarCentroTrabalho() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarCentroTrabalho",
+                data: { 'sigla': $("#ct_trabalho").val() },
+                success: function (dados) {
+                    $("#id_ct_trabalho").val(dados.IdCtTrabalho);
+                    $("#ds_ct_trabalho").val(dados.DsCtTrabalho);
+                }
+            });
+        });
+    }
+
+    function DadosEquipamento() {
+        BuscarEquipamento();
+        BuscarListaTarefas();
+    }
+
+    function lista_tarefa_change(el) {
+        var lista = $("#string_lista_tarefa").val().split('|');
+        var string_lista_tarefa = "";
+        var passou = false;
+
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i] != "") {
+                if (lista[i].indexOf(el.value) >= 0) {
+                    lista[i] = el.value + "-" + el.checked + "|";
+                    passou = true;
+                }
+                string_lista_tarefa = string_lista_tarefa + lista[i] + "|";
+            }
+        }
+
+        if (passou == false)
+            string_lista_tarefa = string_lista_tarefa + el.value + "-" + el.checked + "|";
+
+        $("#string_lista_tarefa").val(string_lista_tarefa);
+        BuscarListaTarefaMaterial();
+
+        //quando desmarcar uma lista de tarefa falta desmarcar todos os materiais dessa lista de tarefa
+    }
+
+    function lista_tarefa_material_change(el) {
+        var lista = $("#string_lista_tarefa_material").val().split('|');
+        var string_lista_tarefa_material = "";
+        var passou = false;
+
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i] != "") {
+                if (lista[i].indexOf(el.value) >= 0) {
+                    lista[i] = el.value + "-" + el.checked + "|";
+                    passou = true;
+                }
+                string_lista_tarefa_material = string_lista_tarefa_material + lista[i] + "|";
+            }
+        }
+
+        if (passou == false)
+            string_lista_tarefa_material = string_lista_tarefa_material + el.value + "-" + el.checked + "|";
+
+        $("#string_lista_tarefa_material").val(string_lista_tarefa_material);
+    }
+
+</script>

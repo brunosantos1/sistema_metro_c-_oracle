@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PM.LogAndAlert.Models.SistemaPerfil>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Perfil de Acesso";
+}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-blue-sky">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">@ViewBag.Title</h4>
+        </div>
+        @using (Html.BeginForm("Index", "PerfilAcesso", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+                                <label for="selectFrota">Selecione o perfil o qual deseja copiar. </label>
+                                <p>Lembre-se que uma vez copiado, a configuração do perfil atual será alterada e não terá volta</p>
+                                <select class="form-control" id="ddlPerfil" name="ddlPerfil"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/PerfilAcesso/getPerfil",
+            data: "{}",
+            success: function (data) {
+                var s = '<option value="-1">SELECIONE</option>';
+                for (var i = 0; i < data.length; i++) { s += '<option value="' + data[i].id_perfil + '">' + data[i].ds_descricao + '</option>'; }
+                $("#ddlPerfil").html(s);
+            }
+        });
+    });
+</script>

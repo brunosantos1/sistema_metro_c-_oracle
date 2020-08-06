@@ -1,0 +1,445 @@
+﻿<h2>Equipamento Fixo - Consulta de Detalhes de Medida da Nota</h2>
+<form>
+    <div class="row">
+        <div class="col-sm">
+            <h3>NOTA</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nota</th>
+                            <th>Ordem</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Cntr trb</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100002760</td>
+                            <td>40033612</td>
+                            <td>10/07/2018</td>
+                            <td>16:15:00</td>
+                            <td>VPL13</td>
+                            <td>Em Execução</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Local Instalação</th>
+                            <th>Sintoma</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>M-L05-PEN-3VA</td>
+                            <td>Trilho de rolamento com problema</td>
+                            <td>Trilho A. prox. Sin. 29º</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Notificador</th>
+                            <th>Diagnóstico</th>
+                            <th>Local Instalação Principal</th>
+                            <th>Finalidade principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22122</td>
+                            <td>A-Falha</td>
+                            <td>M-L03-PEN-3VA</td>
+                            <td>3VA1O</td>
+                        </tr>
+                        <tr>
+                            <td>Observação:</td>
+                            <td colspan="5">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" style="height:150px;" class="form-control" id="inputMotivo'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Histórico</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Criada por</th>
+                            <th>Resp</th>
+                            <th>Txt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Solicitada</td>
+                            <td>11/07/2018</td>
+                            <td>16:15:00</td>
+                            <td>10121</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Aberta</td>
+                            <td>11/07/2018</td>
+                            <td>16:16:00</td>
+                            <td>10121</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Alocada</td>
+                            <td>11/07/2018</td>
+                            <td>16:17:00</td>
+                            <td>25435</td>
+                            <td>MRSGC</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Recebida</td>
+                            <td>11/07/2018</td>
+                            <td>16:18:00</td>
+                            <td>25435</td>
+                            <td>22022</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Em Execução</td>
+                            <td>11/07/2018</td>
+                            <td>16:00:00</td>
+                            <td>25435</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Em Transferência</td>
+                            <td>11/07/2018</td>
+                            <td>20:00:00</td>
+                            <td>16272</td>
+                            <td>VPL13</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <h3>NOTAS VINCULADAS</h3>
+            <button type="button" data-id="1" id="btn_notas_vinculadas" class="btn btn-primary">Notas Vinculadas</button>
+        </div>
+        <div class="col-sm">
+            <h3>DOCUMENTOS VINCULADOS</h3>
+            <button type="button" data-id="1" id="btn_documentos_vinculados" class="btn btn-primary">Documentos Vinculados</button>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm">
+            <h3>OPERAÇÃO</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>Operação</th>
+                            <th>Tex breve Operação</th>
+                            <th>Num</th>
+                            <th>Dur</th>
+                            <th>Nota EA</th>
+                            <th>Centro trab</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>40033485</td>
+                            <td>0020</td>
+                            <td>Inspeção Geral de via</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>10002760</td>
+                            <td>VPL14</td>
+                            <td>10/07/2018</td>
+                            <td>16:15:00</td>
+                            <td>CONF</td>
+                        </tr>
+                        <tr>
+                            <td>40033485</td>
+                            <td>0030</td>
+                            <td>Inspeção Geral de via</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td></td>
+                            <td>VPL14</td>
+                            <td>12/07/2018</td>
+                            <td>16:15:00</td>
+                            <td>PROG</td>
+                        </tr>
+                        <tr>
+                            <td>40033485</td>
+                            <td>0040</td>
+                            <td>Inspeção Geral de via</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>10002762</td>
+                            <td>VPL14</td>
+                            <td>13/07/2018</td>
+                            <td>16:15:00</td>
+                            <td>PROG</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm">
+            <h3>MÃO DE OBRA</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Oper</th>
+                            <th>Ordem</th>
+                            <th>Tex breve Operação</th>
+                            <th>Cen.Trab.</th>
+                            <th>Tativ.</th>
+                            <th>Ch Contr</th>
+                            <th>Data</th>
+                            <th>RG</th>
+                            <th>Preparo</th>
+                            <th>Desloc.</th>
+                            <th>Acesso</th>
+                            <th>Exec.</th>
+                            <th>Unid.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>010</td>
+                            <td>40033486</td>
+                            <td></td>
+                            <td>VPN14</td>
+                            <td>TARIFA2</td>
+                            <td>PM01</td>
+                            <td>10/07/2018</td>
+                            <td>19032</td>
+                            <td>10</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>140</td>
+                            <td>min</td>
+                        </tr>
+                        <tr>
+                            <td>010</td>
+                            <td>40033486</td>
+                            <td></td>
+                            <td>VPN14</td>
+                            <td>TARIFA2</td>
+                            <td>PM01</td>
+                            <td>10/07/2018</td>
+                            <td>19032</td>
+                            <td>10</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>140</td>
+                            <td>min</td>
+                        </tr>
+                        <tr>
+                            <td>010</td>
+                            <td>40033486</td>
+                            <td></td>
+                            <td>VPN14</td>
+                            <td>TARIFA2</td>
+                            <td>PM01</td>
+                            <td>10/07/2018</td>
+                            <td>19032</td>
+                            <td>10</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>140</td>
+                            <td>min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm">
+            <h3>MATERIAL</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Denominação</th>
+                            <th>Qtde</th>
+                            <th>Unid</th>
+                            <th>TI</th>
+                            <th>Depósito</th>
+                            <th>Centro</th>
+                            <th>Reserva/Req</th>
+                            <th>Loc Entrega</th>
+                            <th>Recebedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1007008</td>
+                            <td>PO DE SOLIDA CADWELD</td>
+                            <td>5</td>
+                            <td>PEC</td>
+                            <td>L - Item estocado</td>
+                            <td>JREC</td>
+                            <td>PPAT</td>
+                            <td>Imediatamente</td>
+                            <td>EPB - vpl</td>
+                            <td>19069</td>
+                        </tr>
+                        <tr>
+                            <td>1007008</td>
+                            <td>PO DE SOLIDA CADWELD</td>
+                            <td>5</td>
+                            <td>PEC</td>
+                            <td>L - Item estocado</td>
+                            <td>JREC</td>
+                            <td>PPAT</td>
+                            <td>Imediatamente</td>
+                            <td>EPB - vpl</td>
+                            <td>19069</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm">
+            <h3>MAP</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>MAP</th>
+                            <th>Denominação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20001108</td>
+                            <td>TORQUIMETRO</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm">
+            <h3>INTERVENÇÃO</h3>
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Nota EA</th>
+                            <th>Loc Instalação</th>
+                            <th>Parte obj</th>
+                            <th>Descrição</th>
+                            <th>Defeito</th>
+                            <th>Descrição</th>
+                            <th>Reparo/Não reparo</th>
+                            <th>Descrição</th>
+                            <th>qtde</th>
+                            <th>Marco</th>
+                            <th>Dist(m)</th>
+                            <th>Comp(m)</th>
+                            <th>Equipe desinst</th>
+                            <th>Equipe instal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0010</td>
+                            <td>1002796</td>
+                            <td>M-L03-PEN-3VA</td>
+                            <td>3VA3001</td>
+                            <td>Solda Aluminio termica</td>
+                            <td>260</td>
+                            <td>Com rebarba</td>
+                            <td>REPARO 53E</td>
+                            <td>ESMERILHADO</td>
+                            <td>2</td>
+                            <td>260</td>
+                            <td>MT3522</td>
+                            <td>2,3</td>
+                            <td>0</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>0010</td>
+                            <td>1002796</td>
+                            <td>M-L03-PEN-3VA</td>
+                            <td>3VA10</td>
+                            <td>Trilho de rolamento</td>
+                            <td>18R</td>
+                            <td>Desgaste anormal</td>
+                            <td>REPARO 53E</td>
+                            <td>ESMERILHADO</td>
+                            <td>2</td>
+                            <td>260</td>
+                            <td>MT3522</td>
+                            <td>2,3</td>
+                            <td>0</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="col-sm-12">
+        <div class="text-right">
+            <button type="button" class="btn btn-primary">Voltar</button>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/EquipamentoFixo/DetalhesNota.js")
+}

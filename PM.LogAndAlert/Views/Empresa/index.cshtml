@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PM.WebServices.Models.SistemaEmpresa>
+
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Empresas/Agrupamento";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+
+        <p>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="text-right">
+                        @Html.ActionLink("Novo Registro", "Add", new { controller = "Empresa", id = 0 }, new { @class = "btn btn-primary btn-xs" })
+                    </div>
+                </div>
+            </div>
+        </p>
+
+        <div class="x_content">
+            <table id="Tabela1" class="table table-striped table-bordered dt-responsive nowrap datatable-responsive" cellspacing="0" style="width: 100%">
+                <thead>
+
+                    <tr nowrap>
+                        <th nowrap class="col-md-9">Descrição</th>
+                        <th nowrap class="col-md-1">Nº Aplicações</th>
+                        <th nowrap class="col-md-1">Situação</th>
+                        <th nowrap class="col-md-1 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr @string.Format("{0}", item.IsAtivo ? "" : "style=color:red;")>
+                            <td>@item.DsDescricao</td>
+
+                            <td class="text-center">@string.Format("{0:0000}", @item.IdAplicacao.Count())</td>
+                            <td class="text-center">@string.Format("{0}", @item.IsAtivo ? "ATIVO" : "INATIVO")</td>
+
+                            <td class="text-center">
+                                @Html.ActionLink("Editar", "edit", new { controller = "Empresa", id = item.IdEmpresa }, new { @class = "btn btn-primary btn-xs" })
+                                @Html.ActionLink("Aplicação", "index", new { controller = "Aplicacao", id = item.IdEmpresa }, new { @class = "btn btn-primary btn-xs" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@using PM.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+        <section class="flexbox-container" id="loginForm">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="col-md-3 col-10 box-shadow-2 p-0">
+                    <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                        <div class="card-header border-0">
+                            <div class="card-title text-center">
+                                <img src="~/Content/images/login_transparent.png" />
+                            </div>
+                            <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+                                <span>Portal - Metrô</span>
+                            </h6>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                                    <fieldset class="form-group position-relative has-icon-left">
+                                        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Usuário de Rede", @class = "form-control" })
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="form-group position-relative has-icon-left">
+                                        @Html.PasswordFor(m => m.Password, new { placeholder = "Senha de Rede", @class = "form-control" })
+                                        <div class="form-control-position">
+                                            <i class="icon-key"></i>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group row">
+                                        @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsLoginLembrarUsuario"].ToString()))
+                                        {
+                                            <div class="col-md-6 col-12 text-center text-sm-left">
+                                                <fieldset>
+                                                    <input type="checkbox" id="remember-me" class="chk-remember">
+                                                    <label for="remember-me"> Lembrar-me</label>
+                                                </fieldset>
+                                            </div>
+                                        }
+
+                                        @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsLoginLembrarSenha"].ToString()))
+                                        {
+                                            <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a href="recover-password.html" class="card-link">Esqueceu a Senha?</a></div>
+                                        }
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary btn-block"><i class="icon-lock-open"></i> Login</button>
+                                }
+
+                            </div>
+                            <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
+                                <span>Novo no Portal ?</span>
+                            </p>
+                            @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsLoginRegister"].ToString()))
+                            {
+                                <div class="card-body">
+                                    <a href="/Account/Register" class="btn btn-outline-danger btn-block"><i class="icon-users"></i> Resgistrar-se</a>
+                                    @*<button type="submit" class="btn btn-outline-danger btn-block"><i class="icon-users"></i> Resgistrar-se</button>*@
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

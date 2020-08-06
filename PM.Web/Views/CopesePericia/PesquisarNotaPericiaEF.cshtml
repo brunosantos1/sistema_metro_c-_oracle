@@ -1,0 +1,188 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<h2>Pesquisar Perícia - Equipamento Fixo</h2>
+<form>
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="selectTipoLocalInst">Tipo de Local de Instalação:</label>
+                <select class="form-control" id="selectTipoLocalInst">
+                    <option selected>Teste 123 12 Test 20</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="selectLinha">Linha:</label>
+                <select class="form-control" id="selectLinha">
+                    <option selected>L03</option>
+                    <option>L02</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="selectZona">Zona:</label>
+                <select class="form-control" id="selectZona">
+                    <option selected>Z01</option>
+                    <option>Z02</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-1">
+            <div class="form-group">
+                <label for="selectSistema">Sistema:</label>
+                <select class="form-control" id="selectSistema">
+                    <option selected>S01</option>
+                    <option>S02</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-5 col-xl-3">
+            <div class="form-group">
+                <label for="selectComplemen">Complemento:</label>
+                <select class="form-control" id="selectComplemen">
+                    <option selected></option>
+                    <option>Teste 123 12 Test 20Teste 123 12 Test 40</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-5 col-xl-3">
+            <div class="form-group">
+                <label for="selectSintoma">Sintoma:</label>
+                <select class="form-control" id="selectSintoma">
+                    <option selected></option>
+                    <option>Teste 123 12 Test 20Teste 123 12 Test 40</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2">
+            <div class="form-group">
+                <label for="txtNumCopese">Número COPESE:</label>
+                <input type="text" class="form-control" id="txtNumCopese" value="Teste 123 12">
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtNotaReferen">Nota de Referência:</label>
+                <input type="text" class="form-control" id="txtNotaReferen" value="Teste 123 12">
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <label>De:</label>
+            <input id="dateDe" />
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <label>Até:</label>
+            <input id="dateAte" />
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group" id="selectLocal">
+                <label for="selectStatus">Status:</label>
+                <select class="form-control" id="selectStatus">
+                    <option selected>Teste 123 12</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="selectEventoGerador">Evento Gerador:</label>
+                <select class="form-control" id="selectEventoGerador">
+                    <option selected>Teste 123 12</option>
+                    <option>teste</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtNumBoMetro">Número BO Metrô:</label>
+                <input type="text" class="form-control" id="txtNumBoMetro" value="Teste 123 12">
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtNumBoSSP">Nota BO SSP:</label>
+                <input type="text" class="form-control" id="txtNumBoSSP" value="Teste 123 12">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" id="btnFiltrar">Filtrar</button>
+                <button type="reset" class="btn btn-primary" id="btnLimpar">Limpar Filtro</button>
+                <button type="button" class="btn btn-primary" id="btnExportar">Exportar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nº Perícia</th>
+                            <th>Nota de Referência</th>
+                            <th>Local de Instalação da Referência</th>
+                            <th>Descrição da Referência</th>
+                            <th>Data/Hora de Abertura da Perícia</th>
+                            <th>Status (Sistema) da Perícia</th>
+                            <th class="acao">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456512345</td>
+                            <td>123456512345</td>
+                            <td>Material Rodante 123</td>
+                            <td>Material Rodante 123</td>
+                            <td>25/01/2019 22:45:12</td>
+                            <td>Material Rodante 123</td>
+                            <td class="align-middle acao">
+                                <a href="#" data-id="1" class="consultarDetalhes"><i class="material-icons">search</i></a>
+                                <i class="material-icons">edit</i>
+                                <i class="material-icons encerrarNota">done</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                            <td class="align-middle acao">
+                                <a href="#" data-id="1" class="consultarDetalhes"><i class="material-icons">search</i></a>
+                                <i class="material-icons">edit</i>
+                                <i class="material-icons encerrarNota">done</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009/01/12</td>
+                            <td>$86,000</td>
+                            <td class="align-middle acao">
+                                <a href="#" data-id="1" class="consultarDetalhes"><i class="material-icons">search</i></a>
+                                <i class="material-icons">edit</i>
+                                <i class="material-icons encerrarNota">done</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/CopesePericia/pesquisarNotaPericiaEF.js")
+}

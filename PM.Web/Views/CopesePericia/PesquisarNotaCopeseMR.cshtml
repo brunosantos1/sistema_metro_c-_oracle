@@ -1,0 +1,116 @@
+﻿@model PM.Web.ViewModel.Copese.PesquisaNotaCopeseEFMRViewModel
+
+<section id="loginForm">
+    @using (Html.BeginForm())
+    {
+        <form>
+            <br />
+            <ul class="nav">
+                <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Pesquisar COPESE - Material Rodante</h5></a></li>
+            </ul>
+            <div class="tab-content jumbotron">
+                <div class="tab-pane active in" id="first-tab">
+                    <div class="row">
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                            <label for="selectFrota">Frota:</label>
+                            @if (Model != null && Model.SelecionarFrota != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_frota_fk, (IEnumerable<SelectListItem>)Model.SelecionarFrota, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarTrens();" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                            <label for="selectTrem">Trem:</label>
+                            @if (Model != null && Model.SelecionarTrem != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_trem_fk, (IEnumerable<SelectListItem>)Model.SelecionarTrem, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarCarros();" })
+                            }
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                            <label for="selectCarro">Carro:</label>
+                            @if (Model != null && Model.SelecionarCarro != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_carro, (IEnumerable<SelectListItem>)Model.SelecionarCarro, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Sintoma">
+                            <label for="selectSintoma">Sintoma:</label>
+                            @if (Model != null && Model.SelecionarSintoma != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_sintoma, (IEnumerable<SelectListItem>)Model.SelecionarSintoma, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12">
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumCopese">
+                            <label for="txtNumCopese">Número COPESE:</label>
+                            @Html.EditorFor(model => model.nr_copese, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataInicio">
+                            <label for="dateDe">De:</label>
+                            @Html.EditorFor(model => model.dt_inicio, new { htmlAttributes = new { @class = "form-control FormatDateDe" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DataFinal">
+                            <label for="dateAte">Até:</label>
+                            @Html.EditorFor(model => model.dt_fim, new { htmlAttributes = new { @class = "form-control FormatDateAte" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                            <label for="txtNotaRef">Nota de Referência:</label>
+                            @Html.EditorFor(model => model.nr_nota_ref, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_Status">
+                            <label for="selectStatus">Status:</label>
+                            @if (Model != null && Model.SelecionarStatusCopese != null)
+                            {
+                                @Html.DropDownListFor(model => model.id_st_copese_fk, (IEnumerable<SelectListItem>)Model.SelecionarStatusCopese, new { @class = "form-control selectpicker pickerWorkflow" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary " id="btnExportar" onclick="loadFiltros()">Filtrar</button>
+                        <button type="reset" class="btn btn-primary" id="btnLimpar" onclick="location.href='@Url.Action("LimparNotaCopeseMR", "CopesePericia")'">Limpar Filtro</button>
+                        <button type="submit" class="btn btn-primary" name="FiltrarNotaCopeseMR" formaction="ExportToExcelMR" id="btnFiltrar">Exportar</button>
+                    </div>
+                </div>
+            </div>
+            @if (ViewBag.NaoEncontrado == null)
+            {
+                <div class="row">
+                    <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                        <span class="text-danger">@ViewBag.NaoEncontrado</span>
+                    </div>
+                </div>
+            }
+            <div>
+                <br />
+                <table id="tblCopeseMR" class="nowrap table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nota de Ref</th>
+                            <th>Nota COPESE</th>
+                            <th>Local de Instalação</th>
+                            <th>Descrição do Local de Instalação</th>
+                            <th>Descrição da Nota</th>
+                            <th>Sintoma</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Notificador</th>
+                            <th>Centro de Trabalho</th>
+                            <th>Status da COPESE</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                </table>
+                <br />
+            </div>
+        </form>
+    }
+</section>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/pesquisarNotaCopeseMR.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+}

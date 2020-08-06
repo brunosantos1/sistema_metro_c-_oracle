@@ -1,0 +1,188 @@
+﻿<h2>Material Rodante - Pesquisar Ordens</h2>
+<div class="row">
+    <div class="form-group col-md-2">
+        <label for="selectFrota">Tipo de Ordem</label>
+        <select class="form-control" id="selectTipoOrdem">
+            <option></option>
+        </select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="inputDataInicial">De</label>
+        <input class="form-control" id="inputDataInicial">
+    </div>
+    <div class="form-group col-md-1">
+        <label for="inputDataFinal">Até</label>
+        <input class="form-control" id="inputDataFinal">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="selectTrem">Loc Instalação (aba Itens)</label>
+        <input class="form-control" id="inputNota">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="selectSistema">Status do Usuário</label>
+        <select class="form-control" id="selectGrTrab"></select>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputEquipe">Equipe</label>
+        <input class="form-control" id="inputEquipe">
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col">
+        <button type="button" class="btn btn-primary">Filtrar</button>
+        <button type="button" class="btn btn-primary">Limpar filtro</button>
+        <button type="button" class="btn btn-primary">Exportar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="table-responsive col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tp</th>
+                    <th scope="col">Ordem</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Descrição da Ordem</th>
+                    <th scope="col">Equipe</th>
+                    <th scope="col">Dt/Hr Abertura</th>
+                    <th scope="col">Dt/Hr Encerramento</th>
+                    <th scope="col">Status Usuário</th>
+                    <th scope="col">Oper</th>
+                    <th scope="col">Loc Instalação</th>
+                    <th scope="col">Equipe Inst</th>
+                    <th scope="col">Txt Breve Operação</th>
+                    <th scope="col">Trab Plan</th>
+                    <th scope="col">Trab Realiz</th>
+                    <th scope="col">Unid</th>
+                    <th scope="col">MAT</th>
+                    <th scope="col">MAP</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">MC</td>
+                    <td>1111</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td STYLE="min-width:150px">
+                        <i class="material-icons btn_point" data-id="1" style="cursor:pointer;display:inline" >query_builder</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">MC</td>
+                    <td>2222</td>
+                    <td>MC</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td>AAAA</td>
+                    <td STYLE="min-width:150px">
+                        <i class="material-icons btn_point" data-id="2" style="cursor:pointer;display:inline" >query_builder</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <p>Mão de obra</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">CenTrab</th>
+                        <th scope="col">RG</th>
+                        <th scope="col">Tempo</th>
+                        <th scope="col">Unid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">MC</td>
+                        <td>1111</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>Material</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Componente</th>
+                        <th scope="col">Denominação</th>
+                        <th scope="col">Qtde</th>
+                        <th scope="col">Unid</th>
+                        <th scope="col">TI</th>
+                        <th scope="col">Reserva/Req</th>
+                        <th scope="col">Loc Entrega</th>
+                        <th scope="col">Recebedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">MC</td>
+                        <td>1111</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                        <td>AAAA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>Meio auxiliar de produção</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">MAP</th>
+                        <th scope="col">Denominação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">MC</td>
+                        <td>1111</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/pesquisarOrdens.js")
+}

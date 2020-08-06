@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PM.Domain</RootNamespace>
+    <AssemblyName>PM.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AreaOperacional.cs" />
+    <Compile Include="Entities\Base.cs" />
+    <Compile Include="Entities\CalendarioFabrica.cs" />
+    <Compile Include="Entities\Capacidade.cs" />
+    <Compile Include="Entities\CapacidadePessoal.cs" />
+    <Compile Include="Entities\Carro.cs" />
+    <Compile Include="Entities\Catalogo.cs" />
+    <Compile Include="Entities\CatalogoStatus.cs" />
+    <Compile Include="Entities\CategoriaEquipamento.cs" />
+    <Compile Include="Entities\CategoriaItem.cs" />
+    <Compile Include="Entities\CategoriaPontoMedicao.cs" />
+    <Compile Include="Entities\CentroCusto.cs" />
+    <Compile Include="Entities\CentroLocalizacao.cs" />
+    <Compile Include="Entities\CentroLocalizacaoArOP.cs" />
+    <Compile Include="Entities\CentroPlanejamento.cs" />
+    <Compile Include="Entities\CentroTrabalho.cs" />
+    <Compile Include="Entities\CentroTrabalhoTarifa.cs" />
+    <Compile Include="Entities\ChaveControle.cs" />
+    <Compile Include="Entities\Classificacao.cs" />
+    <Compile Include="Entities\Code.cs" />
+    <Compile Include="Entities\CodigoABC.cs" />
+    <Compile Include="Entities\Complemento.cs" />
+    <Compile Include="Entities\Deposito.cs" />
+    <Compile Include="Entities\Diagnostico.cs" />
+    <Compile Include="Entities\Documento.cs" />
+    <Compile Include="Entities\ElementoPEP.cs" />
+    <Compile Include="Entities\Empregado.cs" />
+    <Compile Include="Entities\EntregaTrem.cs" />
+    <Compile Include="Entities\Enum\ComplementoType.cs" />
+    <Compile Include="Entities\Enum\Mensagens.cs" />
+    <Compile Include="Entities\Enum\PrioridadeType.cs" />
+    <Compile Include="Entities\Enum\MessageType.cs" />
+    <Compile Include="Entities\Enum\ServicoType.cs" />
+    <Compile Include="Entities\Enum\TipoNotaSelecionarType.cs" />
+    <Compile Include="Entities\Equipamento.cs" />
+    <Compile Include="Entities\EquipamentoRastreavel.cs" />
+    <Compile Include="Entities\Estrategia.cs" />
+    <Compile Include="Entities\EstrategiaPacote.cs" />
+    <Compile Include="Entities\EstruturaCentroTrabalho.cs" />
+    <Compile Include="Entities\EventoGerador.cs" />
+    <Compile Include="Entities\Frota.cs" />
+    <Compile Include="Entities\GrupoAutorizacao.cs" />
+    <Compile Include="Entities\GrupoCode.cs" />
+    <Compile Include="Entities\GrupoPlanejamento.cs" />
+    <Compile Include="Entities\IntervencaoOperacao.cs" />
+    <Compile Include="Entities\Linha.cs" />
+    <Compile Include="Entities\LinhaCentroTrabalho.cs" />
+    <Compile Include="Entities\ListaTarefa.cs" />
+    <Compile Include="Entities\ListaTarefaOperacao.cs" />
+    <Compile Include="Entities\ListaTarefaOperacaoComponente.cs" />
+    <Compile Include="Entities\ListaTarefaOperacaoPacote.cs" />
+    <Compile Include="Entities\ListaTecnicaMaterial.cs" />
+    <Compile Include="Entities\ListaTecnicaMaterialItem.cs" />
+    <Compile Include="Entities\LocalInstalacao.cs" />
+    <Compile Include="Entities\Localizacao.cs" />
+    <Compile Include="Entities\Log.cs" />
+    <Compile Include="Entities\Manobra.cs" />
+    <Compile Include="Entities\MaoDeObra.cs" />
+    <Compile Include="Entities\MAP.cs" />
+    <Compile Include="Entities\Marco.cs" />
+    <Compile Include="Entities\Material.cs" />
+    <Compile Include="Entities\MaterialOperacao.cs" />
+    <Compile Include="Entities\MedidaNota.cs" />
+    <Compile Include="Entities\MenuSistema.cs" />
+    <Compile Include="Entities\ModeloLinear.cs" />
+    <Compile Include="Entities\MotivoEntrega.cs" />
+    <Compile Include="Entities\MotivoNaoExecucao.cs" />
+    <Compile Include="Entities\NivelAlerta.cs" />
+    <Compile Include="Entities\Nota.cs" />
+    <Compile Include="Entities\NotaLtTarefaOperacaoComp.cs" />
+    <Compile Include="Entities\NotaProgramacao.cs" />
+    <Compile Include="Entities\OperacaoOrdem.cs" />
+    <Compile Include="Entities\OperacaoProgramacaoEF.cs" />
+    <Compile Include="Entities\Ordem.cs" />
+    <Compile Include="Entities\OrdemProgramacaoEF.cs" />
+    <Compile Include="Entities\Parceiro.cs" />
+    <Compile Include="Entities\Patio.cs" />
+    <Compile Include="Entities\PatioLinha.cs" />
+    <Compile Include="Entities\Perfil.cs" />
+    <Compile Include="Entities\Plano.cs" />
+    <Compile Include="Entities\PlanoItem.cs" />
+    <Compile Include="Entities\PontoMedicao.cs" />
+    <Compile Include="Entities\PontoMedicaoDocMedicao.cs" />
+    <Compile Include="Entities\PontoMedicaoVinculo.cs" />
+    <Compile Include="Entities\Posicao.cs" />
+    <Compile Include="Entities\Prioridade.cs" />
+    <Compile Include="Entities\PrioridadeCentroTrabalho.cs" />
+    <Compile Include="Entities\PrioridadeSintoma.cs" />
+    <Compile Include="Entities\Programacao.cs" />
+    <Compile Include="Entities\ProgramacaoEF.cs" />
+    <Compile Include="Entities\RS\Response.cs" />
+    <Compile Include="Entities\Sistema.cs" />
+    <Compile Include="Entities\SistemaAplicacao.cs" />
+    <Compile Include="Entities\SistemaEmpresa.cs" />
+    <Compile Include="Entities\SistemaLog.cs" />
+    <Compile Include="Entities\SistemaLogError.cs" />
+    <Compile Include="Entities\SistemaLogLogin.cs" />
+    <Compile Include="Entities\SistemaLogOperacoes.cs" />
+    <Compile Include="Entities\SistemaLogOperacoesItem.cs" />
+    <Compile Include="Entities\SistemaMenu.cs" />
+    <Compile Include="Entities\SistemaModulo.cs" />
+    <Compile Include="Entities\SistemaPerfil.cs" />
+    <Compile Include="Entities\SistemaPerfilItem.cs" />
+    <Compile Include="Entities\SistemaTabela.cs" />
+    <Compile Include="Entities\SistemaTabelaCampo.cs" />
+    <Compile Include="Entities\SistemaTipoDado.cs" />
+    <Compile Include="Entities\SistemaTipoLog.cs" />
+    <Compile Include="Entities\SistemaUsuario.cs" />
+    <Compile Include="Entities\SistemaUsuarioModulo.cs" />
+    <Compile Include="Entities\StatusEntregaTrem.cs" />
+    <Compile Include="Entities\StatusListaTarefa.cs" />
+    <Compile Include="Entities\StatusMedida.cs" />
+    <Compile Include="Entities\StatusOperacao.cs" />
+    <Compile Include="Entities\StatusCopese.cs" />
+    <Compile Include="Entities\StatusPericia.cs" />
+    <Compile Include="Entities\StatusProgramacaoTrem.cs" />
+    <Compile Include="Entities\StatusSistema.cs" />
+    <Compile Include="Entities\StatusTrem.cs" />
+    <Compile Include="Entities\StatusUsuario.cs" />
+    <Compile Include="Entities\Tarifa.cs" />
+    <Compile Include="Entities\TipoCapacidade.cs" />
+    <Compile Include="Entities\TipoCentroTrabalho.cs" />
+    <Compile Include="Entities\TipoDocumento.cs" />
+    <Compile Include="Entities\TipoMarcador.cs" />
+    <Compile Include="Entities\TipoNota.cs" />
+    <Compile Include="Entities\TipoOrdem.cs" />
+    <Compile Include="Entities\ToleranciaMP.cs" />
+    <Compile Include="Entities\Trem.cs" />
+    <Compile Include="Entities\UnidadeMedida.cs" />
+    <Compile Include="Entities\UtilizacaoListaTecnica.cs" />
+    <Compile Include="Entities\Zona.cs" />
+    <Compile Include="Interfaces\Services\IServicesBase.cs" />
+    <Compile Include="Interfaces\Services\ILogServices.cs" />
+    <Compile Include="Interfaces\Services\IMasterDataListServices.cs" />
+    <Compile Include="Interfaces\Entities\IAuditable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\MessageType.cs" />
+    <Compile Include="Types\ActionType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

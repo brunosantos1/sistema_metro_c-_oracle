@@ -1,0 +1,213 @@
+﻿<h2>Material Rodante - @(ViewBag.Action == "new" ? "Criar" : "Editar") Nota de Defeito Detectada pela Manutenção (MD)</h2>
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Cancelamento da Nota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Informe o motivo do cancelamento</p>
+                <textarea id="motivoCancelamento" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btConfirmCancelamento">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form>
+    <div class="form-row">
+        <div class="col-md-7">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="selectFrota">Frota</label>
+                    <select class="form-control" id="selectFrota">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectTrem">Trem</label>
+                    <select class="form-control" id="selectTrem">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectCarro">Carro</label>
+                    <select class="form-control" id="selectCarro">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectSistema">Sistema</label>
+                    <select class="form-control" id="selectSistema">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectComplemento">Complemento</label>
+                    <select class="form-control" id="selectComplemento">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectPosicao">Posição</label>
+                    <select class="form-control" id="selectPosicao">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="inputDescricaoLocal">Descrição do Local de Instalação:</label>
+                <input type="text" class="form-control" id="inputDescricaoLocal" readonly>
+            </div>
+            <div class="form-group ">
+                <label for="inputDescricao">Descrição</label>
+                <input type="text" class="form-control" id="inputDescricao">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputNotificador">Notificador</label>
+                    <input type="text" class="form-control" id="inputNotificador">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectLinha">Linha</label>
+                    <select id="selectLinha" class="form-control">
+                        <option selected>Escolher...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="selectLocal">Local</label>
+                    <select id="selectLocal" class="form-control">
+                        <option selected>Escolher...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputCentroTrabalho">Centro Trabalho</label>
+                    <input type="text" class="form-control" id="inputCentroTrabalho" readonly>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1'></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Obs</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+            </div>
+            <div class='form-row'>
+                <div class='col-md-5'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Incidente notável
+                        </label>
+                    </div>
+                </div>
+                <div class='col-md-2'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Fumaça
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary">Cancelar</button>
+    <button type="button" class="btn btn-primary">Salvar</button>
+    <button type="button" class="btn btn-primary">Carregar última</button>
+</form>
+<br>
+<h4>ABERTAS/PENDENTES</h4>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nota</th>
+                <th scope="col">Tp</th>
+                <th scope="col">Local Instalação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Sintoma</th>
+                <th scope="col">Centro de Trabalho</th>
+                <th scope="col">Data</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Notificador</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>1111</td>
+                <td>MC</td>
+                <td>AAAA</td>
+                <td>BBBB</td>
+                <td>BBBB</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons btn_details" data-id="1" style="cursor:pointer;display:inline" >search</i>
+                    <i class="material-icons btn_edit" data-id="1" style="cursor:pointer;display:inline" >edit</i>
+                    <i class="material-icons btn_cancel" data-id="1" style="cursor:pointer;display:inline">close</i>
+                    
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>2222</td>
+                <td>MC</td>
+                <td>AAAA</td>
+                <td>BBBB</td>
+                <td>BBBB</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons btn_details" data-id="2" style="cursor:pointer;display:inline" >search</i>
+                    <i class="material-icons btn_edit" data-id="2" style="cursor:pointer;display:inline" >edit</i>
+                    <i class="material-icons btn_cancel" data-id="2" style="cursor:pointer;display:inline">close</i>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/criarMd.js")
+}

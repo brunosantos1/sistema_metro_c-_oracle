@@ -1,0 +1,116 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<h2>Equipamento Fixo - Centro de Trabalho (Gerenciar Empregados)</h2>
+<form>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtCentroTrab">Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtCentroTrab">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtDescrCentroTrab">Descrição Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtDescrCentroTrab">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtCentroCusto">Centro de Custo:</label>
+                <input type="text" class="form-control" id="txtCentroCusto">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtCentroTrabSuper">Centro de Trabalho Superior:</label>
+                <input type="text" class="form-control" id="txtCentroTrabSuper">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtRgEmpregado">RG Empregado:</label>
+                <input type="text" class="form-control" id="txtRgEmpregado">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtNomeEmpregado">Nome do Empregado:</label>
+                <input type="text" class="form-control" id="txtNomeEmpregado">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary">Filtrar</button>
+                <button type="button" class="btn btn-primary">Limpar Filtro</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Centro de Trabalho</th>
+                            <th>Descrição Centro de Trabalho</th>
+                            <th>Centro de Trabalho Superior</th>
+                            <th>RG Empregado</th>
+                            <th>Nome Empregado</th>
+                            <th>Centro de Custo</th>
+                            <th class="align-middle acao">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1234565</td>
+                            <td>0987656</td>
+                            <td>Material Rodante</td>
+                            <td>Descrição de teste</td>
+                            <td>25/01/2019 22:45:12</td>
+                            <td>26/01/2019 12:32:00</td>
+                            <td class="align-middle acao">
+                                <i class="material-icons excluirEmpregado" id="clear">clear</i>
+                                <i class="material-icons incluirEmpregado" id="add">add</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                            <td class="align-middle acao">
+                                <i class="material-icons excluirEmpregado" id="clear">clear</i>
+                                <i class="material-icons incluirEmpregado" id="add">add</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009/01/12</td>
+                            <td>$86,000</td>
+                            <td class="align-middle acao">
+                                <i class="material-icons excluirEmpregado" id="clear">clear</i>
+                                <i class="material-icons incluirEmpregado" id="add">add</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+    
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/EquipamentoFixo/pesquisarCentroTrabalho.js")
+}

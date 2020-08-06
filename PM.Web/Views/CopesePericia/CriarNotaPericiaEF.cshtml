@@ -1,0 +1,166 @@
+﻿@model PM.Web.ViewModel.Copese.NotaCopeseEFMRViewModel
+
+<section id="loginForm">
+    @using (Html.BeginForm("SalvarNotaCopeseEFMR", "CopesePericia", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <form>
+            <br />
+            <ul class="nav">
+                <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Copese (@ViewBag.Action)</h5></a></li>
+            </ul>
+            <div class="tab-content jumbotron">
+                <div class="tab-pane active in" id="first-tab">
+                    <div class="row">
+                        <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                            <span class="text-danger">@ViewBag.ErrorMessage</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-lg-3 col-xl-12">
+                            <span class="text-success">@ViewBag.SuccessMessage</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                            <label for="txtNotaRef" class="label-tamanho-125">Nota de Referência: <span class="asterisco">*</span></label>
+                            @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_nota_Ref)
+                            @Html.HiddenFor(model => model.id_nota)
+                            @Html.ValidationMessageFor(model => model.cd_nota_sap_Ref)
+                        </div>
+                        <div class="form-group" id="fg_btnPesquisar">
+                            <label></label>
+                            <a class="material-icons" href="#" onclick="BuscarNotaRef()" id="btnPesquisar" title="Pesquisar">
+                                search
+                            </a>
+                        </div>
+                        <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_LocInst">
+                            <label for="txtLocInst">Local de Instalação:</label>
+                            @Html.EditorFor(model => model.cd_local_inst_sap_Ref, new { htmlAttributes = new { @class = "form-control disabled" } })
+                            @Html.HiddenFor(model => model.id_local_inst_Ref)
+                        </div>
+                        <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Descr">
+                            <label for="txtDescr">Descrição:</label>
+                            @Html.EditorFor(model => model.ds_descricao_Ref, new { htmlAttributes = new { @class = "form-control disabled" } })
+                        </div>
+                        <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Sintoma">
+                            <label for="txtSintoma">Sintoma:</label>
+                            @Html.EditorFor(model => model.ds_breve_code_Ref, new { htmlAttributes = new { @class = "form-control disabled" } })
+                            @Html.HiddenFor(model => model.id_code_Ref)
+
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12">
+                        </div>
+                        <div class="form-group col-md-8 col-lg-6 col-xl-6" id="fg_Obs">
+                            <label for="txtObs">Observação:</label>
+                            @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", @rows = "4" })
+                        </div>
+                        <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_PlantoAcionado">
+                            <label for="txtPlantoAcionadp">Plantonista Acionado: <span class="asterisco">*</span></label>
+                            @Html.EditorFor(model => model.plantonista_acionado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.plantonista_acionado)
+                        </div>
+                        <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_CimAcionado">
+                            <label for="txtCimAcionado">CIM Acionado: <span class="asterisco">*</span></label>
+                            @Html.EditorFor(model => model.cim_acionado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cim_acionado)
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion1">
+                            <label for="txtPlnRepresenAcion1">Plano Representativo Acionado 1:</label>
+                            @Html.EditorFor(model => model.pl_represent_acionado1, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion2">
+                            <label for="txtPlnRepresenAcion2">Plano Representativo Acionado 2:</label>
+                            @Html.EditorFor(model => model.pl_represent_acionado2, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion3">
+                            <label for="txtPlnRepresenAcion3">Plano Representativo Acionado 3:</label>
+                            @Html.EditorFor(model => model.pl_represent_acionado3, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion4">
+                            <label for="txtPlnRepresenAcion4">Plano Representativo Acionado 4:</label>
+                            @Html.EditorFor(model => model.pl_represent_acionado4, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary salvar" id="btSalvar">Salvar</button>
+                        <button type="reset" class="btn btn-primary cancelar" id="btCancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    }
+</section>
+@section scripts {
+    @Scripts.Render("~/Scripts/CopesePericia/criarNotaCopeseEFMR.js")
+
+    @if (@ViewBag.Action == "Consultar")
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#cd_local_inst_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_descricao_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_breve_code_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_observacao').attr("readonly", true).addClass("disabled");
+            $('#plantonista_acionado').attr("readonly", true).addClass("disabled");
+            $('#cim_acionado').attr("readonly", true).addClass("disabled");
+            $('#pl_represent_acionado1').attr("readonly", true).addClass("disabled");
+            $('#pl_represent_acionado2').attr("readonly", true).addClass("disabled");
+            $('#pl_represent_acionado3').attr("readonly", true).addClass("disabled");
+            $('#pl_represent_acionado4').attr("readonly", true).addClass("disabled");
+
+            document.getElementById("btnPesquisar").style.display = "none";
+            document.getElementById("btSalvar").style.display = "none";
+            document.getElementById("btCancelar").style.display = "none";
+        </script>
+    }
+    else if (@ViewBag.Action == "Editar")
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#plantonista_acionado').attr("readonly", true).addClass("disabled");
+            $('#cim_acionado').attr("readonly", true).addClass("disabled");
+            document.getElementById("btnPesquisar").style.display = "none";
+        </script>
+    }
+    <script type="text/javascript">
+        $('.field-validation-error').css("display", "none");
+    </script>
+}
+
+
+<script type="text/javascript">
+    function BuscarNotaRef() {
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Util/BuscarNotaRef",
+                data: { 'nr_nota_sap': $("#cd_nota_sap_Ref").val() },
+                success: function (dados) {
+                    $("#id_nota_Ref").val(dados.IdNota);
+                    $("#ds_descricao_Ref").val(dados.DsDescricao);
+
+                    if (dados.LocalInstalacao != null) {
+                        $("#cd_local_inst_sap_Ref").val(dados.LocalInstalacao.DsLcInstalacao);
+                        $("#id_local_inst_Ref").val(dados.LocalInstalacao.IdLcInstalacao);
+                    }
+
+                    if (dados.CodeSintoma != null) {
+                        $("#ds_breve_code_Ref").val(dados.CodeSintoma.DsCode);
+                        $("#id_code_Ref").val(dados.CodeSintoma.CdSap);
+                    }
+                }
+            });
+        });
+    }
+
+
+</script>

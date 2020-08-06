@@ -1,0 +1,109 @@
+﻿<h2>Material Rodante - Pesquisar Nota de Inspeção (MI)</h2>
+<div class="row">
+    <div class="form-group col-md-2">
+        <label for="selectFrota">Frota</label>
+        <select class="form-control" id="selectFrota">
+            <option>Selecione uma frota</option>
+        </select>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="selectTrem">Trem</label>
+        <select class="form-control" id="selectTrem">
+            <option>Selecione um trem</option>
+        </select>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="selectCarro">Carro</label>
+        <select class="form-control" id="selectCarro"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-2">
+        <label for="inputNNota">N da Nota</label>
+        <input id="inputNNota" class="form-control">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputDataInicial">De</label>
+        <input id="inputDataInicial" class="form-control">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputDataFinal">Até</label>
+        <input id="inputDataFinal" class="form-control">
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+        <label for="inputNotificador">Notificador</label>
+        <input id="inputNotificador" class="form-control">
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+        <label for="selectStatus">Status</label>
+        <select class="form-control" id="selectStatus"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col">
+        <button type="button" class="btn btn-primary">Filtrar</button>
+        <button type="button" class="btn btn-primary">Limpar filtro</button>
+        <button type="button" class="btn btn-primary">Exportar</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nota</th>
+                <th scope="col">Frota</th>
+                <th scope="col">Trem</th>
+                <th scope="col">Carro</th>
+                <th scope="col">Gr Code</th>
+                <th scope="col">Code</th>
+                <th scope="col">Notificador</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data da Nota</th>
+                <th scope="col">Status Usuário</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">search</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">edit</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">close</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">train</i>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>AAAA</td>
+                <td>MC</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">search</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">edit</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">close</i>
+                    <i class="material-icons" style="cursor:pointer;display:inline" onclick="alert('Mensagem')">train</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

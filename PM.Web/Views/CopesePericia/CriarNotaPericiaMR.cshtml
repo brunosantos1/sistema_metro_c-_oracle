@@ -1,0 +1,197 @@
+﻿@model PM.Web.ViewModel.NotaPericiaMRViewModel
+
+<section id="secForm">
+    @using (Html.BeginForm("SalvarNotaPericiaMR", "CopesePericia", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <form>
+            @Html.HiddenFor(model => model.id_nota)
+            <br />
+            <ul class="nav">
+                <li class="nav-link active" id="TituloJumbo">
+                    <a data-toggle="tab">
+                        <h5>
+                            @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Criar)
+                            {
+                                <label class="label-titulo">Criar</label>
+                            }
+                            @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+                            {
+                                <label class="label-titulo">Editar</label>
+                            }
+                            Perícia - Material Rodante
+                        </h5>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content jumbotron">
+                <div class="tab-pane active in" id="first-tab">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.id_centro_trabalho_fk)
+                        @Html.HiddenFor(model => model.id_nota_referencia_fk)
+                        @Html.HiddenFor(model => model.id_local_inst_Ref)
+                        <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_CheckNotaRef">
+                            <br />
+                            <label for="txtFrota">Buscar Nota de Referência:&nbsp;&nbsp;</label>
+                            @Html.CheckBoxFor(model => Model.habilitaNotaReferencia, new { onchange = "habilitaNotaReferencia_change(this)" })
+                        </div>
+
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                            <label for="txtNotaRef" class="label-tamanho-125">Nota de Referência:</label>
+                            @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group" id="cd_nota_sap_Ref_pesquisar">
+                            <label></label>
+                            <a class="material-icons" href="#" onclick="BuscarNotaRef();" id="btnPesquisar" data-toggle="tooltip" data-placement="bottom" title="Pesquisar">
+                                search
+                            </a>
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                            <label for="txtFrota">Frota:</label>
+                            @Html.DropDownListFor(model => model.id_frota_fk, (IEnumerable<SelectListItem>)Model.SelecionarFrota, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarTrens();" })
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                            <label for="txtTrem">Trem:</label>
+                            @Html.DropDownListFor(model => model.id_trem_fk, (IEnumerable<SelectListItem>)Model.SelecionarTrem, new { @class = "form-control selectpicker pickerWorkflow", onchange = "CarregarCarros();" })
+                        </div>
+                        <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                            <label for="txtCarro">Carro:</label>
+                            @Html.DropDownListFor(model => model.id_carro, (IEnumerable<SelectListItem>)Model.SelecionarCarro, new { @class = "form-control selectpicker pickerWorkflow" })
+                        </div>
+                        <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_DescrNota">
+                            <label for="txtDescrNota">Descrição da Nota:</label>
+                            @Html.EditorFor(model => model.ds_descricao, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        <div class="form-group col-md-3" id="fg_Notificador">
+                            @Html.LabelFor(model => model.nm_notificador)
+                            <div class="input-group mb">
+                                @Html.EditorFor(model => model.nm_notificador, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.HiddenFor(model => model.id_notificador_fk)
+                                <div class="input-group-append">
+                                    <button id="btnNotificador" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Linha">
+                            <label for="txtLinha">Linha: <span class="asterisco">*</span></label>
+                            @Html.DropDownListFor(model => model.id_linha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", onchange = "BuscarLinha();" })
+                        </div>
+                        <div class="form-group col-md-3 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                            <label for="txtCentroTrab" class="label-tamanho-125">Centro de Trabalho: <span class="asterisco">*</span></label>
+                            @Html.EditorFor(model => model.ds_ct_trabalho, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_EventoGerador">
+                            <label for="selectEventoGerador">Evento Gerador: <span class="asterisco">*</span></label>
+                            @Html.DropDownListFor(model => model.id_ev_gerador_fk, (IEnumerable<SelectListItem>)Model.SelecionarEventoGerador, new { @class = "form-control selectpicker pickerWorkflow" })
+
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoMetro">
+                            <label for="txtNumBoMetro">Núm. BO Metrô:</label>
+                            @Html.EditorFor(model => model.cd_bo_metro, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-5  col-lg-3 col-xl-2" id="fg_DescrBoMetro">
+                            <label for="txtDescrBoMetro">Descr. BO Metrô:</label>
+                            @Html.EditorFor(model => model.ds_bo_metro, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NumBoSSP">
+                            <label for="txtNumBoSSP">Núm. BO SSP:</label>
+                            @Html.EditorFor(model => model.cd_bo_ssp, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_DescrBoSSP">
+                            <label for="txtDescrBoSSP">Descr. BO SSP:</label>
+                            @Html.EditorFor(model => model.ds_bo_ssp, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group col-md-5 col-lg-4 col-xl-2" id="fg_SituaPericia">
+                            <label for="selectSituaPericia">Situação da Perícia: <span class="asterisco">*</span></label>
+                            @Html.DropDownListFor(model => model.id_st_pericia_fk, (IEnumerable<SelectListItem>)Model.SelecionarStatusPericia, new { @class = "form-control selectpicker pickerWorkflow" })
+                        </div>
+                        <div class="form-group col-md-8 col-lg-7 col-xl-6" id="fg_Obs">
+                            <label for="txtObs">Observação:</label>
+                            @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", @rows = "6" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Criar)
+                        {
+                            <button type="submit" class="btn btn-primary salvar" id="btnSalvar">Criar Nota PERÍCIA</button>
+                        }
+
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+                        {
+                            <button type="submit" class="btn btn-primary salvar" id="btnSalvar">Salvar Alterações</button>
+                            <a href="#" onclick="window.close();" data-id="1" class="voltar btn btn-primary">Fechar</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</section>
+
+<div id="modalNotificadores_container"></div>
+
+<div class="help-block col-md-12" style="list-style-type:none">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/CopesePericia/criarNotaPericiaMR.js")
+    @Scripts.Render("~/Scripts/selecionarEmpregado.js")
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        alert('@ViewBag.Message');
+    </script>
+}
+
+<script type="text/javascript">
+    window.onload = function () {
+        $('#id_frota_fk').attr("disabled", "disabled").addClass("disabled");
+        $('#id_trem_fk').attr("disabled", "disabled").addClass("disabled");
+        $('#id_carro').attr("disabled", "disabled").addClass("disabled");
+        $('#ds_ct_trabalho').attr("readonly", true).addClass("disabled");
+    };
+</script>
+
+@if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.CriarNotaRef)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            BuscarNotaRef();
+        };
+    </script>
+}
+
+@if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            habilitaNotaReferencia_change(document.getElementById("habilitaNotaReferencia"));
+            $('#id_frota_fk').attr("disabled", "disabled").addClass("disabled");
+            $('#id_trem_fk').attr("disabled", "disabled").addClass("disabled");
+            $('#id_carro').attr("disabled", "disabled").addClass("disabled");
+            $('#ds_ct_trabalho').attr("readonly", true).addClass("disabled");
+
+            if (document.getElementById("cd_bo_metro").value != "") {
+                $('#cd_bo_metro').attr("readonly", true).addClass("disabled");
+                $('#ds_bo_metro').attr("readonly", true).addClass("disabled");
+            }
+
+            if (document.getElementById("cd_bo_ssp").value != "") {
+                $('#cd_bo_ssp').attr("readonly", false).removeClass("disabled");
+                $('#ds_bo_ssp').attr("readonly", false).removeClass("disabled");
+            }
+        };
+    </script>
+}

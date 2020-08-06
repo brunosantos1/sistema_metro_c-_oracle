@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85F85696-2DBD-41A6-801C-6488300EC1E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PM.Services</RootNamespace>
+    <AssemblyName>PM.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalendarioFabricaService.cs" />
+    <Compile Include="CapacidadeService.cs" />
+    <Compile Include="CarroService.cs" />
+    <Compile Include="CatalogoService.cs" />
+    <Compile Include="CategoriaEquipamentoService.cs" />
+    <Compile Include="CategoriaPontoMedicaoService.cs" />
+    <Compile Include="CentroCustoService.cs" />
+    <Compile Include="CentroLocalizacaoService.cs" />
+    <Compile Include="CentroTrabalhoService.cs" />
+    <Compile Include="ChaveControleService.cs" />
+    <Compile Include="ClassificacaoService.cs" />
+    <Compile Include="CodeService.cs" />
+    <Compile Include="CodigoABCService.cs" />
+    <Compile Include="ComplementoService.cs" />
+    <Compile Include="DiagnosticoService.cs" />
+    <Compile Include="ElementoPEPService.cs" />
+    <Compile Include="EmpregadoService.cs" />
+    <Compile Include="EntregaTremService.cs" />
+    <Compile Include="EquipamentoService.cs" />
+    <Compile Include="EstrategiaService.cs" />
+    <Compile Include="EventoGeradorService.cs" />
+    <Compile Include="FrotaService.cs" />
+    <Compile Include="GrupoCodeService.cs" />
+    <Compile Include="LinhaService.cs" />
+    <Compile Include="ListaTarefaOperacaoComponenteService.cs" />
+    <Compile Include="ListaTarefaOperacaoService.cs" />
+    <Compile Include="ListaTarefasService.cs" />
+    <Compile Include="LocalInstalacaoService.cs" />
+    <Compile Include="LogServices.cs" />
+    <Compile Include="MarcoService.cs" />
+    <Compile Include="MaterialService.cs" />
+    <Compile Include="MedidaNotaService.cs" />
+    <Compile Include="MAPService.cs" />
+    <Compile Include="MaoDeObraService.cs" />
+    <Compile Include="ModeloLinearService.cs" />
+    <Compile Include="MotivoEntregaService.cs" />
+    <Compile Include="OperacaoOrdemService .cs" />
+    <Compile Include="MaterialOperacaoService.cs" />
+    <Compile Include="IntervencaoOperacaoService.cs" />
+    <Compile Include="DocumentoService.cs" />
+    <Compile Include="OrdemService.cs" />
+    <Compile Include="NotaService.cs" />
+    <Compile Include="MasterDataListServices.cs" />
+    <Compile Include="ParceirosService.cs" />
+    <Compile Include="PatioLinhaService.cs" />
+    <Compile Include="PatioService.cs" />
+    <Compile Include="PontoMedicaoService.cs" />
+    <Compile Include="PosicaoService.cs" />
+    <Compile Include="PrioridadeService.cs" />
+    <Compile Include="ProgramacaoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesBase.cs" />
+    <Compile Include="SistemaAplicacaoService.cs" />
+    <Compile Include="SistemaEmpresaService.cs" />
+    <Compile Include="SistemaLogErrorService.cs" />
+    <Compile Include="SistemaLogLoginService.cs" />
+    <Compile Include="SistemaLogOperacoesItemService.cs" />
+    <Compile Include="SistemaLogOperacoesService.cs" />
+    <Compile Include="SistemaModuloService.cs" />
+    <Compile Include="SistemaPerfilItemService.cs" />
+    <Compile Include="SistemaPerfilService.cs" />
+    <Compile Include="SistemaService.cs" />
+    <Compile Include="SistemaTabelaCampoService.cs" />
+    <Compile Include="SistemaTabelaService.cs" />
+    <Compile Include="SistemaTipoDadoService.cs" />
+    <Compile Include="SistemaTipoLogService.cs" />
+    <Compile Include="SistemaUsuarioModuloService.cs" />
+    <Compile Include="SistemaUsuarioService.cs" />
+    <Compile Include="StatusEntregaTremService.cs" />
+    <Compile Include="StatusMedidaService.cs" />
+    <Compile Include="StatusOperacaoService.cs" />
+    <Compile Include="StatusPericiaService.cs" />
+    <Compile Include="StatusCopeseService.cs" />
+    <Compile Include="StatusProgramacaoTremService.cs" />
+    <Compile Include="StatusSistemaService.cs" />
+    <Compile Include="StatusTremService.cs" />
+    <Compile Include="StatusUsuarioService.cs" />
+    <Compile Include="TipoCapacidadeService.cs" />
+    <Compile Include="TipoCentroTrabalhoService.cs" />
+    <Compile Include="TipoMarcadorService.cs" />
+    <Compile Include="TipoNotaService.cs" />
+    <Compile Include="TipoOrdemService.cs" />
+    <Compile Include="TremService.cs" />
+    <Compile Include="UnidadeMedidaService.cs" />
+    <Compile Include="ZonaService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PM.Data\PM.Data.csproj">
+      <Project>{43588D48-79F7-4E7C-87A3-6BCA9419E395}</Project>
+      <Name>PM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PM.Domain\PM.Domain.csproj">
+      <Project>{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}</Project>
+      <Name>PM.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

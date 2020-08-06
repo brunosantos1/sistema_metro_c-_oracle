@@ -1,0 +1,14 @@
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\PM.Domain.dll.config
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\PM.Domain.dll
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\PM.Domain.pdb
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\EntityFramework.dll
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\Newtonsoft.Json.dll
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\EntityFramework.xml
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\bruno\fase2developer\OO0009\PM.Domain\bin\Debug\Newtonsoft.Json.xml
+C:\bruno\fase2developer\OO0009\PM.Domain\obj\Debug\PM.Domain.csprojAssemblyReference.cache
+C:\bruno\fase2developer\OO0009\PM.Domain\obj\Debug\PM.Domain.csproj.CoreCompileInputs.cache
+C:\bruno\fase2developer\OO0009\PM.Domain\obj\Debug\PM.Domain.csproj.CopyComplete
+C:\bruno\fase2developer\OO0009\PM.Domain\obj\Debug\PM.Domain.dll
+C:\bruno\fase2developer\OO0009\PM.Domain\obj\Debug\PM.Domain.pdb

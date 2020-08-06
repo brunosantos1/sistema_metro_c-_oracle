@@ -1,0 +1,127 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - WebApi", "01 - WebApi", "{FE415588-CD98-418F-9A1F-EC3CECE75E25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - DataEF", "02 - DataEF", "{5301C267-2920-4AC6-874A-D396B3418372}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{239A9747-B431-4D4A-A6D7-5393FA2A360C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Services", "04 - Services", "{BC27A716-6382-45EF-8639-38BF09F904D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.Domain", "PM.Domain\PM.Domain.csproj", "{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.ServiceSoap", "PM.ServiceSoap\PM.ServiceSoap.csproj", "{6922A5F0-1DFB-45E3-8407-D594FA126868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.Data", "PM.Data\PM.Data.csproj", "{43588D48-79F7-4E7C-87A3-6BCA9419E395}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Web", "05 - Web", "{7065CB0F-EC89-4CEB-BFD3-2234C3D29BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.ServiceApi", "PM.ServiceApi\PM.ServiceApi.csproj", "{057C0AFC-3442-481C-84BE-C73790A28CB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06- Scripts", "06- Scripts", "{5DC57A9B-C87A-48CA-ACFD-418C4F102EF4}"
+	ProjectSection(SolutionItems) = preProject
+		..\Dados - Tabelas Complementares\OOCaracteristicaStatus.sql = ..\Dados - Tabelas Complementares\OOCaracteristicaStatus.sql
+		..\Dados - Tabelas Complementares\OOCatalogosStatus.sql = ..\Dados - Tabelas Complementares\OOCatalogosStatus.sql
+		..\Dados - Tabelas Complementares\OOCategoriaDados.sql = ..\Dados - Tabelas Complementares\OOCategoriaDados.sql
+		..\Dados - Tabelas Complementares\OOCategoriaEquipamentos.sql = ..\Dados - Tabelas Complementares\OOCategoriaEquipamentos.sql
+		..\Dados - Tabelas Complementares\OOCentroLocalizacao.sql = ..\Dados - Tabelas Complementares\OOCentroLocalizacao.sql
+		..\Dados - Tabelas Complementares\OOCentroTrabalho.sql = ..\Dados - Tabelas Complementares\OOCentroTrabalho.sql
+		..\Dados - Tabelas Complementares\OOChaveAplicacao.sql = ..\Dados - Tabelas Complementares\OOChaveAplicacao.sql
+		..\Dados - Tabelas Complementares\OOChaveControle.sql = ..\Dados - Tabelas Complementares\OOChaveControle.sql
+		..\Dados - Tabelas Complementares\OOChaveRoteiro.sql = ..\Dados - Tabelas Complementares\OOChaveRoteiro.sql
+		..\Dados - Tabelas Complementares\OOCodigoABC.sql = ..\Dados - Tabelas Complementares\OOCodigoABC.sql
+		..\Dados - Tabelas Complementares\OODistanciaMarcador.sql = ..\Dados - Tabelas Complementares\OODistanciaMarcador.sql
+		..\Dados - Tabelas Complementares\OOEquipamentosStatus.sql = ..\Dados - Tabelas Complementares\OOEquipamentosStatus.sql
+		..\Dados - Tabelas Complementares\OOGrupoCaracteristica.sql = ..\Dados - Tabelas Complementares\OOGrupoCaracteristica.sql
+		..\Dados - Tabelas Complementares\OOGrupoPlanAutorizacoes.sql = ..\Dados - Tabelas Complementares\OOGrupoPlanAutorizacoes.sql
+		..\Dados - Tabelas Complementares\OOListaTarefasMap.sql = ..\Dados - Tabelas Complementares\OOListaTarefasMap.sql
+		..\Dados - Tabelas Complementares\OOObjetoTecnico.sql = ..\Dados - Tabelas Complementares\OOObjetoTecnico.sql
+		..\Dados - Tabelas Complementares\OOReferenciaLinear.sql = ..\Dados - Tabelas Complementares\OOReferenciaLinear.sql
+		..\Dados - Tabelas Complementares\OOTipoCapacidade.sql = ..\Dados - Tabelas Complementares\OOTipoCapacidade.sql
+		..\Dados - Tabelas Complementares\OOTipoClasse.sql = ..\Dados - Tabelas Complementares\OOTipoClasse.sql
+		..\Dados - Tabelas Complementares\OOTipoMarcador.sql = ..\Dados - Tabelas Complementares\OOTipoMarcador.sql
+		..\Dados - Tabelas Complementares\OOTipoVeiculo.sql = ..\Dados - Tabelas Complementares\OOTipoVeiculo.sql
+		..\Dados - Tabelas Complementares\OOUnidadeMedida.sql = ..\Dados - Tabelas Complementares\OOUnidadeMedida.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.Web", "PM.Web\PM.Web.csproj", "{0EA1869F-C523-4BB3-88EE-D1326D9C84F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.WebServices", "PM.WebServices\PM.WebServices.csproj", "{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.Services", "PM.Services\PM.Services.csproj", "{85F85696-2DBD-41A6-801C-6488300EC1E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.SCAA", "PM.SCAA\PM.SCAA.csproj", "{6D852DFA-E794-44C4-AC94-8C0D3172E5FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.LogAndAlert", "PM.LogAndAlert\PM.LogAndAlert.csproj", "{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.IntegradorSAP", "PM.IntegradorSAP\PM.IntegradorSAP.csproj", "{FB02D948-311D-47D5-8D82-2A750A427CA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6922A5F0-1DFB-45E3-8407-D594FA126868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6922A5F0-1DFB-45E3-8407-D594FA126868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6922A5F0-1DFB-45E3-8407-D594FA126868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6922A5F0-1DFB-45E3-8407-D594FA126868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43588D48-79F7-4E7C-87A3-6BCA9419E395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43588D48-79F7-4E7C-87A3-6BCA9419E395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43588D48-79F7-4E7C-87A3-6BCA9419E395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43588D48-79F7-4E7C-87A3-6BCA9419E395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{057C0AFC-3442-481C-84BE-C73790A28CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057C0AFC-3442-481C-84BE-C73790A28CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057C0AFC-3442-481C-84BE-C73790A28CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057C0AFC-3442-481C-84BE-C73790A28CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA1869F-C523-4BB3-88EE-D1326D9C84F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA1869F-C523-4BB3-88EE-D1326D9C84F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA1869F-C523-4BB3-88EE-D1326D9C84F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA1869F-C523-4BB3-88EE-D1326D9C84F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85F85696-2DBD-41A6-801C-6488300EC1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F85696-2DBD-41A6-801C-6488300EC1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F85696-2DBD-41A6-801C-6488300EC1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85F85696-2DBD-41A6-801C-6488300EC1E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D852DFA-E794-44C4-AC94-8C0D3172E5FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D852DFA-E794-44C4-AC94-8C0D3172E5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D852DFA-E794-44C4-AC94-8C0D3172E5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D852DFA-E794-44C4-AC94-8C0D3172E5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB02D948-311D-47D5-8D82-2A750A427CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB02D948-311D-47D5-8D82-2A750A427CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB02D948-311D-47D5-8D82-2A750A427CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB02D948-311D-47D5-8D82-2A750A427CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF} = {239A9747-B431-4D4A-A6D7-5393FA2A360C}
+		{6922A5F0-1DFB-45E3-8407-D594FA126868} = {FE415588-CD98-418F-9A1F-EC3CECE75E25}
+		{43588D48-79F7-4E7C-87A3-6BCA9419E395} = {5301C267-2920-4AC6-874A-D396B3418372}
+		{057C0AFC-3442-481C-84BE-C73790A28CB1} = {FE415588-CD98-418F-9A1F-EC3CECE75E25}
+		{0EA1869F-C523-4BB3-88EE-D1326D9C84F3} = {7065CB0F-EC89-4CEB-BFD3-2234C3D29BAB}
+		{E61FC043-F91C-46CC-8F32-FA6E5FD8198B} = {7065CB0F-EC89-4CEB-BFD3-2234C3D29BAB}
+		{85F85696-2DBD-41A6-801C-6488300EC1E3} = {BC27A716-6382-45EF-8639-38BF09F904D7}
+		{6D852DFA-E794-44C4-AC94-8C0D3172E5FA} = {BC27A716-6382-45EF-8639-38BF09F904D7}
+		{0F4EDDC8-6384-4CEA-81D4-F9F79F36A5C2} = {7065CB0F-EC89-4CEB-BFD3-2234C3D29BAB}
+		{FB02D948-311D-47D5-8D82-2A750A427CA0} = {BC27A716-6382-45EF-8639-38BF09F904D7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2BA0D81-A100-4834-B01D-53BB2905754F}
+	EndGlobalSection
+EndGlobal

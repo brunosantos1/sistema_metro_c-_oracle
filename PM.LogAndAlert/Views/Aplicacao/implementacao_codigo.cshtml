@@ -1,0 +1,82 @@
+﻿@model IEnumerable<PM.WebServices.Models.SistemaTipoLog>
+@{
+    Layout = null;
+    ViewBag.Title = "Implementação Código ";
+}
+<div class="modal-dialog modal-lg" style="width:75%">
+    <div class="modal-content">
+        <div class="modal-header bg-blue-sky">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">@ViewBag.Title</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                Para fazer uso das funcionalidades deste gerenciador de log, o primeiro passo é referenciar a biblioteca de vínculo dinâmico DLL (Dynamic-link library), em seu projeto.
+                Clicando com o botão direiro sobre a pasta <strong>References</strong>, selecionar a opção <strong>Add References</strong> e selecionar a DLL no diretorio onde ela esta armazenada.
+            </p>
+
+            <p>TODOS os metodos aqui apresentados retornam o valor TRUE/FALSE indicando que o registro da ocorrência foi efetuado com sucesso ou não, na base de dados da aplicação</p>
+
+            <hr />
+            <h4>Registrando Log de Login</h4>
+            <p>1. Na controller que registra login, efetuar a seguinte chamada.</p>
+            <p><strong>@string.Format("bool _ret = PM.Web.Library.LogApplication.RegistraLogLogin({0}, user.Id, user.UserName);", @ViewBag.Token)</strong></p>
+            <p>Onde : <strong>user.Id</strong> é a Identificação do Usuário e <strong>user.UserName</strong> é o nome do Usuário</p>
+
+            <hr />
+            <h4>Registrando Log de Error</h4>
+            <p>
+                try <br />
+                { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Código da sua Aplicação <br />
+                } <br />
+                catch(Exception ex) <br />
+                { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Tratamento de Error <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>@string.Format("bool _ret = PM.Web.Library.LogApplication.RegistraLogError({0}, ex);", @ViewBag.Token)</strong><br />
+                }<br />
+            </p>
+
+            <hr />
+            <h4>Registrando Log Operações Diversas</h4>
+            <table class="table table-striped table-bordered dt-responsive nowrap " cellspacing="0" style="width: 100%">
+                <tbody>
+                    
+                    <tr>
+                        <th>Quando o Log for de</th>
+                        <th>Usar a sequinte chamada</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="btn-primary" >
+                            <p>Onde :</p>
+                            <p>
+                                PM.Web.Library.LogApplication.RegistraLogOperacoes( IDAplicacao, IDTipoLog, Model_Com_Dados_Originais, Model_Com_Dados_Alterados );
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+                @foreach (var item in Model.OrderBy(c => c.DsDescricao).ToList())
+                {
+                    <tr @string.Format("{0}", item.IsAtivo ? "" : "style=color:red;")>
+                        <td>@item.DsDescricao        </td>
+                        <td>@string.Format("PM.Web.Library.LogApplication.RegistraLogOperacoes({0}, {1}, model_original, model_alteracao);", item.IdAplicacao, item.IdTipoLog)</td>
+
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+    </div>
+</div>
+
+@*@section scripts {
+        @Scripts.Render("~/bundles/Aplicacao");
+    }*@

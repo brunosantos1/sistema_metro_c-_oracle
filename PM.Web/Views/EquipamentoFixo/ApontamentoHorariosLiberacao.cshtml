@@ -1,0 +1,99 @@
+﻿@section styles {
+    @Styles.Render("~/Content/css/gijgo.min.css")
+}
+
+<h2>Equipamento Fixo - Apontamento de horários e Liberação</h2>
+<form>
+    <div class="row">
+        <div class="col-md">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Ordem/Tempos</th>
+                            <th>Início Deslocamento</th>
+                            <th>Início Execução</th>
+                            <th>Fim de execução</th>
+                            <th>Registo Liberação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>31231231</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>31231231</td>
+                            <td>
+                                <div class="input-group" style="width:280px;">
+                                    <input id="inputDataDeslocamento" class="form-control" width="150" />
+                                    <input id="inputHoraDeslocamento" class="form-control ml-1" type="time" width="120" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group" style="width:280px;">
+                                    <input id="inputDataInicioExecucao" class="form-control" width="150" />
+                                    <input id="inputHoraInicioExecucao" class="form-control ml-1" type="time" width="120" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group" style="width:280px;">
+                                    <input id="inputDataFimExecucao" class="form-control" width="150" />
+                                    <input id="inputHoraFimExecucao" class="form-control ml-1" type="time" width="120" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group" style="width:280px;">
+                                    <input id="inputDataRegistroLiberacao" class="form-control" width="150" />
+                                    <input id="inputHoraRegistroLiberacao" class="form-control ml-1" type="time" width="120" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>teste</td>
+                            <td>
+                                <i class="material-icons">done</i>
+                                <i class="material-icons">edit</i>
+                            </td>
+                            <td>
+                                <i class="material-icons">done</i>
+                                <i class="material-icons">edit</i>
+                            </td>
+                            <td>
+                                <i class="material-icons">done</i>
+                                <i class="material-icons">edit</i>
+                            </td>
+                            <td>
+                                <i class="material-icons">done</i>
+                                <i class="material-icons">edit</i>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Teste</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" id="btnNovaEntrada">Nova Entrada</button>
+                                <button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" id="btnContingencia">Contingência</button>
+                                <button type="button" class="btn btn-primary" id="btnCancelar">Cancelar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/EquipamentoFixo/apontamentoHorariosLiberacao.js")
+}

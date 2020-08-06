@@ -1,0 +1,235 @@
+﻿@model PM.Web.ViewModel.ProgramarMPViewModel
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Material Rodante - Programação de Trens (Programar Notas MP)</h5></a></li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-xl-2 col-lg-3 col-md-3">
+                    <label for="selectLinha" class="label-tamanho-125">Tipo Programação: <span class="asterisco">*</span></label>
+                    @Html.DropDownListFor(model => model.idTipoProgramacao, (IEnumerable<SelectListItem>)Model.SelecionarTipoProgramacao, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnPrepararTela();" })
+                </div>
+                <div class="form-group col-xl-2 col-lg-2 col-md-3">
+                    <label for="selectLinha">Linha: <span class="asterisco">*</span></label>
+                    @Html.DropDownListFor(model => model.idLinha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimpaGrid(); fnLimparCombo('idPatio'); fnLimparCombo('idTrens'); fnCarregaCombo(this, 'idPatio', 'GetPatioLinha?ID=' );" })
+                </div>
+                <div class="form-group col-xl-2 col-lg-2 col-md-3">
+                    <label for="selectPatio">Patio: <span class="asterisco">*</span></label>
+                    @Html.DropDownListFor(model => model.idPatio, (IEnumerable<SelectListItem>)Model.SelecionarPatioLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimpaGrid(); fnLimparCombo('idTrens'); fnCarregaCombo(this, 'idTrens', 'GetLinhaPatioTrem?idStatusTrem=3&ID=' );" })
+                </div>
+                <div class="form-group col-xl-2 col-lg-2 col-md-3">
+                    <label for="inputTrem">Trem: <span class="asterisco">*</span></label>
+                    @Html.DropDownListFor(model => model.idTrens, (IEnumerable<SelectListItem>)Model.SelecionarTrens, new { @class = "form-control selectpicker pickerWorkflow" })
+                </div>
+                <div class="form-group col-xl-3 col-lg-3 col-md-4">
+                    <label for="selectLinha">Equipe: <span class="asterisco">*</span></label>
+                    @Html.DropDownListFor(model => model.idCentroTrabalho, (IEnumerable<SelectListItem>)Model.SelecionarCentroTrabalho, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimpaGrid(); fnCarregaCombo(this, 'patio', 'GetPatioLinha?ID=' );" })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    <label for="inputDataInicial">Data Entrega: <span class="asterisco">*</span></label>
+                    @Html.EditorFor(model => model.data_entrega, new { htmlAttributes = new { @class = "form-control FormatDateDe" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    <label for="inputDataFinal">Hora Entrega: <span class="asterisco">*</span></label>
+                    @Html.EditorFor(model => model.hora_entrega, new { htmlAttributes = new { @class = "form-control FormatTime" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    <label for="inputDataInicial">Data Liberação:</label>
+                    @Html.EditorFor(model => model.data_liberacao, new { htmlAttributes = new { @class = "form-control " } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                    <label for="inputDataFinal">Hora Liberação:</label>
+                    @Html.EditorFor(model => model.hora_liberacao, new { htmlAttributes = new { @class = "form-control " } })
+                </div>
+                <div class="form-group col-xl-2 col-lg-3 col-md-4">
+                    <label for="inputSolicitante">Área Solicitante:</label>
+                    <input class="form-control" readonly id="inputSolicitante">
+                </div>
+                <div class="form-group col-xl-2 col-lg-3 col-md-4">
+                    <label for="inputResp">Responsável:</label>
+                    <input class="form-control" readonly id="inputResp">
+                </div>
+                <div class="form-group col-xl-12 col-lg-12 col-md-12">
+                    <label>Observação:</label>
+                    @Html.TextAreaFor(model => model.observacao, new { @class = "form-control", rows = 5 })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" onclick="fnCancelar();">Limpar Filtro & Campos</button>
+            </div>
+        </div>
+    </div>
+</form>
+<form>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"> <a href="#tab-notas" data-toggle="tab" class="a-custom">Vincular Notas</a>   </li>
+                <li>                <a href="#tab-gravar" data-toggle="tab" class="a-custom">Gravar</a>       </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active in " id="tab-notas">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <p>
+                            Aqui você visualiza todas as notas do tipo <strong><span id="spTipoProgramacao">MP-Preventiva Material Rodante</span></strong> que serão vinculadas a Programação selecionado no filtro acima. Navegando entres as paginas do grid, você pode selecionar quais as Notas deseja anexar.
+                            Vale destacar que na guia <strong>Gravar</strong>, você terá uma visualização geral de todas as notas, que serão anexadas.
+                        </p>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4 col-lg-3 col-xl-2">
+                                <label for="inputTrem">Centro de Trabalho</label>
+                                @Html.DropDownListFor(model => model.ftCentroDeTrabalho, (IEnumerable<SelectListItem>)Model.SelecionarftCentroDeTrabalho, new { @class = "form-control selectpicker pickerWorkflow" })
+                            </div>
+
+                            <div class="form-group col-md-8 col-lg-5 col-xl-3">
+                                <label for="inputTrem">Descrição do Tipo de Manutenção</label>
+                                @Html.EditorFor(model => model.ftTipoManutencao, new { htmlAttributes = new { @class = "form-control", onkeyup = "javascript:return isBackSpace(event, 'ftTipoManutencao');", onkeypress = "javascript:return isNotCaracterEspecial(event, 'ftTipoManutencao');", @onfocus = "showAutoComplete('ftTipoManutencao_Sugestoes'); ", @onblur = "hideAutoComplete('ftTipoManutencao_Sugestoes'); " } })
+                                <div class="container" id="ftTipoManutencao_Sugestoes" style="display: none; "></div>
+                            </div>
+
+                            <div class="form-group col-md-8 col-lg-5 col-xl-3">
+                                <label for="inputTrem">Local de Instalação</label>
+                                @Html.DropDownListFor(model => model.ftLocalInstalacao, (IEnumerable<SelectListItem>)Model.SelecionarftLocalInstalacao, new { @class = "form-control selectpicker pickerWorkflow" })
+                            </div>
+                            <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                                <label for="inputDataInicial">Criada em:</label>
+                                @Html.EditorFor(model => model.ftDataDe, new { htmlAttributes = new { @class = "form-control ", @placeholder = "00/00/0000", @readonly = "readonly" } })
+                            </div>
+                            <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                                <label for="inputDataFinal">Até:</label>
+                                @Html.EditorFor(model => model.ftDataAte, new { htmlAttributes = new { @class = "form-control ", @placeholder = "00/00/0000", @readonly = "readonly" } })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-primary" onclick="fnFiltrar();">Filtrar</button>
+                                    <button type="button" class="btn btn-primary" onclick="fnCancelar();">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="dvNotas_01" style="visibility: visible; display: block;">
+                            <table id="tbNotas_01" class="nowrap table table-bordered table-hover dataTable" >
+                                <thead>
+                                    <tr>
+                                        <th>Nota</th>
+                                        <th>Ordem</th>
+                                        <th>Local Instalação</th>
+                                        <th>Descrição Local Instalação</th>
+                                        <th>Descrição da Nota</th>
+                                        <th>Tipo de Manutenção</th>
+                                        <th>Km Prevista</th>
+                                        <th>Km Percorrida</th>
+                                        <th>Índice</th>
+                                        <th>Equipe</th>
+                                        <th>Dt/Hr Desejada</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div id="dvNotas_02" style="visibility: hidden; display: none;">
+                            <table id="tbNotas_02" class="nowrap table table-bordered table-hover dataTable" >
+                                <thead>
+                                    <tr>
+                                        <th>Nota</th>
+                                        <th>Ordem</th>
+                                        <th>Local Instalação</th>
+                                        <th>Descrição Local Instalação</th>
+                                        <th>Descrição da Nota</th>
+                                        <th>Tipo de Manutenção</th>
+                                        <th>Equipe</th>
+                                        <th>Dt/Hr Desejada</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="tab-gravar">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded" style="min-height: 580px;">
+                        <p>Abaixo, um resumo de todas as Notas vinculadas a Programação. Para confirmar o vínculo e salvar a Programação, clique em Gravar. Caso queira alterar as Notas vinculadas, basta retornar as guias anteriores.</p>
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="inputTipoManut">Selecione <strong>Tipo Manutenção</strong> principal da programação</label>
+                                @Html.DropDownListFor(model => model.idTipo_manutencao, (IEnumerable<SelectListItem>)Model.SelecionarTipoManutencao, new { @class = "form-control selectpicker pickerWorkflow" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <br />
+                                <button type="button" id="btnGravar" class="btn btn-primary col-md-5" onclick="fnGravaDadosEmBanco();">Gravar</button>
+                                <button type="button" id="btnCancelar" class="btn btn-primary col-md-5" onclick="fnCancelar();">Cancelar</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <ul class="nav nav-tabs">
+                            <li class="active"> <a href="#tabGravar-notas" data-toggle="tab" class="a-custom">Ocorrência</a>   </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active in " id="tabGravar-ocorrencia">
+                                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                                    <div id="dvGravar_Notas_01" style="visibility: visible; display: block;">
+                                        <table id="tbGravar_Notas_01" class="nowrap table table-bordered dataTable">
+                                            <thead>
+                                                <tr nowrap>
+                                                    <th nowrap>Nota</th>
+                                                    <th nowrap>Ordem</th>
+                                                    <th nowrap>Local Instalação</th>
+                                                    <th nowrap>Descrição Local Instalação</th>
+                                                    <th nowrap>Descrição da Nota</th>
+                                                    <th nowrap>Tipo de Manutenção</th>
+                                                    <th nowrap>Km Prevista</th>
+                                                    <th nowrap>Km Percorrida</th>
+                                                    <th nowrap>Índice</th>
+                                                    <th nowrap>Equipe</th>
+                                                    <th nowrap>Dt/Hr Desejada</th>
+                                                    <th nowrap>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div id="dvGravar_Notas_02" style="visibility: visible; display: block;">
+                                        <table id="tbGravar_Notas_02" class="nowrap table table-bordered dataTable">
+                                            <thead>
+                                                <tr nowrap>
+                                                    <th nowrap>Nota</th>
+                                                    <th nowrap>Tipo</th>
+                                                    <th nowrap>Ordem</th>
+                                                    <th nowrap>Local Instalação</th>
+                                                    <th nowrap>Descrição Local Instalação</th>
+                                                    <th nowrap>Descrição da Nota</th>
+                                                    <th nowrap>Tipo de Manutenção</th>
+                                                    <th nowrap>Equipe</th>
+                                                    <th nowrap>Dt/Hr Desejada</th>
+                                                    <th nowrap>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+    @Scripts.Render("~/Scripts/MaterialRodante/ProgramarMP.js");
+}

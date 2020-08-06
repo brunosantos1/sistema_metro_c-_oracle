@@ -1,0 +1,168 @@
+﻿<h2>Equipamento Fixo - Serviço Interno (@(ViewBag.Action == "new" ? "Criar" : "Editar"))</h2>
+<form>
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="selectLinha">Linha</label>
+                        <select class="form-control" id="selectLinha">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="selectZona">Zona</label>
+                        <select class="form-control" id="selectZona">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="selectSistema">Sistema</label>
+                        <select class="form-control" id="selectSistema">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="selectComplemento">Complemento</label>
+                        <select class="form-control" id="selectComplemento">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="inputDescricaoLocalInstalacao">Descrição do Local de Instalação</label>
+                        <input type="text" class="form-control" id="inputDescricaoLocalInstalacao">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="selectSintoma">Sintoma</label>
+                        <select class="form-control" id="selectSintoma">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="inputDescricao">Descrição</label>
+                        <input type="text" class="form-control" id="inputDescricao'">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="selectPrioridade">Notificador</label>
+                        <input type="text" class="form-control" id="inputNotificador'">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="inputNotificador">Centro de Trabalho</label>
+                        <input type="text" class="form-control" id="inputCentroTrabalho">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="inputObservacoes">Observações</label>
+                        <textarea class="form-control" id="inputObservacoes" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary">Carregar Última</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered">
+                    <caption>Abertas/Pendentes</caption>
+                    <thead>
+                        <tr>
+                            <th>Nota</th>
+                            <th>Tp</th>
+                            <th>Local Instalação</th>
+                            <th>Descrição</th>
+                            <th>Sintoma</th>
+                            <th>Prioridade</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Notificador</th>
+                            <th>Status</th>
+                            <th class="acao">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15011555</td>
+                            <td>EC</td>
+                            <td>M-L01-JAB-5ER-02</td>
+                            <td>Corrimão direito</td>
+                            <td>RUIDO ANORMAL</td>
+                            <td>C</td>
+                            <td>03/02/2018</td>
+                            <td>15:23</td>
+                            <td>38591</td>
+                            <td>Solicitada</td>
+                            <td>
+                                <a href="#" data-id="1" class="btn_edit"><i class="material-icons">edit</i></a>
+                                <a href="#" data-id="1" class="btn_cancel"><i class="material-icons" style="color:#FF0000">close</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/EquipamentoFixo/notaEI.js")
+}

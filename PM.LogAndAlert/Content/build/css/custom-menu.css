@@ -1,0 +1,205 @@
+html, 
+body 
+{
+	width: 100%!important;
+}
+
+body {
+	background-color: transparent;
+}
+
+.nav-sm .container.body .right_col {
+	margin: 0;
+}
+
+
+.menu-topo .navbar.nav_title,
+.menu-topo .profile.clearfix,
+.menu-topo .menu_section h3,
+.menu-topo .nav_menu .nav.toggle 
+{
+	display: none!important;
+}
+
+#sidebar-menu {
+	
+}
+
+#sidebar-menu .menu_section {
+
+}
+.nav_menu {
+	height: 80px;
+}
+
+.menu-topo {
+	position: absolute;
+	background: #2A3F54;
+}
+
+
+.menu-topo .nav.side-menu>li {
+	display: inline-block;
+}
+
+.menu-topo .nav-sm ul.nav.child_menu {
+	left: 0;
+    top: 63px;
+}
+
+.menu-topo .nav-sm .container.body .right_col {
+	padding: 10px 20px;
+    margin-left: 0;
+}
+
+.nav-sm ul.nav.child_menu {
+    left: 0;
+    top: 64px;
+}
+
+.top_nav .navbar-right {
+	width: initial;
+}
+
+.main_container .top_nav {
+	margin: 0;
+}
+
+.nav_menu {
+    height: initial;
+}
+
+.user_topbar {
+    height: 80px;
+}
+
+.user_topbar {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.menu_btn_fechar .fa{
+	width: initial!important;
+}
+
+
+/*DESKTOP*/
+@media screen and (min-width: 992px) {
+
+	.nav-sm .container.body .col-md-3.left_col,
+	.main_container .col-md-3 .left_col,
+	.nav.toggle {
+		display: none;
+	}
+
+	.nav-sm .container.body .right_col {
+    	margin-left: 0;
+	}
+
+	.menu_btn_fechar {
+		display: none;
+	}
+}
+
+/*MOBILE*/
+@media screen and (max-width: 812px) {
+
+	.nav.toggle {
+		display: block;
+	}
+
+	.menu-topo {
+		
+	}
+
+	.nav>li,
+	.nav.navbar-nav>li>a {		
+		display: inline-block;
+	}
+	
+	.nav.navbar-nav.navbar-right .nav>li {
+	    text-align: right;    
+	}
+
+	.navbar-right {
+    	text-align: right;
+	}
+
+	.nav_menu {
+		width: 100%;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 20px;
+	}
+
+	.user_topbar > ul {
+		list-style: none outside none;
+		display: flex;
+	}
+
+	.user_topbar {
+		margin: 0 10px;
+	}
+
+	.user_topbar{
+		width: 100%;
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	#sidebar-menu .side-menu li {
+		display: block;
+	}
+
+	#sidebar-menu {
+		background: #2A3F54;
+		position: fixed;
+	    bottom: 0;
+	    top: 0;
+	    z-index: 10;
+	}
+
+	.menu_mobile {
+		margin: 0;
+	}
+
+	#menu_toggle .fa {
+	    font-size: 26px;
+	}
+
+
+	.nav-sm #sidebar-menu{
+		display: none;
+	}
+	
+	.menu_btn_fechar {
+
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    position: absolute;
+	    left: 190px;
+	    width: 40px;
+	    background: red;
+	    height: 40px;
+	}
+
+	.menu_section .fa {
+		color: #fff;
+		font-size: 20px;
+		widows: ;
+	}
+
+
+	.menu_section>ul {
+		margin-top: 0;
+	}
+}
+
+

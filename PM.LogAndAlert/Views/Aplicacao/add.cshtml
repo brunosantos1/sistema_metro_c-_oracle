@@ -1,0 +1,137 @@
+﻿@model PM.WebServices.Models.SistemaAplicacao
+
+@{
+    ViewBag.Title = "Aplicações";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @using (Html.BeginForm("add", "Aplicacao", new { id = ((Model == null) ? 0 : Model.IdAplicacao) }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.IdEmpresa, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.IdEmpresa, (IEnumerable<SelectListItem>)TempData["EmpresaId"], new { @class = "form-control" });
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.IdEmpresa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2 col-sm-2">
+                        @Html.LabelFor(model => model.DsCodigoAplicacao, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.DsCodigoAplicacao, new { htmlAttributes = new { @class = "form-control", placeholder = "Código da aplicação no SCAA", maxlength = "100" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.DsCodigoAplicacao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-8 col-sm-8">
+                        @Html.LabelFor(model => model.DsDescricao, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.DsDescricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Escreva o nome da aplicação. Esta informação aparecerá em relatórios e listas de seleção", maxlength = "100" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.DsDescricao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.IsAtivo, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.IsAtivo, new SelectList(PM.LogAndAlert.Library.Helper.IsAtivo(), "Key", "Value"), "** SELECIONE **", new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.IsAtivo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.NmBancohost, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NmBancohost, new { htmlAttributes = new { @class = "form-control", placeholder = "000.000.000.000", maxlength = "100" } })
+
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.NmBancohost, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.NuBancoporta, htmlAttributes: new { @class = "control-label" })
+
+                        @Html.EditorFor(model => model.NuBancoporta, new { htmlAttributes = new { @class = "form-control", placeholder = "0000", maxlength = "4" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.NuBancoporta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.NmBanconome, htmlAttributes: new { @class = "control-label" })
+
+                        @Html.EditorFor(model => model.NmBanconome, new { htmlAttributes = new { @class = "form-control", placeholder = "dbContoso", maxlength = "50" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.NmBanconome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.NmBancousuario, htmlAttributes: new { @class = "control-label" })
+
+                        @Html.EditorFor(model => model.NmBancousuario, new { htmlAttributes = new { @class = "form-control", placeholder = "sa", maxlength = "50" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.NmBancousuario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.DsBancosenha, htmlAttributes: new { @class = "control-label" })
+
+                        @Html.EditorFor(model => model.DsBancosenha, new { htmlAttributes = new { @class = "form-control", placeholder = "******", maxlength = "10" } })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.DsBancosenha, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.DsBancoprotocolo, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.DsBancoprotocolo, (IEnumerable<SelectListItem>)TempData["ProtocoloId"], new { @class = "form-control" });
+
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.DsBancoprotocolo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+
+                        @Html.LabelFor(model => model.DsObservacao, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.DsObservacao, new { @class = "form-control", @cols = 80, @rows = 10 })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.DsObservacao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="text-right">
+                                <input type="button" value="Testar Conexão" id="TestarConexão" class="btn btn-default btn-xs controler_aplicao_testar_conexao" />
+
+                                @Html.ActionLink("Cancelar", "index", new { controller = "Aplicacao" }, new { @class = "btn btn-default btn-xs" })
+
+                                <input type="submit" value="Salvar" class="btn btn-success btn-xs" id="btnSalvar" style="display:none; visibility:hidden;" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/Aplicacao");
+}

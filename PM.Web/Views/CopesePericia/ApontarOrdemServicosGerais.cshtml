@@ -1,0 +1,129 @@
+﻿<h2>Ordem - Serviços Gerais (Apontar)</h2>
+<form>
+    <div class="row">
+        <div class="col-md-7 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtOrdem">Ordem:</label>
+                <input type="text" class="form-control" id="txtOrdem" value="Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtTpServico">Tipo de Serviço:</label>
+                <input type="text" class="form-control" id="txtTpServico" value="Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-6 col-xl-3">
+            <div class="form-group">
+                <label for="txtDescr">Descrição:</label>
+                <input type="text" class="form-control" id="txtDescr" value="Treinamento 12345678 Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-6 col-xl-2">
+            <div class="form-group">
+                <label for="txtStatusUser">Status do Usuário:</label>
+                <input type="text" class="form-control" id="txtStatusUser" value="Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-6 col-xl-2">
+            <div class="form-group">
+                <label for="txtStatusSistema">Status do Sistema:</label>
+                <input type="text" class="form-control" id="txtStatusSistema" value="Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-8">
+            <div class="form-group">
+                <label for="txtObs">Observação:</label>
+                <textarea class="form-control" id="txtObs" rows="6"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtCentroTrab">Centro de Trabalho:</label>
+                <input type="text" class="form-control" id="txtCentroTrab" value="Treinamento 12345678" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtData">Data:</label>
+                <input type="text" class="form-control" id="txtData" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtHora">Hora:</label>
+                <input type="text" class="form-control" id="txtHora" disabled>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+            <div class="form-group">
+                <label for="txtChaveControle">Chave de Controle:</label>
+                <input type="text" class="form-control" id="txtChaveControle" disabled>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<form>
+    <div class="row">
+        <div class="col-md">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#primeira-tab" data-toggle="tab" class="a-custom">Mão de Obra</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active in" id="primeira-tab">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table custom">
+                            <thead>
+                                <tr>
+                                    <th>Operação</th>
+                                    <th>Cent. Trab.</th>
+                                    <th>Data</th>
+                                    <th>RG Exec.</th>
+                                    <th>Prep</th>
+                                    <th>Desl</th>
+                                    <th>Aces</th>
+                                    <th>Exec</th>
+                                    <th>Unid</th>
+                                    <th>Tp Ativ</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ABCNDM12345890-987</td>
+                                    <td>Campo 08</td>
+                                    <td>12/09/1220</td>
+                                    <td>45.860.860-03</td>
+                                    <td>Campo 20 12345678909</td>
+                                    <td>Campo 20 12345678909</td>
+                                    <td>Campo 20 12345678909</td>
+                                    <td>Campo 20 12345678909</td>
+                                    <td>min</td>
+                                    <td>Campo 18 123</td>
+                                    <td class="acao">
+                                        <i class="material-icons" id="excluir">clear</i>
+                                        <i class="material-icons" id="incluir">add</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form>
+    <div class="row">
+        <div class="col-xl">
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary cancelar" id="btnCancelar">Cancelar Ordem</button>
+                <a href="EncerrarOrdemServicosGerais" class="btn btn-primary" id="btnCriar">Gravar</a>
+                <button type="button" class="btn btn-primary cancelar" id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>

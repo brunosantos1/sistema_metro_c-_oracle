@@ -1,0 +1,220 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+
+</head>
+<body class="nav-md">
+    <div class="container body">
+
+        <div class="pm-header" onclick="window.location.href = '/Home/index'; ">
+            &nbsp;
+        </div>
+
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view" style="width: 100%">
+                    <div class="clearfix"></div>
+                    <div class="profile clearfix">
+                        @*<div class="profile_pic">
+                                <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
+                            </div>*@
+                        <div class="col-md-12 profile_info text-center text-capitalize">
+                            <span>Bem Vindo usuário, </span> <br />
+                        </div>
+                        @{
+                            PM.SCAA.SharpScaa.Resposta oResposta = TempData["_SharpScaaResposta"] as PM.SCAA.SharpScaa.Resposta;
+                            TempData.Keep("_SharpScaaResposta");
+                            <center>
+                                @if (@oResposta != null)
+                                {
+                                    <span class="fa fa-user"> @oResposta._usuario._nome.ToString() </span>
+                                    <h5>@string.Format("[ {0} ]", oResposta._usuario._acesso.ToString())</h5>
+                                    <h6>@string.Format("[ {0} ]", User.Identity.GetUserName())</h6>
+                                }
+                            </center>
+                        }
+
+                    </div>
+
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    @Html.Partial("AdminMenu")
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Tela Cheia" class="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a href="/account/LogOff" data-toggle="tooltip" data-placement="top" title="Logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="">
+                                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            @*<img src="images/img.jpg" alt="">*@
+                                            <span>Usuário&nbsp;[&nbsp;</span>@oResposta._usuario._nome.ToString()&nbsp;<span>&nbsp;]</span>
+                                            <span class=" fa fa-angle-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                            <li><a href="javascript:;"> Perfil de Acesso</a></li>
+                                            <li><a href="javascript:;"> Configuração</a></li>
+                                            <li><a href="javascript:;">Ajuda</a></li>
+                                            <li><a href="/account/LogOff"><i class="fa fa-sign-out pull-right"></i> Sair do Sistema</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <span class="badge bg-green" id="NumTotalAlerta">97</span>
+                                        </a>
+                                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                            <li>
+                                                <a href="#myModal" data-toggle="modal" data-target="#alerta-modal" class=".alerta-modal" data-id="101">
+                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+
+                                                        <span>Aldrei Barbara</span>
+                                                        <span class="time">3 mins ago</span>
+                                                    </span>
+                                                    <span class="message">
+                                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="popup_alerta">
+                                                <a href="#myModal" data-toggle="modal" data-target="#alerta-modal" class=".alerta-modal" data-id="102">
+                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                                                        <span>Gabriel Henrique</span>
+                                                        <span class="time">3 mins ago</span>
+                                                    </span>
+                                                    <span class="message">
+                                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="popup_alerta">
+                                                <a href="#myModal" data-toggle="modal" data-target="#alerta-modal" class=".alerta-modal" data-id="103">
+                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                                                        <span>Patricia Poeta</span>
+                                                        <span class="time">3 mins ago</span>
+                                                    </span>
+                                                    <span class="message">
+                                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="popup_alerta">
+                                                <a href="#myModal" data-toggle="modal" data-target="#alerta-modal" class=".alerta-modal" data-id="104">
+                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                                                        <span>Cesar Tralli</span>
+                                                        <span class="time">3 mins ago</span>
+                                                    </span>
+                                                    <span class="message">
+                                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="text-center">
+                                                    <a>
+                                                        <strong>@Html.ActionLink("Todos os Alertas", "Index", "Alertas")</strong>
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Olá " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="/account/LogOff">Fazer logoff</a></li>
+                            </ul>
+                        }
+
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull">
+                    <p style="text-align: center;">
+                        &copy; @DateTime.Now.Year.ToString()  - Here Click Software - Metrô - Todos os direitos reservados.
+                        <br />Rua Dança do Fogo, 90 CJ 24A- CEP 01304-902 - Fax (11) 9.8355-3958 - São Paulo/SP - Brasil
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!--|Definição dos PopUps|-->
+   
+    <div id="modalpopup" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="position: fixed;"> </div>
+    <div id="alerta-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="position: fixed; top: 50% !important; left: 50%; transform: translate(-50%, -50%);"> </div>
+    <div id="consulta-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="position: fixed;"> </div>
+    <input type="hidden" id="hddFullScreen" value="0" />
+
+    @Scripts.Render("~/bundles/jquery");
+    @Scripts.Render("~/bundles/bootstrap");
+    @Scripts.Render("~/bundles/NProgress");
+    @Scripts.Render("~/bundles/bootstrap-daterangepicker");
+    @Scripts.Render("~/bundles/Grafico");
+    @Scripts.Render("~/bundles/Datatables");
+    @Scripts.Render("~/bundles/FormUI");
+    @Scripts.Render("~/bundles/Custom");
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<PM.LogAndAlert.Models.SysTipoLog>
+
+
+@{
+    ViewBag.Title = "Tipo Log";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@ViewBag.Title<small></small></h2>
+            <div class="clearfix"></div>
+        </div>
+
+        <p>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="text-right">
+                        @Html.ActionLink("Novo Registro", "add", new { controller = "SysTipolog" }, new { @class = "btn btn-primary btn-xs" })
+                    </div>
+                </div>
+            </div>
+        </p>
+
+        <div class="x_content">
+            <table id="Tabela1" class="table table-striped table-bordered dt-responsive nowrap datatable-responsive" cellspacing="0" width="100%">
+                <thead>
+
+                    <tr nowrap>
+                        <th nowrap class="col-md-10 text-center" data-original-title="Nome do log, você verá este nome em outros locais do sistema como exemplo, combos e relatorios" data-toggle="tooltip" data-placement="bottom" title="">Descrição</th>
+                        <th nowrap class="col-md-1 text-center"  data-original-title="Quantidade de aplicações que estão utilizando este tipo de log" data-toggle="tooltip" data-placement="bottom" title="">Nº Aplicações</th>
+                        <th nowrap class="col-md-1 text-center"  data-original-title="Ações pertinentes ao registro" data-toggle="tooltip" data-placement="bottom" title="">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Error de Aplicacao</td>
+                        <td class="text-center" data-original-title="" data-toggle="tooltip" data-placement="bottom" title="">11</td>
+                        <td class="text-center">
+                            @Html.ActionLink("Editar", "Index", new { controller = "SysTipolog", id = 1 }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Geração de Nota Corretiva</td>
+                        <td class="text-center" data-original-title="111" data-toggle="tooltip" data-placement="bottom" title="">01</td>
+                        <td class="text-center">
+                            @Html.ActionLink("Editar", "Index", new { controller = "SysTipolog", id = 1 }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Atualização de Registros</td>
+                        <td class="text-center" data-original-title="111" data-toggle="tooltip" data-placement="bottom" title="">04</td>
+                        <td class="text-center">
+                            @Html.ActionLink("Editar", "Index", new { controller = "SysTipolog", id = 1 }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model._descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model._datacadastro)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item._descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._datacadastro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item._idtipolog }) |
+                @Html.ActionLink("Details", "Details", new { id=item._idtipolog }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item._idtipolog })
+            </td>
+        </tr>
+    }*@
+
+</table>

@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>OO0009 - Portal PM @ViewBag.Title</title>
+        @Styles.Render("~/Content/css/bootstrap.min.css")
+        @Styles.Render("~/Content/css/font-awesome.min.css")
+        @Styles.Render("~/Content/css/simple-line-icons.css")
+        @Styles.Render("~/Content/css/feather.css")
+        @Styles.Render("~/Content/css/flag-icon.css")
+        @Styles.Render("~/Content/css/pace.css")
+        @Styles.Render("~/Content/css/minimal.css")
+        @Styles.Render("~/Content/css/square.css")
+        @Styles.Render("~/Content/css/flat.css")
+        @Styles.Render("~/Content/css/line.css")
+        @Styles.Render("~/Content/css/polaris.css")
+        @Styles.Render("~/Content/css/futurico.css")
+        @Styles.Render("~/Content/css/custom.css")
+        @Styles.Render("~/Content/css/colors.min.css")
+        @Styles.Render("~/Content/css/components.css")
+        @Styles.Render("~/Content/css/login-register.css")
+</head>
+
+<body class="vertical-layout vertical-menu 1-column  bg-full-screen-image menu-expanded blank-page blank-page" data-open="click" data-menu="vertical-menu" data-col="1-column">
+    <div class="app-content content">
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/vendors.min.js"></script>
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/icheck.min.js"></script>
+    <script src="~/Scripts/app-menu.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/form-login-register.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿@model PM.Web.ViewModel.Copese.NotaCopeseEFMRViewModel
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Detalhes COPESE - Material Rodante</h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-4 col-lg-2 col-xl-2" id="fg_NumNotaCopese">
+                    <label for="returnNotaCopese">Nota COPESE:</label>
+                    @Html.EditorFor(model => model.cd_nota_sap, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                    @Html.HiddenFor(model => model.id_nota)
+                </div>
+                <div class="form-group col-md-4 col-lg-2 col-xl-2" id="fg_NumNotaRef">
+                    <label for="returnNotaReferen">Nota de Referência:</label>
+                    @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_DtNotaCopese">
+                    <label for="returnDtNotaCopese">Data da Nota COPESE:</label>
+                    @Html.EditorFor(model => model.dt_hora_nota, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_DtNotaRef">
+                    <label for="returnDtNotaReferen">Data da Nota de Referência:</label>
+                    @Html.EditorFor(model => model.dt_hora_nota_Ref, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_StatusCopese">
+                    <label for="returnStatusCopese">Status COPESE:</label>
+                    @Html.EditorFor(model => model.nm_st_copese, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Frota">
+                    <label for="returnFrota">Frota:</label>
+                    @Html.EditorFor(model => model.nm_frota, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Trem">
+                    <label for="returnTrem">Trem:</label>
+                    @Html.EditorFor(model => model.nm_trem, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Carro">
+                    <label for="returnCarro">Carro:</label>
+                    @Html.EditorFor(model => model.nm_carro, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Sistema">
+                    <label for="returnSistema">Sistema:</label>
+                    @Html.EditorFor(model => model.nm_sistema, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_DescrLocInst">
+                    <label for="returnDescrLocalInst">Descrição do Local de Instalação:</label>
+                    @Html.EditorFor(model => model.ds_local_inst_Ref, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Sintoma">
+                    <label for="returnSintoma">Sintoma:</label>
+                    @Html.EditorFor(model => model.nm_sintoma, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-lg-6 col-xl-6" id="fg_Obs">
+                    <label for="txtObs">Observação:</label>
+                    @Html.EditorFor(model => model.ds_observacao, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled", @rows = "4" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_PlantoAcionado">
+                    <label for="returnPlantoAcion">Plantonista Acionado:</label>
+                    @Html.EditorFor(model => model.nm_plantonista_acionado, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_CimAcionado">
+                    <label for="returnCimAcion">CIM Acionado:</label>
+                    @Html.EditorFor(model => model.nm_cim_acionado, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion1">
+                    <label for="returnPlnRepresAcion1">Plano Representativo Acionado:</label>
+                    @Html.EditorFor(model => model.nm_pl_represent_acionado1, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion2">
+                    <label for="returnPlnRepresAcion2">Plano Representativo Acionado:</label>
+                    @Html.EditorFor(model => model.nm_pl_represent_acionado2, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion3">
+                    <label for="returnPlnRepresAcion3">Plano Representativo Acionado:</label>
+                    @Html.EditorFor(model => model.nm_pl_represent_acionado3, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+                <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion4">
+                    <label for="returnPlnRepresAcion4">Plano Representativo Acionado:</label>
+                    @Html.EditorFor(model => model.nm_pl_represent_acionado4, new { htmlAttributes = new { @class = "form-control disabled", @disabled = "disabled" } })
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="text-right">
+
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Consultar)
+                        {
+                            <a href="/CopesePericia/PesquisarNotaCopeseMR" data-id="1" class="voltar btn btn-primary">Voltar</a>
+                        }
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar)
+                        {
+                            <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                            <button type="button" class="btn btn-primary encerrar ">Encerrar COPESE</button>
+                        }
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Descaracterizar)
+                        {
+                            <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                            <button type="button" class="btn btn-primary descaracterizar">Descaracterizar COPESE</button>
+                        }
+                    </div>
+                </div>
+            </div>
+</form>
+
+    @section scripts {
+        @Scripts.Render("~/Scripts/CopesePericia/consultarNotaCopeseMR.js")
+    }

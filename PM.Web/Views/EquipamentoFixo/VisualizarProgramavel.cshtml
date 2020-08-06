@@ -1,0 +1,110 @@
+﻿<h2>Equipamento Fixo - Programação (Visualizar Programável)</h2>
+<form>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="inputAno">Ano</label>
+                <input id="inputAno" type="number" value="1900" min="1900" max="3000" step="1" data-decimals="0" />
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="inputSemana">Semana</label>
+                <input id="inputSemana" type="number" value="1" min="1" max="5" step="1" data-decimals="0" />
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label for="selectEquipe">Equipe</label>
+                <select class="form-control" id="selectEquipe">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nº Plano</th>
+                            <th>Operação</th>
+                            <th>Local de instação</th>
+                            <th>Descrição</th>
+                            <th>Tipo manutenção</th>
+                            <th>Semana</th>
+                            <th>Data planej. espera</th>
+                            <th>Limite inferior</th>
+                            <th>Limite superior</th>
+                            <th>Duração</th>
+                            <th>Executantes</th>
+                            <th>Trabalho</th>
+                            <th>Unidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>387</td>
+                            <td>-</td>
+                            <td>M-L01-CON-5VP-IE02</td>
+                            <td>MP VENTILAÇÃO PRINCIPAL</td>
+                            <td>P2</td>
+                            <td>44</td>
+                            <td>10/11/2018</td>
+                            <td>10/10/2018</td>
+                            <td>20/11/2018</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>MIN</td>
+                            <td><button type="button" class="btn btn-primary">Liberar</button></td>
+                        </tr>
+                        <tr>
+                            <td>387</td>
+                            <td>-</td>
+                            <td>M-L01-CON-5VP-IE02</td>
+                            <td>MP VENTILAÇÃO PRINCIPAL</td>
+                            <td>P2</td>
+                            <td>44</td>
+                            <td>10/11/2018</td>
+                            <td>10/10/2018</td>
+                            <td>20/11/2018</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>MIN</td>
+                            <td><button type="button" class="btn btn-primary">Liberar</button></td>
+                        </tr>
+                        <tr>
+                            <td>387</td>
+                            <td>-</td>
+                            <td>M-L01-CON-5VP-IE02</td>
+                            <td>MP VENTILAÇÃO PRINCIPAL</td>
+                            <td>P2</td>
+                            <td>44</td>
+                            <td>10/11/2018</td>
+                            <td>10/10/2018</td>
+                            <td>20/11/2018</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>MIN</td>
+                            <td><button type="button" class="btn btn-primary">Liberar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+        
+@section scripts {
+    @Scripts.Render("~/Scripts/bootstrap-input-spinner.js")
+    @Scripts.Render("~/Scripts/EquipamentoFixo/visualizarProgramavel.js")
+}

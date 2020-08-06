@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="PM.ServiceSoap.WSUndercarriege" CodeBehind="WSMaterialRodante.svc.cs" %>

@@ -1,0 +1,132 @@
+﻿<h2>Material Rodante - Consultar Detalhes da Nota de Defeito Dectado pela Manutenção (MD)</h2>
+<form>
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold">Nota</label>
+                    <input class="form-control-plaintext" readonly value="1500" id="inputNota" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold">Data da Nota</label>
+                    <input class="form-control-plaintext" readonly value="03/02/2018 | 15h47" id="inputDataNota" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold">Status do Usuário</label>
+                    <input class="form-control-plaintext" readonly value="Cancelada" id="inputStatusUsuario" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class='form-group col-md-2'>
+                    <label class="font-weight-bold">Frota</label>
+                    <input class="form-control-plaintext" readonly value="Frota E" id="inputFrota" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="font-weight-bold">Trem</label>
+                    <input type="text" class="form-control-plaintext" id="inputTrem" readonly value="E01 E">
+                </div>
+                <div class="form-group  col-md-2">
+                    <label class="font-weight-bold">Carro</label>
+                    <input type="text" class="form-control-plaintext" id="inputCarro" readonly value="E01 E">
+                </div>
+                <div class="form-group  col-md-2">
+                    <label class="font-weight-bold">Sistema</label>
+                    <input type="text" class="form-control-plaintext" id="inputSistema" readonly value="Sistema 01">
+                </div>
+                <div class="form-group  col-md-2">
+                    <label class="font-weight-bold">Complemento</label>
+                    <input type="text" class="form-control-plaintext" id="inputComplemento" readonly value="Complemento">
+                </div>
+                <div class="form-group  col-md-2">
+                    <label class="font-weight-bold">Complemento</label>
+                    <input type="text" class="form-control-plaintext" id="inputComplemento" readonly value="Posição">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label class="font-weight-bold">Descrição do Local de Instalação</label>
+                    <input type="text" class="form-control-plaintext" id="inputLocalInstalacao" readonly value="E01 E">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group  col-md-3">
+                    <label class="font-weight-bold">Descrição</label>
+                    <input type="text" class="form-control-plaintext" id="inputDescricao" readonly value="Não anda">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group  col-md-3">
+                    <label class="font-weight-bold">Notificador</label>
+                    <input type="text" class="form-control-plaintext" id="inputNotificador" readonly value="38547">
+                </div>
+                <div class="form-group  col-md-3">
+                    <label class="font-weight-bold">Linha</label>
+                    <input type="text" class="form-control-plaintext" id="inputLinha" readonly value="LINHA 2 VERDE">
+                </div>
+                <div class="form-group  col-md-3">
+                    <label class="font-weight-bold">Local</label>
+                    <input type="text" class="form-control-plaintext" id="inputLocal" readonly value="M-L01-JAB">
+                </div>
+                <div class="form-group  col-md-3">
+                    <label class="font-weight-bold">Centro Trabalho</label>
+                    <input type="text" class="form-control-plaintext" id="inputCentroTrabalho" readonly value="MRNC">
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1'></div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Obs</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+            </div>
+            <div class='form-row'>
+                <div class='col-md-6'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Interf. Operacional > 5 min
+                        </label>
+                    </div>
+                </div>
+                <div class='col-md-4'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Incidente notável
+                        </label>
+                    </div>
+                </div>
+                <div class='col-md-2'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Fumaça
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<h4>Cancelamento da Nota</h4>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Data do Cancelamento</th>
+                <th scope="col">Usuário</th>
+                <th scope="col">Motivo do Cancelamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>03/02/2018</td>
+                <td>385478</td>
+                <td>Cancelado em duplicidade</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<button type="button" class="btn btn-primary">Voltar</button>

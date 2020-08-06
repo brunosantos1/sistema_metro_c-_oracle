@@ -1,0 +1,331 @@
+﻿@model PM.Web.ViewModel.Copese.NotaCopeseEFMRViewModel
+
+<section id="secForm">
+    @using (Html.BeginForm("SalvarNotaCopeseEFMR", "CopesePericia", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+    <form>
+        <br />
+        <ul class="nav">
+            <li class="nav-link active" id="TituloJumbo">
+                <a data-toggle="tab">
+                    <h5>
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Criar)
+                        {
+                            <label class="label-titulo">Criar</label>
+                        }
+
+                        @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+                        {
+                            <label class="label-titulo">Editar</label>
+                        }
+                        Nota Copese - Material Rodante
+                    </h5>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content jumbotron">
+            <div class="tab-pane active in" id="first-tab">
+                @if (ViewBag.SuccessMessage != null)
+                {
+                    <div class="row">
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12" id="fg_NotaRef">
+                            <span class="text-success">@ViewBag.SuccessMessage</span>
+                        </div>
+                    </div>
+                }
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="row">
+                        <div class="form-group col-md-12 col-lg-12 col-xl-12" id="fg_NotaRef">
+                            <span class="text-danger">@ViewBag.ErrorMessage</span>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_NotaRef">
+                        <label for="txtNotaRef" class="label-tamanho-125">Nota de Referência: <span class="asterisco">*</span></label>
+                        @Html.EditorFor(model => model.cd_nota_sap_Ref, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.id_nota_Ref)
+                        @Html.HiddenFor(model => model.id_nota)
+                        @Html.ValidationMessageFor(model => model.cd_nota_sap_Ref)
+                    </div>
+                    <div class="form-group" id="fg_btnPesquisar">
+                        <label></label>
+                        <a class="material-icons" href="#" onclick="BuscarNotaRef()" id="btnPesquisar" title="Pesquisar">
+                            search
+                        </a>
+                    </div>
+                    <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_LocInst">
+                        <label for="txtLocInst">Local de Instalação:</label>
+                        @Html.EditorFor(model => model.cd_local_inst_sap_Ref, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_local_inst_Ref)
+                    </div>
+                    <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Descr">
+                        <label for="txtDescr">Descrição:</label>
+                        @Html.EditorFor(model => model.ds_descricao_Ref, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                    </div>
+                    <div class="form-group col-md-8 col-lg-5 col-xl-4" id="fg_Sintoma">
+                        <label for="txtSintoma">Sintoma:</label>
+                        @Html.EditorFor(model => model.ds_breve_code_Ref, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.id_code_Ref)
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-1">
+                        <div class="form-group">
+                            <label for="selectCarro">Notificador:</label>
+                            @Html.EditorFor(model => model.rg_notificador, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                            @Html.HiddenFor(model => model.id_notificador_fk)
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3" style="display:none">
+                        @Html.LabelFor(model => model.nm_notificador)
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_notificador, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_notificador_fk)
+                            <div class="input-group-append">
+                                <button id="btnNotificador" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2 col-lg-2 col-xl-1">
+                        <div class="form-group">
+                            <label for="selectCarro">Linha:</label>
+                            @Html.EditorFor(model => model.nm_linha, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                            @Html.HiddenFor(model => model.id_linha)
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-2">
+                        <div class="form-group">
+                            <label for="selectCarro">Centro de Trabalho:</label>
+                            @Html.EditorFor(model => model.ds_ct_trabalho, new { htmlAttributes = new { @class = "form-control disabled", @readonly = "readonly" } })
+                            @Html.HiddenFor(model => model.id_ct_trabalho)
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12 col-lg-12 col-xl-12"></div>
+                    <div class="form-group col-md-8 col-lg-6 col-xl-6" id="fg_Obs">
+                        <label for="txtObs">Observação:</label>
+                        @Html.TextAreaFor(model => model.ds_observacao, new { @class = "form-control", @rows = "4" })
+                    </div>
+                    <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_PlantoAcionado">
+                        <label for="txtPlantoAcionadp">Plantonista Acionado: <span class="asterisco">*</span></label>
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_plantonista_acionado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_plantonista_acionado)
+                            @Html.ValidationMessageFor(model => model.id_plantonista_acionado)
+                            <div class="input-group-append">
+                                <button id="btPnAcionado" onclick="showEmpregados('modalEmpregado_container', 'btPnAcionado', 'id_plantonista_acionado', 'nm_plantonista_acionado')" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5 col-lg-3 col-xl-2" id="fg_CimAcionado">
+                        <label for="txtCimAcionado">CIM Acionado: <span class="asterisco">*</span></label>
+                        @if (Model != null && Model.SelecionarCimAcionado != null)
+                        {
+                            @Html.DropDownListFor(model => model.id_cim_acionado, (IEnumerable<SelectListItem>)Model.SelecionarCimAcionado, new { @class = "form-control selectpicker pickerWorkflow" })
+                        }
+                        @Html.HiddenFor(model => model.id_cim_acionado)
+                        @Html.ValidationMessageFor(model => model.id_cim_acionado)
+                    </div>
+                    <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion1">
+                        <label for="txtPlnRepresenAcion1">Plano Representativo Acionado 1:</label>
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_pl_represent_acionado1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_pl_represent_acionado1)
+                            <div class="input-group-append">
+                                <button id="btPlAcionado1" onclick="showEmpregados('modalEmpregado_container', 'btPlAcionado1', 'id_pl_represent_acionado1', 'nm_pl_represent_acionado1')" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion2">
+                        <label for="txtPlnRepresenAcion2">Plano Representativo Acionado 2:</label>
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_pl_represent_acionado2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_pl_represent_acionado2)
+                            <div class="input-group-append">
+                                <button id="btPlAcionado2" onclick="showEmpregados('modalEmpregado_container', 'btPlAcionado2', 'id_pl_represent_acionado2', 'nm_pl_represent_acionado2');" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion3">
+                        <label for="txtPlnRepresenAcion3">Plano Representativo Acionado 3:</label>
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_pl_represent_acionado3, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_pl_represent_acionado3)
+                            <div class="input-group-append">
+                                <button id="btPlAcionado3" onclick="showEmpregados('modalEmpregado_container', 'btPlAcionado3', 'id_pl_represent_acionado3', 'nm_pl_represent_acionado3');" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-4 col-xl-3" id="fg_PlnRepresenAcion4">
+                        <label for="txtPlnRepresenAcion4">Plano Representativo Acionado 4:</label>
+                        <div class="input-group mb">
+                            @Html.EditorFor(model => model.nm_pl_represent_acionado4, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.id_pl_represent_acionado4)
+                            <div class="input-group-append">
+                                <button id="btPlAcionado4" onclick="showEmpregados('modalEmpregado_container5', 'btPlAcionado4', 'id_pl_represent_acionado4', 'nm_pl_represent_acionado4');" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="text-right">
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Criar)
+                    {
+                        <button type="submit" class="btn btn-primary">Criar Nota COPESE</button>
+                        <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                    }
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+                    {
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                        <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                    }
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar)
+                    {
+                        <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary encerrar ">Encerrar COPESE</button>
+                    }
+                    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Descaracterizar)
+                    {
+                        <button type="reset" onclick="history.back()" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary descaracterizar">Descaracterizar COPESE</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+
+    }
+</section>
+
+<div class="help-block col-md-12" style="list-style-type:none">
+    @*@Html.ValidationSummary(true, "", new { @class = "custom-validation-summary" })*@
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</div>
+
+<div id="modalEmpregado_container">
+    <span id="idTxt"></span>
+    <span id="nmTxt"></span>
+    <div class="modal " id="modalEmpregados" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Selecione um empregado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <p>Nome ou RG do empregado</p>
+                            <div class="input-group mb">
+                                <input id="txtEmpregadosEntrada" class="form-control" type="text" value="" />
+                                <div class="input-group-append">
+                                    <button id="btnPesquisarEmpregados" class="btn btn-outline-secondary" type="button"><i class="material-icons">search</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="tblEmpregados" class="table table-bordered clickable" style="display: none;">
+                        <caption>Empregados</caption>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>RG</th>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/gijgo.min.js")
+    @Scripts.Render("~/Scripts/messages/messages.pt-br.min.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+    @Scripts.Render("~/Scripts/CopesePericia/criarNotaCopeseEFMR.js")
+
+    @if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Consultar
+        || Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar
+        || Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Descaracterizar)
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#cd_local_inst_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_descricao_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_breve_code_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_observacao').attr("readonly", true).addClass("disabled");
+            $('#nm_plantonista_acionado').attr("readonly", true).addClass("disabled");
+            $('#id_cim_acionado').attr("disabled", "disabled").addClass("disabled");
+            $('#ds_ct_trabalho').attr("disabled", "disabled").addClass("disabled");
+
+            $('#nm_pl_represent_acionado1').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado2').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado3').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado4').attr("readonly", true).addClass("disabled");
+
+            $('#btPnAcionado').prepend().css('display', 'none');
+            $('#btPlAcionado1').prepend().css('display', 'none');
+            $('#btPlAcionado2').prepend().css('display', 'none');
+            $('#btPlAcionado3').prepend().css('display', 'none');
+            $('#btPlAcionado4').prepend().css('display', 'none');
+
+            document.getElementById("btnPesquisar").style.display = "none";
+            document.getElementById("btSalvar").style.display = "none";
+            document.getElementById("btCancelar").style.display = "none";
+        </script>
+    }
+    else if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Editar)
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#nm_plantonista_acionado').attr("readonly", true).addClass("disabled");
+            $('#btPnAcionado').attr("disabled", "disabled");
+            $('#id_cim_acionado').attr("disabled", "disabled").addClass("disabled");
+            document.getElementById("btnPesquisar").style.display = "none";
+        </script>
+    }
+    else if (Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Descaracterizar
+        || Model.Operacao == PM.Web.ViewModel.Enum.OperacaoType.Encerrar)
+    {
+        <script type="text/javascript">
+            $('#cd_nota_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#cd_local_inst_sap_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_descricao_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_breve_code_Ref').attr("readonly", true).addClass("disabled");
+            $('#ds_observacao').attr("readonly", true).addClass("disabled");
+            $('#nm_plantonista_acionado').attr("readonly", true).addClass("disabled");
+            $('#id_cim_acionado').attr("disabled", "disabled").addClass("disabled");
+            $('#ds_ct_trabalho').attr("disabled", "disabled").addClass("disabled");
+            $('#nm_pl_represent_acionado1').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado2').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado3').attr("readonly", true).addClass("disabled");
+            $('#nm_pl_represent_acionado4').attr("readonly", true).addClass("disabled");
+
+            $('#btPnAcionado').prepend().css('display', 'none');
+            $('#btPlAcionado1').prepend().css('display', 'none');
+            $('#btPlAcionado2').prepend().css('display', 'none');
+            $('#btPlAcionado3').prepend().css('display', 'none');
+            $('#btPlAcionado4').prepend().css('display', 'none');
+
+            document.getElementById("btnPesquisar").style.display = "none";
+            document.getElementById("btSalvar").style.display = "none";
+            document.getElementById("btCancelar").style.display = "none";
+        </script>
+    }
+    <script type="text/javascript">
+        $('.field-validation-error').css("display", "none");
+    </script>
+}

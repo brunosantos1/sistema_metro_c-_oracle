@@ -1,0 +1,258 @@
+﻿@model PM.Web.ViewModel.EntregaTrensViewModel
+
+<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo"><a data-toggle="tab"><h5>Material Rodante - Solicitar Entrega de Trem</h5></a></li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label for="selectLinha">Linha</label>
+                        @Html.DropDownListFor(model => model.linha, (IEnumerable<SelectListItem>)Model.SelecionarLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparCombo('patio'); fnLimparCombo('trens'); fnLimparDataTable('tbOcorrencia'); fnLimparDataTable('tbInspecao'); fnLimparDataTable('tbProgramacao'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao'); fnLimparDataTable('tbGravar_Programacao'); fnCarregaCombo(this, 'patio', 'GetPatioLinha?ID=' );" })
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="selectPatio">Patio</label>
+                        @Html.DropDownListFor(model => model.patio, (IEnumerable<SelectListItem>)Model.SelecionarPatioLinha, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparCombo('trens'); fnLimparDataTable('tbOcorrencia'); fnLimparDataTable('tbInspecao'); fnLimparDataTable('tbProgramacao'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao'); fnLimparDataTable('tbGravar_Programacao'); fnCarregaCombo(this, 'trens', 'GetLinhaPatioTrem?idStatusTrem=1&idPatio=' );" })
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="inputTrem">Trem</label>
+                        @Html.DropDownListFor(model => model.trens, (IEnumerable<SelectListItem>)Model.SelecionarTrens, new { @class = "form-control selectpicker pickerWorkflow", @onchange = "fnLimparDataTable('tbOcorrencia'); fnLimparDataTable('tbInspecao'); fnLimparDataTable('tbProgramacao'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao'); fnLimparDataTable('tbGravar_Programacao'); " })
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" onclick="fnLimparDataTable('tbOcorrencia'); fnLimparDataTable('tbInspecao'); fnLimparDataTable('tbProgramacao'); fnLimparDataTable('tbGravar_Ocorrencia'); fnLimparDataTable('tbGravar_Inspecao'); fnLimparDataTable('tbGravar_Programacao'); fnCarregaDataTable('linha', 'patio', 'trens');">Filtrar</button>&nbsp;
+                <button type="button" class="btn btn-primary">Limpar</button>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"> <a href="#tab-ocorrencia" data-toggle="tab" class="a-custom">Ocorrência</a>   </li>
+                    <li>                <a href="#tab-inspecao" data-toggle="tab" class="a-custom">Inspeção</a>     </li>
+                    <li>                <a href="#tab-programacao" data-toggle="tab" class="a-custom">Programação</a>  </li>
+                    <li>                <a href="#tab-gravar" data-toggle="tab" class="a-custom">Gravar</a>       </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active in " id="tab-ocorrencia">
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <p>
+                                Aqui você visualiza todas as notas do tipo <strong>Ocorrência</strong> que estão vinculadas ao Trem selecionado no filtro acima. Navegando entres as paginas do grid, você pode selecionar quais as Notas deseja anexar a esta <strong>Solicitação de Entrega de Trem</strong>.
+                            </p>
+                            <p>
+                                Vale destacar que na guia <strong>Gravar</strong>, você terá uma visualização geral de todas as notas, sejam elas do tipo Ocorrência, Inspeção ou Programação, anexadas a solicitação de entrega.
+                            </p>
+                            <p>
+                            </p>
+
+                            <table id="tbOcorrencia" class="nowrap table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        @*<th nowrap>Selecionar?</th>*@
+                                        <th>Nota</th>
+                                        <th>Local Instalação</th>
+                                        <th>Descrição da Nota</th>
+                                        <th>Sintoma</th>
+                                        <th>Prior</th>
+                                        <th>Data</th>
+                                        <th>Notificador</th>
+                                        <th>Equipe</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab-inspecao">
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <p>
+                                Aqui você visualiza todas as notas do tipo <strong>Inspeção</strong> que estão vinculadas ao Trem selecionado no filtro acima. Navegando entres as paginas do grid, você pode selecionar quais as Notas deseja anexar a esta <strong>Solicitação de Entrega de Trem</strong>.
+                            </p>
+                            <p>
+                                Vale destacar que na guia <strong>Gravar</strong>, você terá uma visualização geral de todas as notas, sejam elas do tipo Ocorrência, Inspeção ou Programação, anexadas a solicitação de entrega.
+                            </p>
+                            <p>
+                            </p>
+                            <table id="tbInspecao" class="nowrap table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        @*<th nowrap>Selecionar?</th>*@
+                                        <th>Nota</th>
+                                        <th>Local Instalação</th>
+                                        <th>Descrição da Nota</th>
+                                        <th>Sintoma</th>
+                                        <th>Prior</th>
+                                        <th>Data</th>
+                                        <th>Notificador</th>
+                                        <th>Equipe</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab-programacao">
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <p>
+                                Aqui você visualiza todas as notas do tipo <strong>Programação</strong> que estão vinculadas ao Trem selecionado no filtro acima. Navegando entres as paginas do grid, você pode selecionar quais as Notas deseja anexar a esta <strong>Solicitação de Entrega de Trem</strong>.
+                            </p>
+                            <p>
+                                Vale destacar que na guia <strong>Gravar</strong>, você terá uma visualização geral de todas as notas, sejam elas do tipo Ocorrência, Inspeção ou Programação, anexadas a solicitação de entrega.
+                            </p>
+                            <p>
+                            </p>
+                            <table id="tbProgramacao" class="nowrap table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Selecionar</th>
+                                        <th>Trem</th>
+                                        <th>Hr Solicitada</th>
+                                        <th>Local Solicitado</th>
+                                        <th>Motivo</th>
+                                        <th>Equipe</th>
+                                        <th>Solicitante</th>
+                                        <th>Dt Prev Lib</th>
+                                        <th>Hr Prev Lib</th>
+                                        <th>Status</th>
+                                        <th>Observação</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane " id="tab-gravar">
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded" style="min-height: 580px;">
+                            <p>Abaixo, um resumo de todas as Notas e Programações vinculadas a Entrega do Trem. Para confirmar o vínculo e salvar a Entrega, clique em Gravar.</p>
+                            <p>Caso queira alterar as Notas e Programações vinculadas, basta retornar as guias anteriores.</p>
+
+                            <div class="row">
+                                @*<div class="form-group col-md-2">
+                                    <label for="inputDataEntrega">Data Entrega</label>
+                                    <input class="form-control FormatDate" id="inputDataEntrega">
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <label for="inputHoraEntrega">Hora Entrega</label>
+                                    <input class="form-control FormatTime" id="inputHoraEntrega">
+                                </div>*@
+                                <div class="form-group col-md-2">
+                                    <br />
+                                    <button type="button" id="btnGravar" class="btn btn-primary col-md-5" onclick="fnGravaDadosEmBanco('linha', 'patio', 'trens');">Gravar</button>
+                                    <button type="button" id="btnCancelar" class="btn btn-primary col-md-5" onclick="fnCancelar();">Cancelar</button>
+                                </div>
+                            </div>
+                            <hr />
+                            <ul class="nav nav-tabs">
+                                <li class="active"> <a href="#tabGravar-ocorrencia" data-toggle="tab" class="a-custom">Ocorrência</a>   </li>
+                                <li>                <a href="#tabGravar-inspecao" data-toggle="tab" class="a-custom">Inspeção</a>     </li>
+                                <li>                <a href="#tabGravar-programacao" data-toggle="tab" class="a-custom">Programação</a>  </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active in " id="tabGravar-ocorrencia">
+                                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                                        <table id="tbGravar_Ocorrencia" class="nowrap table table-bordered table-hover dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nota</th>
+                                                    <th>Local Instalação</th>
+                                                    <th>Descrição da Nota</th>
+                                                    <th>Sintoma</th>
+                                                    <th>Prior</th>
+                                                    <th>Data</th>
+                                                    <th>Notificador</th>
+                                                    <th>Equipe</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane " id="tabGravar-inspecao">
+                                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                                        <table id="tbGravar_Inspecao" class="nowrap table table-bordered table-hover dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nota</th>
+                                                    <th>Local Instalação</th>
+                                                    <th>Descrição da Nota</th>
+                                                    <th>Sintoma</th>
+                                                    <th>Prior</th>
+                                                    <th>Data</th>
+                                                    <th>Notificador</th>
+                                                    <th>Equipe</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane " id="tabGravar-programacao">
+                                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                                        <table id="tbGravar_Programacao" class="nowrap table table-bordered table-hover dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Trem</th>
+                                                    <th>Hr Solicitada</th>
+                                                    <th>Local Solicitado</th>
+                                                    <th>Motivo</th>
+                                                    <th>Equipe</th>
+                                                    <th>Solicitante</th>
+                                                    <th>Dt Prev Lib</th>
+                                                    <th>Hr Prev Lib</th>
+                                                    <th>Status</th>
+                                                    <th>Observação</th>
+                                                    <th>Ação</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</form>
+
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @Scripts.Render("~/Scripts/dataTables.bootstrap4.min.js")
+    @Scripts.Render("~/Scripts/Generico/JSGenerico.js")
+    @Scripts.Render("~/Scripts/MaterialRodante/SolicitarEntregaTrem.js");
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            if (document.readyState == 'complete') {                
+                if (getParameterByName('idEntrega') != null) {                    
+                    fnCarregaDataTable('linha', 'patio', 'trens');
+                    var URL_Ocorrencia = '/EntregaTrens/AtualizaDadosGravacao?cd_sap=MC' + '&idRegistro=0&idEntrega=' + getParameterByName('idEntrega');
+                    LoadDataTable('tbGravar_Ocorrencia', URL_Ocorrencia);
+                    var URL_Ocorrencia = '/EntregaTrens/AtualizaDadosGravacao?cd_sap=MI' + '&idRegistro=0&idEntrega=' + getParameterByName('idEntrega');
+                    LoadDataTable('tbGravar_Inspecao', URL_Ocorrencia);
+                }
+            };
+        };
+    </script>
+}
+

@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMenuSistema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MenuSistema>
+    <id_menu>1000</id_menu>
+    <id_pai>0</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>GERAL</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1110</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>2235</id_menu>
+    <id_pai>1110</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Defeito Detectado pela Manutenção</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/NotaED</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1112</id_menu>
+    <id_pai>1110</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Serviço Interno</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/NotaEI</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1113</id_menu>
+    <id_pai>1110</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Corretiva</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/NotaEC</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1120</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/PesquisarNota</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1130</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Ordem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/PesquisarNota</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1140</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Operação</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/PesquisarOperacao</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1150</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Confirmação</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/PesquisarConfirmacao</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1160</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Medidas</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/PesquisarMedidas</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1170</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Programação</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/Programacao</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1180</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Microprogramação</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo/ConsultarMicroprogramacao</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1190</id_menu>
+    <id_pai>1100</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Apontar Nota/Ordem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>EquipamentoFixo2/ApontarOrdem/1</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1200</id_menu>
+    <id_pai>1000</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Material Rodante</ds_legenda>
+    <nm_estilo>&lt;i class="fa fa-subway"&gt;&lt;/i&gt;</nm_estilo>
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1210</id_menu>
+    <id_pai>1200</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>2211</id_menu>
+    <id_pai>1210</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota Corretiva</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/NotaCorretiva/Cadastro</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>2212</id_menu>
+    <id_pai>1210</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota MD</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/NotaMD/Cadastro</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>2213</id_menu>
+    <id_pai>1210</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota Inspeção</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/NotaInspecao/Cadastro</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>2214</id_menu>
+    <id_pai>1210</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota de Serviço</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/NotaServico/Cadastro</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1230</id_menu>
+    <id_pai>1200</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1231</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>OK - Pesquisar Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/PesquisarTrens</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>    
+  <MenuSistema>
+    <id_menu>1232</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>OK - Entrega de Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/SolicitarEntregaTrem</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1234</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>OK - Pesquisar Entrega de Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/PesquisarEntregaTrem</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1235</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>OK - Programar Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/ProgramarMP</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1233</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Programação de Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/PesquisarProgramacaoTrens</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+
+  <MenuSistema>
+    <id_menu>1236</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesq. Programacao Notas (MP)pg.17</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/PesquisarProgramacaoNotasMP</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1235</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Programar Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/ProgramarMP</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1236</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Manobra</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/PesquisarManobra</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1237</id_menu>
+    <id_pai>1230</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Manobra do Trem</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MaterialRodante/SolicitarManobra</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1250</id_menu>
+    <id_pai>1200</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota Corretiva (MC)</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/PesquisarNotaMC/Pesquisar</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1260</id_menu>
+    <id_pai>1200</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota Inspeção (MI)</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>MR/PesquisarNotaMI/Pesquisar</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1300</id_menu>
+    <id_pai>1000</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>COPESE e Perícia</ds_legenda>
+    <nm_estilo>&lt;i class="fa fa-clipboard"&gt;&lt;/i&gt;</nm_estilo>
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1310</id_menu>
+    <id_pai>1300</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>COPESE</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1312</id_menu>
+    <id_pai>1310</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota - Material Rodante</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/PesquisarNotaCopeseMR</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1313</id_menu>
+    <id_pai>1310</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/CriarNotaCopeseEFMR</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1320</id_menu>
+    <id_pai>1300</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Perícia</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1322</id_menu>
+    <id_pai>1320</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota - Material Rodante</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/PesquisarNotaPericiaMR</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1324</id_menu>
+    <id_pai>1320</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar Nota - Material Rodante</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/CriarNotaPericiaMR</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1331</id_menu>
+    <id_pai>1330</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/OrdemServicosGerais</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1332</id_menu>
+    <id_pai>1330</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Apontar</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/ApontarOrdemServicosGerais</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1333</id_menu>
+    <id_pai>1330</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Encerrar</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>CopesePericia/EncerrarOrdemServicosGerais</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1410</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Criar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1411</id_menu>
+    <id_pai>1410</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota OC/OP/OL</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/NotaOCOPOL</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1412</id_menu>
+    <id_pai>1410</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Serviço Interno</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/NotaOI</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1413</id_menu>
+    <id_pai>1410</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Prestação de Serviço</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/NotaPS</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1420</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Pesquisar Nota</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina2/PesquisarNota</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1430</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Liberar Equip/Material</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1431</id_menu>
+    <id_pai>1430</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Individualmente</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/LiberarEquipamentoMaterialIndividualmente</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1432</id_menu>
+    <id_pai>1430</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Em Lote</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/LiberarMaterialEmLote</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1440</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>true</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Apontamento</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>#</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1441</id_menu>
+    <id_pai>1440</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Individual</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/ApontarNotaOrdemIndividualmente</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1442</id_menu>
+    <id_pai>1440</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Em Lote</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/ApontarNotaOrdemLote</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1443</id_menu>
+    <id_pai>1440</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota de Serviço Interno</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/ApontarNotaOrdemServicoInterno</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1444</id_menu>
+    <id_pai>1440</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Nota de Prestação de Serviço</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/ApontarNotaOrdemPrestacaoServico</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1450</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Consultar Giro</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/PesquisarGiro</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+  <MenuSistema>
+    <id_menu>1460</id_menu>
+    <id_pai>1400</id_pai>
+    <flg_ativo>true</flg_ativo>
+    <flg_temfilho>false</flg_temfilho>
+    <flg_header>false</flg_header>
+    <ordem_exibicao>0</ordem_exibicao>
+    <ds_legenda>Consultar Prioritário</ds_legenda>
+    <nm_estilo />
+    <ds_tooltip></ds_tooltip>
+    <ds_URL>Oficina/PesquisarPrioritario</ds_URL>
+    <nm_target>_Parent</nm_target>
+  </MenuSistema>
+</ArrayOfMenuSistema>

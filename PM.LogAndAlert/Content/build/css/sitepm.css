@@ -1,0 +1,48 @@
+﻿.pm-wrap > .container {
+    /*padding: 70px 15px 10px;    */
+}
+
+.pm-header {
+    margin: 0px;
+    padding: 0px;
+    height: 73px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background: #242E73 url(../images/banner-app.jpg) no-repeat;
+}
+
+.pm-logo {
+    padding: 0px 0px;
+    float: left;
+}
+
+.pm-appName {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 110%;
+    margin-left: 180px;
+    color: #FFFFFF;
+}
+
+.pm-userInfo {
+    height: 20px;
+    line-height: 20px;
+    font-size: 80%;
+    text-align: right;
+    margin-right: 0px;
+    padding-left: 10px;
+    vertical-align: bottom;
+    z-index: -1000;
+    overflow: hidden;
+    margin-top: -09px;
+    color: #FFFFFF;
+}
+
+.pm-btnLogout {
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+}

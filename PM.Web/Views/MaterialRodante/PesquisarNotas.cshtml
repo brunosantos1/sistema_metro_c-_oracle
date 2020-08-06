@@ -1,0 +1,197 @@
+﻿<h2>Material Rodante - Pesquisar Notas</h2>
+<div class="row">
+    <div class="form-group col-md-2">
+        <label for="selectFrota">Tp Nota</label>
+        <select class="form-control" id="selectTpNota">
+            <option>MC</option>
+        </select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectTrem">Nota</label>
+        <input class="form-control" id="inputNota">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="selectSistema">Gr Trab</label>
+        <select class="form-control" id="selectGrTrab"></select>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="selectSintoma">Centro Trabalho</label>
+        <select class="form-control" id="selectSintoma"></select>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputDataInicial">De</label>
+        <input class="form-control" id="inputDataInicial">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputDataFinal">Até</label>
+        <input class="form-control" id="inputDataFinal">
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-1">
+        <label for="selectFrota">Frota</label>
+        <select class="form-control" id="selectFrota">
+            <option></option>
+        </select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectTrem">Trem</label>
+        <select class="form-control" id="selectTrem"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectCarro">Carro</label>
+        <select class="form-control" id="selectCarro"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectSistema">Sistema</label>
+        <select class="form-control" id="selectSistema"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectSintoma">Sintoma</label>
+        <select class="form-control" id="selectSintoma"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectPrioridade">Prioridade</label>
+        <select class="form-control" id="selectPrioridade"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectPrioridade">Diagnóstico</label>
+        <select class="form-control" id="selectPrioridade"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectCausaRaiz">CausaRaiz</label>
+        <select class="form-control" id="selectCausaRaiz"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectTipoManutencao">Tipo de Manutenção</label>
+        <select class="form-control" id="selectTipoManutencao"></select>
+    </div>
+    <div class="form-group col-md-1">
+        <label for="inputNotaReferencia">Nota de Referência</label>
+        <input class="form-control" id="inputNotaReferencia">
+    </div>
+    <div class="form-group col-md-1">
+        <label for="selectStatusUsuario">Status do Usuário</label>
+        <select class="form-control" id="selectStatusUsuario"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="col form-group">
+        <button type="button" class="btn btn-primary">Filtrar</button>
+        <button type="button" class="btn btn-primary">Limpar filtro</button>
+        <button type="button" class="btn btn-primary">Exportar</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Tp</th>
+                <th scope="col">Nota</th>
+                <th scope="col">Ordem</th>
+                <th scope="col">Data</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Li</th>
+                <th scope="col">Descrição da Nota</th>
+                <th scope="col">Sintoma</th>
+                <th scope="col">Pri</th>
+                <th scope="col">Notif</th>
+                <th scope="col">Status</th>
+                <th scope="col">Diag</th>
+                <th scope="col">Causa Raiz</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">MC</td>
+                <td>1111</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons btn_details" style="cursor:pointer;display:inline" data-id="1">search</i>
+                    <i class="material-icons btn_edit" style="cursor:pointer;display:inline" data-id="1">edit</i>
+                    <i class="material-icons btn_point" style="cursor:pointer;display:inline" data-id="1">query_builder</i>
+
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">MC</td>
+                <td>2222</td>
+                <td>MC</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons btn_details" style="cursor:pointer;display:inline" data-id="2">search</i>
+                    <i class="material-icons btn_edit" style="cursor:pointer;display:inline" data-id="2">edit</i>
+                    <i class="material-icons btn_point" style="cursor:pointer;display:inline" data-id="2">query_builder</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Tp</th>
+                <th scope="col">Nota</th>
+                <th scope="col">Ordem</th>
+                <th scope="col">Li</th>
+                <th scope="col">Descrição Li</th>
+                <th scope="col">Txt Ciclo Manutenção</th>
+                <th scope="col">Tipo Manut</th>
+                <th scope="col">Km Prev</th>
+                <th scope="col">Km Atual</th>
+                <th scope="col">Índice</th>
+                <th scope="col">Equipe</th>
+                <th scope="col">Dt Desejada</th>
+                <th scope="col">Dt Programada</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">MP</td>
+                <td>1111</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td>AAAA</td>
+                <td STYLE="min-width:150px">
+                    <i class="material-icons btn_point" data-id="3" style="cursor:pointer;display:inline" data-id="2">query_builder</i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/pesquisarNotas.js")
+}

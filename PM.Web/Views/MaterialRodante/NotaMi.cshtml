@@ -1,0 +1,143 @@
+﻿<form>
+    <br />
+    <ul class="nav">
+        <li class="nav-link active" id="TituloJumbo">
+            <a data-toggle="tab">
+                <h5>Material Rodante - @(ViewBag.Action == "new" ? "Criar" : "Editar") Nota de Inspeção (MI)</h5>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content jumbotron">
+        <div class="tab-pane active in" id="first-tab">
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Frota">
+                    <label for="selectFrota">Frota: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectFrota">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Trem">
+                    <label for="selectTrem">Trem: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectTrem">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Carro">
+                    <label for="selectCarro">Carro: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectCarro">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Sistema">
+                    <label for="txtSistema">Sistema:</label>
+                    <input type="text" class="form-control disabled" id="txtSistema" readonly>
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_DescrLocInst">
+                    <label for="txtDescrLocInst">Descrição do Local de Instalação:</label>
+                    <input type="text" class="form-control disabled" id="txtDescrLocInst" readonly>
+                </div>
+                <div class="form-group col-md-8 col-lg-6 col-xl-4" id="fg_Sintoma">
+                    <label for="txtSintoma">Sintoma:</label>
+                    <input type="text" class="form-control disabled" id="txtSintoma" readonly>
+                </div>
+                <div class="form-group col-md-5 col-lg-4 col-xl-2" id="fg_Descr">
+                    <label for="txtDescr">Descrição: <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" id="txtDescr">
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Prioridade">
+                    <label for="txtPrioridade">Prioridade</label>
+                    <input type="text" class="form-control disabled" id="txtPrioridade" readonly>
+                </div>
+                <div class="form-group col-md-4 col-lg-3 col-xl-2" id="fg_Notificador">
+                    <label for="txtNotificador">Notificador: <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" id="txtNotificador">
+                </div>
+                <div class="form-group col-md-2 col-lg-2 col-xl-1" id="fg_Local">
+                    <label for="selectLocal">Local: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectLocal">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1" id="fg_Linha">
+                    <label for="selectLinha">Linha: <span class="asterisco">*</span></label>
+                    <select class="form-control" id="selectLinha">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 col-lg-3 col-xl-2" id="fg_CentroTrab">
+                    <label for="txtCentroTrab">Centro de Trabalho:</label>
+                    <input type="text" class="form-control disabled" id="txtCentroTrab" readonly>
+                </div>
+                <div class="form-group col-md-12 col-lg-8 col-xl-7" id="fg_Obs">
+                    <label for="txtObs">Observação:</label>
+                    <textarea class="form-control" id="txtObs" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox" id="fg_IncidenteNotavel">
+                    <input type="checkbox" class="custom-control-input" id="checkIncidenteNotavel">
+                    <label class="custom-control-label" for="checkIncidenteNotavel">Incidente Notável</label>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-2 custom-control custom-checkbox" id="fg_Fumaca">
+                    <input type="checkbox" class="custom-control-input" id="checkFumaca">
+                    <label class="custom-control-label" for="checkFumaca">Fumaça</label>
+                </div>
+                <div class="form-group col-md-3 col-lg-2 col-xl-1 custom-control custom-checkbox" id="fg_Reboque">
+                    <input type="checkbox" class="custom-control-input" id="checkReboque">
+                    <label class="custom-control-label" for="checkReboque">Reboque</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md text-right">
+            <button type="button" class="btn btn-primary">Cancelar</button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-primary">Carregar última</button>
+        </div>
+    </div>
+</form>
+<br>
+<div>
+    <h5 class="TituloGrid">Abertas/Pendentes:</h5>
+    <br />
+    <table class="nowrap table table-bordered table-hover dataTable">
+        <thead>
+            <tr>
+                <th scope="col">Nota</th>
+                <th scope="col">Tp</th>
+                <th scope="col">Local Instalação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Notificador</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tamanho12 00</td>
+                <td>02</td>
+                <td>Tamanho40 Tamanho40 Tamanho40 Tamanho040</td>
+                <td>Tamanho 20Tamanho 20</td>
+                <td>20/01/2010</td>
+                <td>16:40</td>
+                <td>Tamanho12 00</td>
+                <td>Tamanho 20Tamanho 20</td>
+                <td>
+                    <i class="material-icons btn_details" data-id="1" title="Consultar Detalhes">search</i>
+                    <i class="material-icons btn_edit" data-id="1" title="Editar Nota">edit</i>
+                    <i class="material-icons btn_cancel" data-id="1" title="Cancelar Nota">close</i>
+                    <i class="material-icons btn_train" data-id="1" title="Entrega de Trem">train</i> <br />
+                    <a href="#" data-id="1" class="btn_pericia icon">PERÍCIA</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/MaterialRodante/criarMi.js")
+}

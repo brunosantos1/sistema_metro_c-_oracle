@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E61FC043-F91C-46CC-8F32-FA6E5FD8198B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PM.WebServices</RootNamespace>
+    <AssemblyName>PM.WebServices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PM\CalendariosFabrica.cs" />
+    <Compile Include="PM\CalendariosFabricaExtensions.cs" />
+    <Compile Include="PM\Capacidades.cs" />
+    <Compile Include="PM\CapacidadesExtensions.cs" />
+    <Compile Include="PM\Carros.cs" />
+    <Compile Include="PM\CarrosExtensions.cs" />
+    <Compile Include="PM\Catalogos.cs" />
+    <Compile Include="PM\CatalogosExtensions.cs" />
+    <Compile Include="PM\CategoriasEquipamento.cs" />
+    <Compile Include="PM\CategoriasEquipamentoExtensions.cs" />
+    <Compile Include="PM\CategoriasPontoMedicao.cs" />
+    <Compile Include="PM\CategoriasPontoMedicaoExtensions.cs" />
+    <Compile Include="PM\CentrosCusto.cs" />
+    <Compile Include="PM\CentrosCustoExtensions.cs" />
+    <Compile Include="PM\CentrosLocalizacao.cs" />
+    <Compile Include="PM\CentrosLocalizacaoExtensions.cs" />
+    <Compile Include="PM\CentroTrabalhos.cs" />
+    <Compile Include="PM\CentroTrabalhosExtensions.cs" />
+    <Compile Include="PM\ChavesControle.cs" />
+    <Compile Include="PM\ChavesControleExtensions.cs" />
+    <Compile Include="PM\Classificacoes.cs" />
+    <Compile Include="PM\ClassificacoesExtensions.cs" />
+    <Compile Include="PM\Codes.cs" />
+    <Compile Include="PM\CodesExtensions.cs" />
+    <Compile Include="PM\CodigosABC.cs" />
+    <Compile Include="PM\CodigosABCExtensions.cs" />
+    <Compile Include="PM\Complementos.cs" />
+    <Compile Include="PM\ComplementosExtensions.cs" />
+    <Compile Include="PM\Diagnosticos.cs" />
+    <Compile Include="PM\DiagnosticosExtensions.cs" />
+    <Compile Include="PM\Documentos.cs" />
+    <Compile Include="PM\DocumentosExtensions.cs" />
+    <Compile Include="PM\ElementosPEP.cs" />
+    <Compile Include="PM\ElementosPEPExtensions.cs" />
+    <Compile Include="PM\Empregados.cs" />
+    <Compile Include="PM\EmpregadosExtensions.cs" />
+    <Compile Include="PM\EntregaTremOperations.cs" />
+    <Compile Include="PM\EntregaTremOperationsExtensions.cs" />
+    <Compile Include="PM\Equipamentos.cs" />
+    <Compile Include="PM\EquipamentosExtensions.cs" />
+    <Compile Include="PM\Estrategias.cs" />
+    <Compile Include="PM\EstrategiasExtensions.cs" />
+    <Compile Include="PM\EventosGerador.cs" />
+    <Compile Include="PM\EventosGeradorExtensions.cs" />
+    <Compile Include="PM\Frotas.cs" />
+    <Compile Include="PM\FrotasExtensions.cs" />
+    <Compile Include="PM\GrupoCodes.cs" />
+    <Compile Include="PM\GrupoCodesExtensions.cs" />
+    <Compile Include="PM\ICalendariosFabrica.cs" />
+    <Compile Include="PM\ICapacidades.cs" />
+    <Compile Include="PM\ICarros.cs" />
+    <Compile Include="PM\ICatalogos.cs" />
+    <Compile Include="PM\ICategoriasEquipamento.cs" />
+    <Compile Include="PM\ICategoriasPontoMedicao.cs" />
+    <Compile Include="PM\ICentrosCusto.cs" />
+    <Compile Include="PM\ICentrosLocalizacao.cs" />
+    <Compile Include="PM\ICentroTrabalhos.cs" />
+    <Compile Include="PM\IChavesControle.cs" />
+    <Compile Include="PM\IClassificacoes.cs" />
+    <Compile Include="PM\ICodes.cs" />
+    <Compile Include="PM\ICodigosABC.cs" />
+    <Compile Include="PM\IComplementos.cs" />
+    <Compile Include="PM\IDiagnosticos.cs" />
+    <Compile Include="PM\IDocumentos.cs" />
+    <Compile Include="PM\IElementosPEP.cs" />
+    <Compile Include="PM\IEmpregados.cs" />
+    <Compile Include="PM\IEntregaTremOperations.cs" />
+    <Compile Include="PM\IEquipamentos.cs" />
+    <Compile Include="PM\IEstrategias.cs" />
+    <Compile Include="PM\IEventosGerador.cs" />
+    <Compile Include="PM\IFrotas.cs" />
+    <Compile Include="PM\IGrupoCodes.cs" />
+    <Compile Include="PM\IIntervencoesOperacao.cs" />
+    <Compile Include="PM\ILinhas.cs" />
+    <Compile Include="PM\IListasTarefas.cs" />
+    <Compile Include="PM\IListaTarefaOperacaoComponentes.cs" />
+    <Compile Include="PM\IListaTarefaOperacoes.cs" />
+    <Compile Include="PM\ILocaisInstalacao.cs" />
+    <Compile Include="PM\ILogLogins.cs" />
+    <Compile Include="PM\IMaosDeObra.cs" />
+    <Compile Include="PM\IMAPs.cs" />
+    <Compile Include="PM\IMarcos.cs" />
+    <Compile Include="PM\IMateriaisOperacao.cs" />
+    <Compile Include="PM\IMaterials.cs" />
+    <Compile Include="PM\IMedidasNota.cs" />
+    <Compile Include="PM\IModelosLinear.cs" />
+    <Compile Include="PM\IMotivoEntregaOperations.cs" />
+    <Compile Include="PM\INotas.cs" />
+    <Compile Include="PM\IntervencoesOperacao.cs" />
+    <Compile Include="PM\IntervencoesOperacaoExtensions.cs" />
+    <Compile Include="PM\IOperacoesOrdem.cs" />
+    <Compile Include="PM\IOrdens.cs" />
+    <Compile Include="PM\IParceiroOperations.cs" />
+    <Compile Include="PM\IPatioLinhaOperations.cs" />
+    <Compile Include="PM\IPatios.cs" />
+    <Compile Include="PM\IPMClient.cs" />
+    <Compile Include="PM\IPontosMedicao.cs" />
+    <Compile Include="PM\IPosicoes.cs" />
+    <Compile Include="PM\IPrioridades.cs" />
+    <Compile Include="PM\IProgramacaoOperations.cs" />
+    <Compile Include="PM\ISistemaAplicacaoOperations.cs" />
+    <Compile Include="PM\ISistemaEmpresaOperations.cs" />
+    <Compile Include="PM\ISistemaLogErrorOperations.cs" />
+    <Compile Include="PM\ISistemaLogLoginOperations.cs" />
+    <Compile Include="PM\ISistemaLogOperacoesItemOperations.cs" />
+    <Compile Include="PM\ISistemaLogOperacoesOperations.cs" />
+    <Compile Include="PM\ISistemaModuloOperations.cs" />
+    <Compile Include="PM\ISistemaPerfilItemOperations.cs" />
+    <Compile Include="PM\ISistemaPerfilOperations.cs" />
+    <Compile Include="PM\ISistemas.cs" />
+    <Compile Include="PM\ISistemaTabelaCampoOperations.cs" />
+    <Compile Include="PM\ISistemaTabelaOperations.cs" />
+    <Compile Include="PM\ISistemaTipoDadoOperations.cs" />
+    <Compile Include="PM\ISistemaTipoLogOperations.cs" />
+    <Compile Include="PM\ISistemaUsuarioModuloOperations.cs" />
+    <Compile Include="PM\ISistemaUsuarioOperations.cs" />
+    <Compile Include="PM\IStatusCopeses.cs" />
+    <Compile Include="PM\IStatusEntregaTremOperations.cs" />
+    <Compile Include="PM\IStatusMedidas.cs" />
+    <Compile Include="PM\IStatusOperacoes.cs" />
+    <Compile Include="PM\IStatusPericias.cs" />
+    <Compile Include="PM\IStatusProgramacaoTremOperations.cs" />
+    <Compile Include="PM\IStatusSistemas.cs" />
+    <Compile Include="PM\IStatusTremOperations.cs" />
+    <Compile Include="PM\IStatusUsuarios.cs" />
+    <Compile Include="PM\ITipoNotas.cs" />
+    <Compile Include="PM\ITiposCapacidade.cs" />
+    <Compile Include="PM\ITiposCentroTrabalho.cs" />
+    <Compile Include="PM\ITiposMarcador.cs" />
+    <Compile Include="PM\ITiposOrdem.cs" />
+    <Compile Include="PM\ITrems.cs" />
+    <Compile Include="PM\IUnidadesMedida.cs" />
+    <Compile Include="PM\IZonas.cs" />
+    <Compile Include="PM\Linhas.cs" />
+    <Compile Include="PM\LinhasExtensions.cs" />
+    <Compile Include="PM\ListasTarefas.cs" />
+    <Compile Include="PM\ListasTarefasExtensions.cs" />
+    <Compile Include="PM\ListaTarefaOperacaoComponentes.cs" />
+    <Compile Include="PM\ListaTarefaOperacaoComponentesExtensions.cs" />
+    <Compile Include="PM\ListaTarefaOperacoes.cs" />
+    <Compile Include="PM\ListaTarefaOperacoesExtensions.cs" />
+    <Compile Include="PM\LocaisInstalacao.cs" />
+    <Compile Include="PM\LocaisInstalacaoExtensions.cs" />
+    <Compile Include="PM\LogLogins.cs" />
+    <Compile Include="PM\LogLoginsExtensions.cs" />
+    <Compile Include="PM\MaosDeObra.cs" />
+    <Compile Include="PM\MaosDeObraExtensions.cs" />
+    <Compile Include="PM\MAPs.cs" />
+    <Compile Include="PM\MAPsExtensions.cs" />
+    <Compile Include="PM\Marcos.cs" />
+    <Compile Include="PM\MarcosExtensions.cs" />
+    <Compile Include="PM\MateriaisOperacao.cs" />
+    <Compile Include="PM\MateriaisOperacaoExtensions.cs" />
+    <Compile Include="PM\Materials.cs" />
+    <Compile Include="PM\MaterialsExtensions.cs" />
+    <Compile Include="PM\MedidasNota.cs" />
+    <Compile Include="PM\MedidasNotaExtensions.cs" />
+    <Compile Include="PM\ModelosLinear.cs" />
+    <Compile Include="PM\ModelosLinearExtensions.cs" />
+    <Compile Include="PM\Models\BaseModel.cs" />
+    <Compile Include="PM\Models\CalendarioFabrica.cs" />
+    <Compile Include="PM\Models\Capacidade.cs" />
+    <Compile Include="PM\Models\Carro.cs" />
+    <Compile Include="PM\Models\Catalogo.cs" />
+    <Compile Include="PM\Models\CategoriaEquipamento.cs" />
+    <Compile Include="PM\Models\CategoriaItem.cs" />
+    <Compile Include="PM\Models\CategoriaPontoMedicao.cs" />
+    <Compile Include="PM\Models\CentroCusto.cs" />
+    <Compile Include="PM\Models\CentroLocalizacao.cs" />
+    <Compile Include="PM\Models\CentroPlanejamento.cs" />
+    <Compile Include="PM\Models\CentroTrabalho.cs" />
+    <Compile Include="PM\Models\ChaveControle.cs" />
+    <Compile Include="PM\Models\Classificacao.cs" />
+    <Compile Include="PM\Models\Code.cs" />
+    <Compile Include="PM\Models\CodigoABC.cs" />
+    <Compile Include="PM\Models\Complemento.cs" />
+    <Compile Include="PM\Models\Deposito.cs" />
+    <Compile Include="PM\Models\Diagnostico.cs" />
+    <Compile Include="PM\Models\Documento.cs" />
+    <Compile Include="PM\Models\ElementoPEP.cs" />
+    <Compile Include="PM\Models\Empregado.cs" />
+    <Compile Include="PM\Models\EntregaTrem.cs" />
+    <Compile Include="PM\Models\Equipamento.cs" />
+    <Compile Include="PM\Models\Estrategia.cs" />
+    <Compile Include="PM\Models\EventoGerador.cs" />
+    <Compile Include="PM\Models\Frota.cs" />
+    <Compile Include="PM\Models\GrupoCode.cs" />
+    <Compile Include="PM\Models\GrupoPlanejamento.cs" />
+    <Compile Include="PM\Models\IntervencaoOperacao.cs" />
+    <Compile Include="PM\Models\Linha.cs" />
+    <Compile Include="PM\Models\ListaTarefa.cs" />
+    <Compile Include="PM\Models\ListaTarefaOperacao.cs" />
+    <Compile Include="PM\Models\ListaTarefaOperacaoComponente.cs" />
+    <Compile Include="PM\Models\LocalInstalacao.cs" />
+    <Compile Include="PM\Models\Localizacao.cs" />
+    <Compile Include="PM\Models\MaoDeObra.cs" />
+    <Compile Include="PM\Models\MAP.cs" />
+    <Compile Include="PM\Models\Marco.cs" />
+    <Compile Include="PM\Models\Material.cs" />
+    <Compile Include="PM\Models\MaterialOperacao.cs" />
+    <Compile Include="PM\Models\MedidaNota.cs" />
+    <Compile Include="PM\Models\ModeloLinear.cs" />
+    <Compile Include="PM\Models\MotivoEntrega.cs" />
+    <Compile Include="PM\Models\Nota.cs" />
+    <Compile Include="PM\Models\OperacaoOrdem.cs" />
+    <Compile Include="PM\Models\Ordem.cs" />
+    <Compile Include="PM\Models\Parceiro.cs" />
+    <Compile Include="PM\Models\Patio.cs" />
+    <Compile Include="PM\Models\PatioLinha.cs" />
+    <Compile Include="PM\Models\Perfil.cs" />
+    <Compile Include="PM\Models\PontoMedicao.cs" />
+    <Compile Include="PM\Models\Posicao.cs" />
+    <Compile Include="PM\Models\Prioridade.cs" />
+    <Compile Include="PM\Models\Programacao.cs" />
+    <Compile Include="PM\Models\Sistema.cs" />
+    <Compile Include="PM\Models\SistemaAplicacao.cs" />
+    <Compile Include="PM\Models\SistemaEmpresa.cs" />
+    <Compile Include="PM\Models\SistemaLogError.cs" />
+    <Compile Include="PM\Models\SistemaLogLogin.cs" />
+    <Compile Include="PM\Models\SistemaLogOperacoes.cs" />
+    <Compile Include="PM\Models\SistemaLogOperacoesItem.cs" />
+    <Compile Include="PM\Models\SistemaModulo.cs" />
+    <Compile Include="PM\Models\SistemaPerfil.cs" />
+    <Compile Include="PM\Models\SistemaPerfilItem.cs" />
+    <Compile Include="PM\Models\SistemaTabela.cs" />
+    <Compile Include="PM\Models\SistemaTabelaCampo.cs" />
+    <Compile Include="PM\Models\SistemaTipoDado.cs" />
+    <Compile Include="PM\Models\SistemaTipoLog.cs" />
+    <Compile Include="PM\Models\SistemaUsuario.cs" />
+    <Compile Include="PM\Models\SistemaUsuarioModulo.cs" />
+    <Compile Include="PM\Models\StatusCopese.cs" />
+    <Compile Include="PM\Models\StatusEntregaTrem.cs" />
+    <Compile Include="PM\Models\StatusListaTarefa.cs" />
+    <Compile Include="PM\Models\StatusMedida.cs" />
+    <Compile Include="PM\Models\StatusOperacao.cs" />
+    <Compile Include="PM\Models\StatusPericia.cs" />
+    <Compile Include="PM\Models\StatusProgramacaoTrem.cs" />
+    <Compile Include="PM\Models\StatusSistema.cs" />
+    <Compile Include="PM\Models\StatusTrem.cs" />
+    <Compile Include="PM\Models\StatusUsuario.cs" />
+    <Compile Include="PM\Models\Tarifa.cs" />
+    <Compile Include="PM\Models\TipoCapacidade.cs" />
+    <Compile Include="PM\Models\TipoCentroTrabalho.cs" />
+    <Compile Include="PM\Models\TipoDocumento.cs" />
+    <Compile Include="PM\Models\TipoMarcador.cs" />
+    <Compile Include="PM\Models\TipoNota.cs" />
+    <Compile Include="PM\Models\TipoOrdem.cs" />
+    <Compile Include="PM\Models\Trem.cs" />
+    <Compile Include="PM\Models\UnidadeMedida.cs" />
+    <Compile Include="PM\Models\Zona.cs" />
+    <Compile Include="PM\MotivoEntregaOperations.cs" />
+    <Compile Include="PM\MotivoEntregaOperationsExtensions.cs" />
+    <Compile Include="PM\Notas.cs" />
+    <Compile Include="PM\NotasExtensions.cs" />
+    <Compile Include="PM\OperacoesOrdem.cs" />
+    <Compile Include="PM\OperacoesOrdemExtensions.cs" />
+    <Compile Include="PM\Ordens.cs" />
+    <Compile Include="PM\OrdensExtensions.cs" />
+    <Compile Include="PM\ParceiroOperations.cs" />
+    <Compile Include="PM\ParceiroOperationsExtensions.cs" />
+    <Compile Include="PM\PatioLinhaOperations.cs" />
+    <Compile Include="PM\PatioLinhaOperationsExtensions.cs" />
+    <Compile Include="PM\Patios.cs" />
+    <Compile Include="PM\PatiosExtensions.cs" />
+    <Compile Include="PM\PMClient.cs" />
+    <Compile Include="PM\PontosMedicao.cs" />
+    <Compile Include="PM\PontosMedicaoExtensions.cs" />
+    <Compile Include="PM\Posicoes.cs" />
+    <Compile Include="PM\PosicoesExtensions.cs" />
+    <Compile Include="PM\Prioridades.cs" />
+    <Compile Include="PM\PrioridadesExtensions.cs" />
+    <Compile Include="PM\ProgramacaoOperations.cs" />
+    <Compile Include="PM\ProgramacaoOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaAplicacaoOperations.cs" />
+    <Compile Include="PM\SistemaAplicacaoOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaEmpresaOperations.cs" />
+    <Compile Include="PM\SistemaEmpresaOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaLogErrorOperations.cs" />
+    <Compile Include="PM\SistemaLogErrorOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaLogLoginOperations.cs" />
+    <Compile Include="PM\SistemaLogLoginOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaLogOperacoesItemOperations.cs" />
+    <Compile Include="PM\SistemaLogOperacoesItemOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaLogOperacoesOperations.cs" />
+    <Compile Include="PM\SistemaLogOperacoesOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaModuloOperations.cs" />
+    <Compile Include="PM\SistemaModuloOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaPerfilItemOperations.cs" />
+    <Compile Include="PM\SistemaPerfilItemOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaPerfilOperations.cs" />
+    <Compile Include="PM\SistemaPerfilOperationsExtensions.cs" />
+    <Compile Include="PM\Sistemas.cs" />
+    <Compile Include="PM\SistemasExtensions.cs" />
+    <Compile Include="PM\SistemaTabelaCampoOperations.cs" />
+    <Compile Include="PM\SistemaTabelaCampoOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaTabelaOperations.cs" />
+    <Compile Include="PM\SistemaTabelaOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaTipoDadoOperations.cs" />
+    <Compile Include="PM\SistemaTipoDadoOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaTipoLogOperations.cs" />
+    <Compile Include="PM\SistemaTipoLogOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaUsuarioModuloOperations.cs" />
+    <Compile Include="PM\SistemaUsuarioModuloOperationsExtensions.cs" />
+    <Compile Include="PM\SistemaUsuarioOperations.cs" />
+    <Compile Include="PM\SistemaUsuarioOperationsExtensions.cs" />
+    <Compile Include="PM\StatusCopeses.cs" />
+    <Compile Include="PM\StatusCopesesExtensions.cs" />
+    <Compile Include="PM\StatusEntregaTremOperations.cs" />
+    <Compile Include="PM\StatusEntregaTremOperationsExtensions.cs" />
+    <Compile Include="PM\StatusMedidas.cs" />
+    <Compile Include="PM\StatusMedidasExtensions.cs" />
+    <Compile Include="PM\StatusOperacoes.cs" />
+    <Compile Include="PM\StatusOperacoesExtensions.cs" />
+    <Compile Include="PM\StatusPericias.cs" />
+    <Compile Include="PM\StatusPericiasExtensions.cs" />
+    <Compile Include="PM\StatusProgramacaoTremOperations.cs" />
+    <Compile Include="PM\StatusProgramacaoTremOperationsExtensions.cs" />
+    <Compile Include="PM\StatusSistemas.cs" />
+    <Compile Include="PM\StatusSistemasExtensions.cs" />
+    <Compile Include="PM\StatusTremOperations.cs" />
+    <Compile Include="PM\StatusTremOperationsExtensions.cs" />
+    <Compile Include="PM\StatusUsuarios.cs" />
+    <Compile Include="PM\StatusUsuariosExtensions.cs" />
+    <Compile Include="PM\TipoNotas.cs" />
+    <Compile Include="PM\TipoNotasExtensions.cs" />
+    <Compile Include="PM\TiposCapacidade.cs" />
+    <Compile Include="PM\TiposCapacidadeExtensions.cs" />
+    <Compile Include="PM\TiposCentroTrabalho.cs" />
+    <Compile Include="PM\TiposCentroTrabalhoExtensions.cs" />
+    <Compile Include="PM\TiposMarcador.cs" />
+    <Compile Include="PM\TiposMarcadorExtensions.cs" />
+    <Compile Include="PM\TiposOrdem.cs" />
+    <Compile Include="PM\TiposOrdemExtensions.cs" />
+    <Compile Include="PM\Trems.cs" />
+    <Compile Include="PM\TremsExtensions.cs" />
+    <Compile Include="PM\UnidadesMedida.cs" />
+    <Compile Include="PM\UnidadesMedidaExtensions.cs" />
+    <Compile Include="PM\Zonas.cs" />
+    <Compile Include="PM\ZonasExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CarroServices.cs" />
+    <Compile Include="Service\CatalogoServices.cs" />
+    <Compile Include="Service\CentroTrabalhoServices.cs" />
+    <Compile Include="Service\CodeServices.cs" />
+    <Compile Include="Service\EmpregadoServices.cs" />
+    <Compile Include="Service\EntregaTremServices.cs" />
+    <Compile Include="Service\EquipamentoServices.cs" />
+    <Compile Include="Service\EventoGeradorServices.cs" />
+    <Compile Include="Service\LinhaServices.cs" />
+    <Compile Include="Service\ListaTarefaOperacaoComponenteServices.cs" />
+    <Compile Include="Service\ListaTarefaServices.cs" />
+    <Compile Include="Service\LocalInstalacaoServices.cs" />
+    <Compile Include="Service\MotivoEntregaServices.cs" />
+    <Compile Include="Service\PatioLinhaServices.cs" />
+    <Compile Include="Service\PatioServices.cs" />
+    <Compile Include="Service\PosicaoServices.cs" />
+    <Compile Include="Service\ProgramacaoServices.cs" />
+    <Compile Include="Service\SintomaServices.cs" />
+    <Compile Include="Service\SistemaAplicacaoServices.cs" />
+    <Compile Include="Service\SistemaEmpresaServices.cs" />
+    <Compile Include="Service\SistemaLogErrorServices.cs" />
+    <Compile Include="Service\SistemaLogLoginServices.cs" />
+    <Compile Include="Service\SistemaLogOperacoesItemServices.cs" />
+    <Compile Include="Service\SistemaLogOperacoesServices.cs" />
+    <Compile Include="Service\SistemaModuloServices.cs" />
+    <Compile Include="Service\SistemaPerfilItemServices.cs" />
+    <Compile Include="Service\SistemaPerfilServices.cs" />
+    <Compile Include="Service\SistemaServices.cs" />
+    <Compile Include="Service\SistemaTabelaCampoServices.cs" />
+    <Compile Include="Service\SistemaTabelaServices.cs" />
+    <Compile Include="Service\SistemaTipoDadoServices.cs" />
+    <Compile Include="Service\SistemaTipoLogServices.cs" />
+    <Compile Include="Service\SistemaUsuarioModuloServices.cs" />
+    <Compile Include="Service\SistemaUsuarioServices.cs" />
+    <Compile Include="Service\StatusCopeseServices.cs" />
+    <Compile Include="Service\StatusEntregaTremServices.cs" />
+    <Compile Include="Service\StatusMedidaServices.cs" />
+    <Compile Include="Service\StatusPericiaServices.cs" />
+    <Compile Include="Service\StatusProgramacaoTremServices.cs" />
+    <Compile Include="Service\StatusTremServices.cs" />
+    <Compile Include="Service\TremServices.cs" />
+    <Compile Include="Service\MAPServices.cs" />
+    <Compile Include="Service\MaoDeObraServices.cs" />
+    <Compile Include="Service\MaterialServices.cs" />
+    <Compile Include="Service\OperacaoOrdemServices.cs" />
+    <Compile Include="Service\MaterialOperacaoServices.cs" />
+    <Compile Include="Service\MedidaNotaServices.cs" />
+    <Compile Include="Service\IntervencaoOperacaoServices.cs" />
+    <Compile Include="Service\DocumentoServices.cs" />
+    <Compile Include="Service\FrotaServices.cs" />
+    <Compile Include="Service\OrdemServices.cs" />
+    <Compile Include="Service\NotaServices.cs" />
+    <Compile Include="Service\ComplementoServices.cs" />
+    <Compile Include="Service\Links.cs" />
+    <Compile Include="PMClient.cs" />
+    <Compile Include="Service\PrioridadeServices.cs" />
+    <Compile Include="Service\StatusUsuarioServices.cs" />
+    <Compile Include="Service\ElementoPEPServices.cs" />
+    <Compile Include="Service\TipoNotaServices.cs" />
+    <Compile Include="Service\ZonaServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PM.Domain\PM.Domain.csproj">
+      <Project>{EFEBB8D3-F33C-41FD-ABA8-76BF2BBFB8DF}</Project>
+      <Name>PM.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
